@@ -112,7 +112,7 @@ public class TestFusionPipelineClient {
   private static final String fusionCollectionApiStrValForUrl = "/collections";
 
   @Rule
-  public WireMockRule wireMockRule = new WireMockRule(Integer.parseInt(wireMockRulePort)); // No-args constructor defaults to port 8080
+  // public WireMockRule wireMockRule = new WireMockRule(Integer.parseInt(wireMockRulePort)); // No-args constructor defaults to port 8080
 
   @Test
   public void testHappyPath() throws Exception {

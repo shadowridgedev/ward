@@ -4,11 +4,11 @@
 <comment>Set useWireMockRule to 'false' if wanting to connect to an actual Fusion instance. A value of 'true'
          will use WireMock features instead to fake the connection to Fusion.
 </comment>
-<entry key="useWireMockRule">true</entry>
+<entry key="useWireMockRule">false</entry>
 <entry key="fusionServerHttpString">http://</entry>
 <entry key="fusionHost">410-6</entry>
 <entry key="fusionApiPort">8764</entry>
-<entry key="fusionCollection">agentCollection</entry>
+<entry key="fusionCollection">local</entry>
 <entry key="fusionIndexingPipeline">agentCollection-default</entry>
 <entry key="fusionProxyBaseUrl">/api/apollo</entry>
 <entry key="fusionIndexingPipelineUrlExtension">/index-pipelines</entry>

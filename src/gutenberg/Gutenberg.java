@@ -15,12 +15,12 @@ public class Gutenberg {
 			GuttenbergHelper helper = new GuttenbergHelper(base);
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			String sentStr = "Michael McGinn is the mayor of Seattle.";
-			Test = new ReverbTest();
+//			Test = new ReverbTest();
 
 			TestFusionPipelineClient connectTest = new TestFusionPipelineClient();
 			
-			Openiework ie = new Openiework();
-			ie.test();
+//			Openiework ie = new Openiework();
+//			ie.test();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
