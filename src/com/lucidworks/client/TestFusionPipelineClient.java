@@ -25,8 +25,8 @@ public class TestFusionPipelineClient {
   private static final String defaultWireMockRulePort = "8089";
   private static final String defaultFusionPort = "8764";
   private static final String defaultFusionServerHttpString = "http://";
-  private static final String defaultHost = "localhost";
-  private static final String defaultCollection = "test";
+  private static final String defaultHost = "410-6";
+  private static final String defaultCollection = "wikipedia";
   private static final String defaultFusionIndexingPipeline = "conn_solr";
   private static final String defaultFusionProxyBaseUrl = "/api/apollo";
   private static final String defaultFusionIndexingPipelineUrlExtension = "/index-pipelines";
@@ -112,7 +112,7 @@ public class TestFusionPipelineClient {
   private static final String fusionCollectionApiStrValForUrl = "/collections";
 
   @Rule
-  // public WireMockRule wireMockRule = new WireMockRule(Integer.parseInt(wireMockRulePort)); // No-args constructor defaults to port 8080
+  public WireMockRule wireMockRule = new WireMockRule(Integer.parseInt(wireMockRulePort)); // No-args constructor defaults to port 8080
 
   @Test
   public void testHappyPath() throws Exception {

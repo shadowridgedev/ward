@@ -15,7 +15,7 @@ public class Gutenberg {
 			GuttenbergHelper helper = new GuttenbergHelper(base);
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			String sentStr = "Michael McGinn is the mayor of Seattle.";
-//			Test = new ReverbTest();
+			Test = new ReverbTest();
 
 			TestFusionPipelineClient connectTest = new TestFusionPipelineClient();
 			
