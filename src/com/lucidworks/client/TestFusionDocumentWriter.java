@@ -61,7 +61,7 @@ public class TestFusionDocumentWriter {
 
   static {
 
-    try (InputStream in = new FileInputStream("properties/properties.xml")) {
+    try (InputStream in = new FileInputStream("properties/propertiesfusion.xml")) {
       Properties prop = new Properties();
       prop.loadFromXML(in);
 
