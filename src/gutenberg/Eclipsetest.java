@@ -1,5 +1,4 @@
 package gutenberg;
-import  com.lucidworks.client.SolrInputDocumentWriter;
 
 public class Eclipsetest {
 	static ReverbTest	  Test;

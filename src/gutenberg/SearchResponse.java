@@ -1,4 +1,4 @@
-package com.lucidworks.client;
+package gutenberg;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;

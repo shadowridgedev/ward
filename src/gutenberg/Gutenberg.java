@@ -2,10 +2,6 @@ package gutenberg;
 
 import org.apache.solr.common.util.NamedList;
 
-import com.lucidworks.client.SolrCellRequestDemo;
-import com.lucidworks.client.SolrInputDocumentWriter;
-import com.lucidworks.client.TestFusionPipelineClient;
-
 public class Gutenberg {
 	static ReverbTest Test;
 	SolrInputDocumentWriter writer;;

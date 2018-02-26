@@ -2,7 +2,7 @@
  * LucidWorks, Inc. Developer License Agreement
  *
  */
-package com.lucidworks.client;
+package gutenberg;
 
 import org.apache.solr.client.solrj.impl.HttpClientUtil;
 import org.apache.solr.client.solrj.impl.Krb5HttpClientConfigurer;

@@ -1,4 +1,4 @@
-package com.lucidworks.client;
+package gutenberg;
 
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.Meter;

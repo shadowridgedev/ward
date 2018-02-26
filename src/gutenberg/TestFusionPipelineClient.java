@@ -1,12 +1,15 @@
-package com.lucidworks.client;
+package gutenberg;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+
+import gutenberg.FusionPipelineClient;
+
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Rule;
 import org.junit.Test;
-import com.lucidworks.client.FusionPipelineClient;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

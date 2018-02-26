@@ -1,4 +1,4 @@
-package com.lucidworks.client;
+package gutenberg;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more

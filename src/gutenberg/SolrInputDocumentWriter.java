@@ -1,4 +1,4 @@
-package com.lucidworks.client;
+package gutenberg;
 
 import java.io.IOException;
 import java.util.List;

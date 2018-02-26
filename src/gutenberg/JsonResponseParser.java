@@ -1,4 +1,4 @@
-package com.lucidworks.client;
+package gutenberg;
 
 import org.apache.solr.common.SolrException;
 import org.codehaus.jackson.map.ObjectMapper;
