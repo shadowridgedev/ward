@@ -14,13 +14,12 @@ public class Gutenberg {
 			String base = args[0];
 			GuttenbergHelper helper = new GuttenbergHelper(base);
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
-			String sentStr = "Michael McGinn is the mayor of Seattle.";
 		    String filetype = "txt";
 			String filepath = "Z:\\gut\\gutenberg\\0\\1\\1.txt";
 			SolrCellRequestDemo  request = new SolrCellRequestDemo();
 			
 			
-			result = request.test("610-2", "Gutenberg-Default", filepath, filetype);
+			result = request.test("610-2", "gutenberg", filepath, filetype);
 			System.out.println("Result: " + result);
 			
 			
