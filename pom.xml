@@ -461,13 +461,7 @@
 
 
 
-		<dependency>
-			<groupId>com.sun</groupId>
-			<artifactId>tools</artifactId>
-			<version>1.8.0</version>
-			<scope>system</scope>
-			<systemPath>C:\Program Files\Java\jdk1.8.0_151\lib\tools.jar</systemPath>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.mahout</groupId>
 			<artifactId>mahout-core</artifactId>

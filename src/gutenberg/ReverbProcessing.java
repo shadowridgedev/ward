@@ -3,7 +3,6 @@ package gutenberg;
 import java.io.IOException;
 import java.util.LinkedList;
 
-import edu.washington.cs.knowitall.examples.ReVerbExample;
 /* For representing a sentence that is annotated with pos tags and np chunks.*/
 import edu.washington.cs.knowitall.nlp.ChunkedSentence;
 
@@ -17,7 +16,6 @@ import edu.washington.cs.knowitall.extractor.ReVerbExtractor;
  * extraction.
  */
 import edu.washington.cs.knowitall.extractor.conf.ConfidenceFunction;
-import edu.washington.cs.knowitall.extractor.conf.ConfidenceFunctionException;
 import edu.washington.cs.knowitall.extractor.conf.ReVerbOpenNlpConfFunction;
 
 /* A class for holding a (arg1, rel, arg2) triple. */
@@ -28,15 +26,13 @@ public class ReverbProcessing {
 	ReVerbExtractor reverb = new ReVerbExtractor();
 	ConfidenceFunction confFunc = new ReVerbOpenNlpConfFunction();
 	OpenNlpSentenceChunker chunker = new OpenNlpSentenceChunker();
-	
-	
+
 	ReverbProcessing() throws Exception {
 
 	}
 
 	ChunkedSentence ReverbChunk(String sentStr) throws IOException {
 
-	
 		ChunkedSentence sent = chunker.chunkSentence(sentStr);
 		// Looks on the classpath for the default model files.
 
@@ -51,11 +47,11 @@ public class ReverbProcessing {
 		}
 		return sent;
 	}
-	
-		// Prints out extractions from the sentence.
-	LinkedList <ChunkedBinaryExtraction>  ReverbChunk(ChunkedSentence sent)  {
+
+	// Prints out extractions from the sentence.
+	LinkedList<ChunkedBinaryExtraction> ReverbChunk(ChunkedSentence sent) {
 		LinkedList<ChunkedBinaryExtraction> extractions = new LinkedList<ChunkedBinaryExtraction>();
-			
+
 		for (ChunkedBinaryExtraction extr : reverb.extract(sent)) {
 			extractions.add(extr);
 			double conf = confFunc.getConf(extr);
@@ -64,7 +60,7 @@ public class ReverbProcessing {
 			System.out.println("Arg2=" + extr.getArgument2());
 			System.out.println("Conf=" + conf);
 		}
-	return extractions;
+		return extractions;
 	}
 
 }

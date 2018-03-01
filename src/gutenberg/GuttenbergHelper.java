@@ -198,13 +198,13 @@ public class GuttenbergHelper {
 	/*
 	 * void ProcessFiles(ArrayList<File> only, int max) { while ( i++ != max) {
 	 * 
-	 * for (File current : only) { String result = ("File " + current.getName()
-	 * + " "); if (isGuttenberg(current)) { result += (" is Guttenbberg"); Path
-	 * local = Paths.get(GuttenbergPath + current.getName());
-	 * Files.copy(current.toPath(), local, REPLACE_EXISTING); Book book = new
-	 * Book(); book.setPath(local.toString()); book.setText(new
-	 * String(Files.readAllBytes(local))); book.setName(current.getName());
-	 * metadata = GetBookMetadata(book.text);
+	 * for (File current : only) { String result = ("File " + current.getName() +
+	 * " "); if (isGuttenberg(current)) { result += (" is Guttenbberg"); Path local
+	 * = Paths.get(GuttenbergPath + current.getName()); Files.copy(current.toPath(),
+	 * local, REPLACE_EXISTING); Book book = new Book();
+	 * book.setPath(local.toString()); book.setText(new
+	 * String(Files.readAllBytes(local))); book.setName(current.getName()); metadata
+	 * = GetBookMetadata(book.text);
 	 * 
 	 * // add own metadata metadata.put("extra", "Things");
 	 * 
@@ -222,11 +222,9 @@ public class GuttenbergHelper {
 	 * " is not Guttenberg"; } System.out.println(result);
 	 * 
 	 * } /* int problem = count - (helper.GuttenbergFiles +
-	 * helper.NotGuttenbergFiles); if (problem != 0)
-	 * System.out.println("Problem " + problem);
-	 * System.out.println("Final count Guttenberg Files" +
+	 * helper.NotGuttenbergFiles); if (problem != 0) System.out.println("Problem " +
+	 * problem); System.out.println("Final count Guttenberg Files" +
 	 * helper.GuttenbergFiles + " Not Guttenberg Files " +
 	 * helper.NotGuttenbergFiles); }
 	 */
 }
-

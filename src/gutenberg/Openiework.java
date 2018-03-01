@@ -12,9 +12,9 @@ public class Openiework {
 
 	public static void test() {
 		// TODO Auto-generated method stub
-		OpenIE	  openietest  = new OpenIE(null, null, false, false);
-		OpenIETs  openieTsTest = new OpenIETs (null, null, false);
-		
+		OpenIE openietest = new OpenIE(null, null, false, false);
+		OpenIETs openieTsTest = new OpenIETs(null, null, false);
+
 	}
 
 }

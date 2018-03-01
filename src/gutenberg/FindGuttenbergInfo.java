@@ -15,8 +15,6 @@ public class FindGuttenbergInfo {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	List<Book> getinfo(List<String> files) throws IOException {
 		List<Book> books = new ArrayList<Book>();
 
