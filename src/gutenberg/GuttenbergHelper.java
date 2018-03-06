@@ -36,15 +36,14 @@ public class GuttenbergHelper {
 	}
 
 	boolean isGuttenberg(File current) throws FileNotFoundException {
-		boolean Guttenberg = false;
+	;
 		if (current.isFile() && current.exists() && current.getName().endsWith("txt")
-				&& !current.getName().endsWith("zip") && lookslikeGuttenberg(current)) {
+				 && lookslikeGuttenberg(current)) {
 			GuttenbergFiles++;
-			Guttenberg = true;
-			return Guttenberg;
+			return true;
 		}
 		NotGuttenbergFiles++;
-		return Guttenberg;
+		return false;
 
 	}
 
@@ -68,7 +67,6 @@ public class GuttenbergHelper {
 							&& !line.contains("The Project Gutenberg Etext of Human Genome Project")) {
 				// System.out.println("ho hum, i found it on line " + lineNum);
 				scanner.close();
-				GuttenbergFiles++;
 				return true;
 			}
 		}
