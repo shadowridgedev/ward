@@ -71,7 +71,7 @@ public class DateUtil {
 	 * A suite of default date formats that can be parsed, and thus transformed to
 	 * the Solr specific format
 	 */
-	public static final Collection<String> DEFAULT_DATE_FORMATS = new ArrayList<>();
+	public static final Collection<String> DEFAULT_DATE_FORMATS = new ArrayList<String>();
 
 	static {
 		DEFAULT_DATE_FORMATS.add("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -142,7 +142,7 @@ public class DateUtil {
 		}
 
 		SimpleDateFormat dateParser = null;
-		Iterator formatIter = dateFormats.iterator();
+		Iterator<String> formatIter = dateFormats.iterator();
 
 		while (formatIter.hasNext()) {
 			String format = (String) formatIter.next();

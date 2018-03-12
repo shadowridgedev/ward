@@ -355,7 +355,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 			}
 			json.put("id", docId);
 
-			List fields = new ArrayList();
+			List<Map<String, Object>> fields = new ArrayList<Map<String, Object>>();
 			if (parent != null) {
 				if (log.isDebugEnabled())
 					log.debug("Method:doc2json - Merging parent and child docs, parent:[" + parent.toString()
@@ -390,7 +390,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 		return json;
 	}
 
-	protected void appendField(SolrInputDocument doc, String f, String pfx, List fields) {
+	protected void appendField(SolrInputDocument doc, String f, String pfx, List<Map<String, Object>> fields) {
 		SolrInputField field = doc.getField(f);
 		int vc = field.getValueCount();
 		if (vc <= 0)

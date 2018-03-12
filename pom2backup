@@ -4,25 +4,6 @@
 	<groupId>net.myexperimemnts</groupId>
 	<artifactId>eclipsetest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
-	<scm>
-		<url>https://github.com/axet/vget</url>
-		<connection>scm:git:https://github.com/axet/vget</connection>
-	</scm>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Nexus Staging Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
-
 	<properties>
 		<solr.version>6.5.1</solr.version>
 	</properties>
@@ -244,15 +225,8 @@
 
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/com.github.axet/vget -->
 		<dependency>
-			<groupId>com.github.axet</groupId>
-			<artifactId>vget</artifactId>
-			<version>1.2.6</version>
-		</dependency>
 
-
-		<dependency>
 			<groupId>us.monoid.web</groupId>
 			<artifactId>resty</artifactId>
 			<version>0.3.2</version>

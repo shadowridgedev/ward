@@ -12,10 +12,14 @@ public class Gutenberg {
 
 		try {
 			String base = args[0];
+			
+			String filepath = "Z:\\gut\\gutenberg\\0\\1\\1.txt";
+			String filepath2 = "C:\\Users\\shado\\git\\ward\\text";
+			
 			GuttenbergHelper helper = new GuttenbergHelper(base);
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			String filetype = "txt";
-			String filepath = "Z:\\gut\\gutenberg\\0\\1\\1.txt";
+
 			SolrCellRequestDemo request = new SolrCellRequestDemo();
 
 			result = request.test("610-2", "gutenberg", filepath, filetype);
