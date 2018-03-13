@@ -176,8 +176,7 @@ public class GuttenbergHelper {
 			return count;
 
 		if (root == null || only == null)
-			return 0; // just for safety
-		// || !root.getPath().toString().contains("old"))
+			return 0; // just for safety || !root.getPath().toString().contains("old"))
 		if (root.isDirectory()) {
 			// System.out.println(root.toString());
 			for (File file : root.listFiles()) {

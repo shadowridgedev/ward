@@ -3,13 +3,16 @@
 	<modelVersion>0.0.1</modelVersion>
 	<groupId>net.myexperimemnts</groupId>
 	<artifactId>eclipsetest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>4.0.0-SNAPSHOT</version>
 
 	<scm>
 		<url>https://github.com/axet/vget</url>
 		<connection>scm:git:https://github.com/axet/vget</connection>
 	</scm>
 
+	<properties>
+		<solr.version>6.5.1</solr.version>
+	</properties>
 	<distributionManagement>
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshots</id>
@@ -23,9 +26,6 @@
 		</repository>
 	</distributionManagement>
 
-	<properties>
-		<solr.version>6.5.1</solr.version>
-	</properties>
 	<repositories>
 		<repository>
 			<releases>
@@ -370,9 +370,6 @@
 			</exclusions>
 			<scope>test</scope>
 		</dependency>
-
-
-
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
@@ -388,8 +385,6 @@
 			<artifactId>commons-csv</artifactId>
 			<version>1.0</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
@@ -428,8 +423,6 @@
 			<version>1.7.7</version>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>com.github.tomakehurst</groupId>
 			<artifactId>wiremock</artifactId>
@@ -489,11 +482,6 @@
 			</exclusions>
 			<scope>test</scope>
 		</dependency>
-
-
-
-
-
 		<dependency>
 			<groupId>org.apache.mahout</groupId>
 			<artifactId>mahout-core</artifactId>
