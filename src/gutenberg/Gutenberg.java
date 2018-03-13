@@ -15,7 +15,6 @@ public class Gutenberg {
 			
 			String filepath = "Z:\\gut\\gutenberg\\0\\1\\1.txt";
 			String filepath2 = "C:\\Users\\shado\\git\\ward\\text";
-			
 			GuttenbergHelper helper = new GuttenbergHelper(base);
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			String filetype = "txt";
