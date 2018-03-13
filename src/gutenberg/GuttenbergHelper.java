@@ -3,12 +3,14 @@ package gutenberg;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class GuttenbergHelper {
@@ -17,28 +19,49 @@ public class GuttenbergHelper {
 	int count = 0;
 	private ArrayList<String> removetext = new ArrayList<String>();
 
+	String GuttenbergPath;
+	String NotGuttenbergPath;
+	String RemoveText;
+	String CleanBook;
+    String prop;
+    Properties wardprop;
+    
+  // load a properties file
+  // wardprop.load(input);
 	// ArrayList<String> checklist = new ArrayList<String> ();
 
-	GuttenbergHelper(String prop) throws IOException {
+	GuttenbergHelper(String filebase) throws IOException {
 
-		String GuttenbergPath = prop + "\\Guttenberg1\\";
-		String NotGuttenbergPath = prop + "\\NotGuttenberg\\";
-		String RemoveText = prop + "\\RemoveText\\";
-		String CleanBook = prop + "\\CleanBook\\";
+	   wardprop = new Properties();
+	
+	   ClassLoader loader = Thread.currentThread().getContextClassLoader();           
+	   InputStream stream = loader.getResourceAsStream(filebase);
+	   
+	   wardprop.load(stream);
+	   prop = wardprop.getProperty("GutenbergFileBase");
+		GuttenbergPath = prop + "\\gutenberg\\";
+		NotGuttenbergPath = prop + "\\NotGuttenberg\\";
+		RemoveText = prop + "\\RemoveText\\";
+		CleanBook = prop + "\\CleanBook\\";
+
+	}
+
+	ArrayList<String> removetext() throws IOException {
+
 		String[] paths = new File(RemoveText).list();
 		if (paths != null) {
 			for (String remove : paths) {
 				Path path = Paths.get(RemoveText + remove);
-
 				removetext.add(new String(Files.readAllBytes(path)));
 			}
+
 		}
+		return removetext;
 	}
 
 	boolean isGuttenberg(File current) throws FileNotFoundException {
-	;
-		if (current.isFile() && current.exists() && current.getName().endsWith("txt")
-				 && lookslikeGuttenberg(current)) {
+		;
+		if (current.isFile() && current.exists() && current.getName().endsWith("txt") && lookslikeGuttenberg(current)) {
 			GuttenbergFiles++;
 			return true;
 		}
