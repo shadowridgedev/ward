@@ -1,7 +1,6 @@
 package gutenberg;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

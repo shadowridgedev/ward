@@ -23,27 +23,26 @@ public class GuttenbergHelper {
 	String NotGuttenbergPath;
 	String RemoveText;
 	String CleanBook;
-    String prop;
-    Properties wardprop;
-    
-  // load a properties file
-  // wardprop.load(input);
+	String prop;
+	Properties wardprop = new Properties();
+
+	// load a properties file
+	// wardprop.load(input);
 	// ArrayList<String> checklist = new ArrayList<String> ();
 
-	GuttenbergHelper(String filebase) throws IOException {
-
-	   wardprop = new Properties();
-	
-	   ClassLoader loader = Thread.currentThread().getContextClassLoader();           
-	   InputStream stream = loader.getResourceAsStream(filebase);
-	   
-	   wardprop.load(stream);
-	   prop = wardprop.getProperty("GutenbergFileBase");
+	GuttenbergHelper(String propertyfilepath) throws IOException {
+		InputStream in = getClass().getClassLoader().getResourceAsStream(propertyfilepath);;
+		wardprop.load(in);
+		prop = getprop("GutenbergFileBase");
 		GuttenbergPath = prop + "\\gutenberg\\";
 		NotGuttenbergPath = prop + "\\NotGuttenberg\\";
 		RemoveText = prop + "\\RemoveText\\";
 		CleanBook = prop + "\\CleanBook\\";
 
+	}
+
+	String getprop(String property) {
+		return wardprop.getProperty(property);
 	}
 
 	ArrayList<String> removetext() throws IOException {
@@ -193,7 +192,7 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public int searchForFilesExt(File root, ArrayList<File> only, String ext, int max) throws Exception {
+	public int searchForFilesExt(File root, ArrayList<String> only, String ext, int max) throws Exception {
 		// TODO Auto-generated method stub
 		if (count > max)
 			return count;
@@ -204,13 +203,13 @@ public class GuttenbergHelper {
 			// System.out.println(root.toString());
 			for (File file : root.listFiles()) {
 				if (file != null) {
-					searchForFilesExt(file, only, ext, max);
+					count = searchForFilesExt(file, only, ext, max);
 				}
 			}
 		} else if (root.isFile() && root.getName().endsWith(ext)) {
 			count++;
 			System.out.println(count + "    " + root.getName());
-			only.add(root);
+			only.add( root.getName());
 		}
 		return count;
 	}

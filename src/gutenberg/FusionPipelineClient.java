@@ -132,7 +132,7 @@ public class FusionPipelineClient {
 			credentials = new UsernamePasswordCredentials(user, pass);
 		}
 
-		@Override
+	
 		public void process(HttpRequest request, HttpContext context) throws HttpException, IOException {
 			request.addHeader(BasicScheme.authenticate(credentials, "US-ASCII", false));
 		}
@@ -145,7 +145,7 @@ public class FusionPipelineClient {
 		Meter docsSentMeter = null;
 		HttpSolrClient solrClient = null;
 
-		@Override
+		
 		public String toString() {
 
 			StringBuilder sb = new StringBuilder();
@@ -172,7 +172,7 @@ public class FusionPipelineClient {
 	String fusionPass = null;
 	String fusionRealm = null;
 	AtomicInteger requestCounter = null;
-	Map<String, Meter> metersByHost = new HashMap<>();
+	Map<String, Meter> metersByHost = new HashMap<String, Meter>();
 	boolean isKerberos = false;
 
 	MetricRegistry metrics = null;
@@ -260,7 +260,7 @@ public class FusionPipelineClient {
 			String realm) throws Exception {
 
 		Exception lastError = null;
-		Map<String, FusionSession> map = new HashMap<>();
+		Map<String, FusionSession> map = new HashMap<String, FusionSession>();
 		for (String url : hostAndPortList) {
 			String sessionKey = getSessionKey(url);
 			if (!map.containsKey(sessionKey)) {
@@ -468,7 +468,7 @@ public class FusionPipelineClient {
 	public ArrayList<String> getAvailableServers() throws Exception {
 		ArrayList<String> mutable;
 		synchronized (this) {
-			mutable = new ArrayList<>(sessions.keySet());
+			mutable = new ArrayList<String>(sessions.keySet());
 		}
 
 		if (mutable.isEmpty()) {
@@ -481,7 +481,7 @@ public class FusionPipelineClient {
 				}
 
 				sessions = establishSessions(originalHostAndPortList, fusionUser, fusionPass, fusionRealm);
-				mutable = new ArrayList<>(sessions.keySet());
+				mutable = new ArrayList<String>(sessions.keySet());
 			}
 			if (mutable.isEmpty())
 				throw new IllegalStateException("No available endpoints! "
@@ -606,7 +606,6 @@ public class FusionPipelineClient {
 			this.jsonObj = jsonObj;
 		}
 
-		@Override
 		public void writeTo(OutputStream outputStream) throws IOException {
 			mapper.writeValue(outputStream, jsonObj);
 		}
@@ -620,7 +619,6 @@ public class FusionPipelineClient {
 			this.docs = docs;
 		}
 
-		@Override
 		public void writeTo(OutputStream outputStream) throws IOException {
 			try (OutputStreamWriter osw = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8)) {
 				CSVPrinter csvPrinter = new CSVPrinter(osw, CSVFormat.DEFAULT);
@@ -905,7 +903,7 @@ public class FusionPipelineClient {
 			this.httpResponse = httpResponse;
 		}
 
-		@Override
+		
 		public void close() {
 			if (delegate != null) {
 				EntityUtils.consumeQuietly(delegate);
@@ -919,47 +917,46 @@ public class FusionPipelineClient {
 			}
 		}
 
-		@Override
 		public boolean isRepeatable() {
 			return delegate.isRepeatable();
 		}
 
-		@Override
+
 		public boolean isChunked() {
 			return delegate.isChunked();
 		}
 
-		@Override
+		
 		public long getContentLength() {
 			return delegate.getContentLength();
 		}
 
-		@Override
+		
 		public Header getContentType() {
 			return delegate.getContentType();
 		}
 
-		@Override
+		
 		public Header getContentEncoding() {
 			return delegate.getContentEncoding();
 		}
 
-		@Override
+		
 		public InputStream getContent() throws IOException, UnsupportedOperationException {
 			return delegate.getContent();
 		}
 
-		@Override
+		
 		public void writeTo(OutputStream outputStream) throws IOException {
 			delegate.writeTo(outputStream);
 		}
 
-		@Override
+		
 		public boolean isStreaming() {
 			return delegate.isStreaming();
 		}
 
-		@Override
+		
 		public void consumeContent() throws IOException {
 			delegate.consumeContent();
 		}

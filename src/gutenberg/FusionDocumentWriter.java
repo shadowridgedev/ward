@@ -108,7 +108,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 		return metricRegistry;
 	}
 
-	@Override
+	
 	public void add(int shard, Map<String, SolrInputDocument> inputDocumentMap)
 			throws SolrServerException, IOException {
 		// shs: Processing added to handle atomic updates to documents that were being
@@ -455,7 +455,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 		}
 	}
 
-	@Override
+	
 	public void deleteById(int shard, List<String> idsToDelete) throws SolrServerException, IOException {
 
 		int len = 15;
@@ -533,7 +533,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 		}
 	}
 
-	@Override
+	
 	public void deleteByQuery(String deleteQuery) throws SolrServerException, IOException {
 		log.info("Sending a deleteByQuery '" + deleteQuery + "' to Solr(s) at: " + solrProxies);
 		try {
@@ -566,7 +566,7 @@ public class FusionDocumentWriter implements SolrInputDocumentWriter {
 		}
 	}
 
-	@Override
+	
 	public void close() {
 		log.info("shutting down pipeline client and solr proxy");
 		try {
