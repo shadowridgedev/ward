@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping">
+<!-- Generated Jan 27, 2017 7:12:28 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="guttenberg.Book" table="BOOK">
+        <id name="idBook" type="int">
+            <column name="IDBOOK" />
+            <generator class="increment" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="author" type="java.lang.String">
+            <column name="AUTHOR" />
+        </property>
+        <property name="date" type="java.lang.String">
+            <column name="DATE" />
+        </property>
+        <property name="text" type="java.lang.String">
+            <column name="TEXT" />
+        </property>
+        <property name="extra" type="java.lang.String">
+            <column name="EXTRA" />
+        </property>
+        <property name="filename" type="java.lang.String">
+            <column name="FILENAME" />
+        </property>
+        <property name="path" type="java.lang.String">
+            <column name="PATH" />
+        </property>
+        <property name="EtextNumber" type="java.lang.String">
+            <column name="ETEXTNUMBER" />
+        </property>
+        <property name="source" type="java.lang.String">
+            <column name="SOURCE" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="verified" type="boolean">
+            <column name="VERIFIED" />
+        </property>
+        <property name="parsed" type="boolean">
+            <column name="PARSED" />
+        </property>
+    </class>
+</hibernate-mapping>
