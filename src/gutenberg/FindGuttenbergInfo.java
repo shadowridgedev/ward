@@ -3,55 +3,47 @@ package gutenberg;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.LinkedList;
 import java.util.List;
 
 public class FindGuttenbergInfo {
 
 	private String title;
-
+	LinkedList<Book> books = new LinkedList<Book>();
 	public FindGuttenbergInfo() {
 
 		// TODO Auto-generated constructor stub
 	}
 
-	List<Book> getinfo(List<String> files) throws IOException {
-		List<Book> books = new ArrayList<Book>();
-
-		for (String filename : files) {
-			getindexfileinfo(filename, books);
+	LinkedList<Book> getinfo(LinkedList<Book> only) throws IOException {
+        Book result;
+		for (Book book : only) {
+			result = getindexfileinfo(book);
+			if (result!=null) books.add(result);
 		}
 		return books;
 
 	}
 
-	private List<Book> getindexfileinfo(String filename, List<Book> books) throws IOException {
-
-		BufferedReader br = new BufferedReader(new FileReader(filename));
-		String line = null;
-		String index = null;
-		while ((line = br.readLine()) != null) {
-			line = removeBracket(line);
-			if (line.contains("by")) {
-				int len = line.length();
-				int numsize = lastDigit(TrimLastChar(line));
-				if (numsize > 0) {
-					index = line.substring(len - (numsize + 1), len).trim();
-					System.out.println("Book stored " + index + " line " + line);
-					Book current = new Book();
-					parsebook(line.substring(0, len - (numsize + 1)), current);
-					current.EtextNumber = index;
-					current.source = "Index";
-					current.verified = false;
-					current.parsed = false;
-					books.add(current);
-				}
+	private Book getindexfileinfo(Book current) throws IOException {
+		if (current.path != null) {
+			String path = current.path.toString();
+			if (!(path.contains("old") || path.contains("readme") || path.contains("-") || path.contains("etext")
+					|| path.contains("cache"))) {
+				current.text = new String(Files.readAllBytes(Paths.get(current.path)));
+				current.source = "Index";
+				current.verified = false;
+				current.parsed = false;
+				System.out.println("Book stored Name" + current.path);
 			} else
-				System.out.println("Book not stored  " + index + " line   " + line);
-
+				System.out.println("Book not stored  " + current.path);
+			return null;
 		}
-		br.close();
-		return books;
+		return current;
+
 	}
 
 	String removeBracket(String line) {

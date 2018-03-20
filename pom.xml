@@ -244,6 +244,13 @@
 
 
 	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.2.Final</version>
+			<type>jar</type>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.github.axet/vget -->
 		<dependency>
 			<groupId>com.github.axet</groupId>

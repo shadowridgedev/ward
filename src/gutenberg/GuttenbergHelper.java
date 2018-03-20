@@ -10,15 +10,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Properties;
 import java.util.Scanner;
 
 public class GuttenbergHelper {
 	int GuttenbergFiles = 0;
 	int NotGuttenbergFiles = 0;
-	int count = 0;
+	ArrayList<Book> only = null;
 	private ArrayList<String> removetext = new ArrayList<String>();
-
+    int count;
 	String GuttenbergPath;
 	String NotGuttenbergPath;
 	String RemoveText;
@@ -192,26 +193,30 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public int searchForFilesExt(File root, ArrayList<String> only, String ext, int max) throws Exception {
+	public LinkedList<Book> searchForFilesExt(File  root, LinkedList<Book> only2, String ext, int max) throws Exception {
 		// TODO Auto-generated method stub
 		if (count > max)
-			return count;
+			return only2;
+		
 
-		if (root == null || only == null)
-			return 0; // just for safety || !root.getPath().toString().contains("old"))
-		if (root.isDirectory()) {
+		if (root == null || only2 == null)
+			return only2; // just for safety || !root.getPath().toString().contains("old"))
+		
+		if (root.isDirectory()){
 			// System.out.println(root.toString());
 			for (File file : root.listFiles()) {
 				if (file != null) {
-					count = searchForFilesExt(file, only, ext, max);
+					only2 = searchForFilesExt(file, only2, ext, max);
 				}
 			}
 		} else if (root.isFile() && root.getName().endsWith(ext)) {
 			count++;
 			System.out.println(count + "    " + root.getName());
-			only.add( root.getName());
+			Book theBook = new Book();
+			theBook.path = root.getPath();
+			only2.add(theBook);
 		}
-		return count;
+		return only2;
 	}
 
 	/*

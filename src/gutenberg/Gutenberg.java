@@ -1,7 +1,7 @@
 package gutenberg;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.solr.common.util.NamedList;
@@ -13,20 +13,23 @@ public class Gutenberg {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		NamedList<Object> result;
-      
+		LinkedList<Book> only = new LinkedList<Book>();
+		LinkedList<Book> books = new LinkedList<Book>();
 		try {
 
 
 			String base = "Z:\\gut\\";
-			ArrayList<String> only = new ArrayList<String>();
-			String filepath1 = base+ "gutenberg\\0\\1\\1.txt";
+
 			String filetype = "txt";
 			GuttenbergHelper helper = new GuttenbergHelper("resources\\ward.properties");
-			int num = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype,  Integer.parseInt(helper.getprop("numberfiles")));
+			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype,  Integer.parseInt(helper.getprop("numberfiles")));
 			
 			
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
-			List<Book> booklist =  info.getinfo(only);
+			books =  info.getinfo(only);
+			only.clear();
+			int I = 1;
+			
 /*
 			SolrCellRequestDemo request = new SolrCellRequestDemo();
 
