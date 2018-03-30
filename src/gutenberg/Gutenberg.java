@@ -28,9 +28,11 @@ public class Gutenberg {
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			books =  info.getinfo(only);
 			only.clear();
+	//		GuttenbergHibernateStorage hibernate = new   GuttenbergHibernateStorage();
+
 			int I = 1;
 			
-/*
+
 			SolrCellRequestDemo request = new SolrCellRequestDemo();
 
 			result = request.test(helper.getprop("FusionServer"), "gutenberg", helper.GuttenbergPath, filetype);
@@ -42,7 +44,7 @@ public class Gutenberg {
 
 			Openiework ie = new Openiework();
 			Openiework.test();
-*/
+
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
