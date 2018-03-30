@@ -18,10 +18,11 @@ public class Gutenberg {
 		try {
 
 
-			String base = "Z:\\gut\\";
+//			String base = "Z:\\gut\\";
+			String base = "/media/sf_gutenberg/";
 
 			String filetype = "txt";
-			GuttenbergHelper helper = new GuttenbergHelper("resources\\ward.properties");
+			GuttenbergHelper helper = new GuttenbergHelper("resources/ward.properties");
 			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype,  Integer.parseInt(helper.getprop("numberfiles")));
 			
 			

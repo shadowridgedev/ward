@@ -1,6 +1,7 @@
 package gutenberg;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,7 @@ public class GuttenbergHelper {
 	int NotGuttenbergFiles = 0;
 	ArrayList<Book> only = null;
 	private ArrayList<String> removetext = new ArrayList<String>();
-    int count;
+	int count;
 	String GuttenbergPath;
 	String NotGuttenbergPath;
 	String RemoveText;
@@ -32,13 +33,14 @@ public class GuttenbergHelper {
 	// ArrayList<String> checklist = new ArrayList<String> ();
 
 	GuttenbergHelper(String propertyfilepath) throws IOException {
-		InputStream in = getClass().getClassLoader().getResourceAsStream(propertyfilepath);;
+		File initialFile = new File(propertyfilepath);
+		InputStream in = new FileInputStream(initialFile);
 		wardprop.load(in);
 		prop = getprop("GutenbergFileBase");
-		GuttenbergPath = prop + "\\gutenberg\\";
-		NotGuttenbergPath = prop + "\\NotGuttenberg\\";
-		RemoveText = prop + "\\RemoveText\\";
-		CleanBook = prop + "\\CleanBook\\";
+		GuttenbergPath = prop + "/gutenberg/";
+		NotGuttenbergPath = prop + "/NotGuttenberg/";
+		RemoveText = prop + "/RemoveText/";
+		CleanBook = prop + "/CleanBook/";
 
 	}
 
@@ -193,16 +195,15 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public LinkedList<Book> searchForFilesExt(File  root, LinkedList<Book> only2, String ext, int max) throws Exception {
+	public LinkedList<Book> searchForFilesExt(File root, LinkedList<Book> only2, String ext, int max) throws Exception {
 		// TODO Auto-generated method stub
 		if (count > max)
 			return only2;
-		
 
 		if (root == null || only2 == null)
 			return only2; // just for safety || !root.getPath().toString().contains("old"))
-		
-		if (root.isDirectory()){
+
+		if (root.isDirectory()) {
 			// System.out.println(root.toString());
 			for (File file : root.listFiles()) {
 				if (file != null) {
