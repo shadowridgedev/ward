@@ -18,17 +18,19 @@ public class Gutenberg {
 		try {
 
 
-			String base = "Z:\\gut\\";
+			String base = args[0];
 
-			String filetype = "txt";
+		
 			GuttenbergHelper helper = new GuttenbergHelper("resources\\ward.properties");
-			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype,  Integer.parseInt(helper.getprop("numberfiles")));
+			int numfiles = Integer.parseInt(helper.getprop("numberfiles"));
+			String filetype = "txt";
+			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype, numfiles);
 			
 			
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			books =  info.getinfo(only);
 			only.clear();
-	//		GuttenbergHibernateStorage hibernate = new   GuttenbergHibernateStorage();
+			GuttenbergHibernateStorage hibernate = new   GuttenbergHibernateStorage();
 
 			int I = 1;
 			
