@@ -21,7 +21,7 @@ public class Gutenberg {
 			String base = args[0];
 
 		
-			GuttenbergHelper helper = new GuttenbergHelper("resources\\ward.properties");
+			GuttenbergHelper helper = new GuttenbergHelper("properties\\ward.properties");
 			int numfiles = Integer.parseInt(helper.getprop("numberfiles"));
 			String filetype = "txt";
 			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype, numfiles);
