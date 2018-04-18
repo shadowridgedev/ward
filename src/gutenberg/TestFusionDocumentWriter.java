@@ -26,7 +26,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 public class TestFusionDocumentWriter {
 	private static final String defaultWireMockRulePort = "8089";
 	private static final String defaultFusionPort = "8764";
-	private static final String defaultFusionServerHttpString = "http://";
+	private static final String defaultFusionServerHttpString = "http://410-1";
 	private static final String defaultHost = "localhost";
 	private static final String defaultCollection = "test";
 	private static final String defaultFusionIndexingPipeline = "conn_solr";

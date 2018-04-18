@@ -18,20 +18,33 @@ public class Gutenberg {
 		try {
 
 
-//			String base = "Z:\\gut\\";
-			String base = "/media/sf_gutenberg/";
 
+//			String base = "Z:\\gut\\";
+//			String base = "/media/sf_gutenberg/";
+			
+			String base = args[0];
+
+
+		
+//			GuttenbergHelper helper = new GuttenbergHelper("properties\\ward.properties");
+//			int numfiles = Integer.parseInt(helper.getprop("numberfiles"));
 			String filetype = "txt";
+
 			GuttenbergHelper helper = new GuttenbergHelper("resources/ward.properties");
 			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype,  Integer.parseInt(helper.getprop("numberfiles")));
+
+//			only = helper.searchForFilesExt(new File(helper.GuttenbergPath),  only, filetype, numfiles);
+
 			
 			
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 			books =  info.getinfo(only);
 			only.clear();
+			GuttenbergHibernateStorage hibernate = new   GuttenbergHibernateStorage();
+
 			int I = 1;
 			
-/*
+
 			SolrCellRequestDemo request = new SolrCellRequestDemo();
 
 			result = request.test(helper.getprop("FusionServer"), "gutenberg", helper.GuttenbergPath, filetype);
@@ -43,7 +56,7 @@ public class Gutenberg {
 
 			Openiework ie = new Openiework();
 			Openiework.test();
-*/
+
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
