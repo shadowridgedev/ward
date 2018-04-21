@@ -16,5 +16,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/tokenizer"/>
+	<classpathentry kind="src" path="/ner"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

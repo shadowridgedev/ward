@@ -29,6 +29,12 @@
 
 	<repositories>
 		<repository>
+			<id>CogcompSoftware</id>
+			<name>CogcompSoftware</name>
+			<url>http://cogcomp.cs.illinois.edu/m2repo/</url>
+		</repository>
+
+		<repository>
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
@@ -245,7 +251,11 @@
 
 
 	<dependencies>
-
+		<dependency>
+			<groupId>edu.illinois.cs.cogcomp</groupId>
+			<artifactId>illinois-sl-core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.11</artifactId>

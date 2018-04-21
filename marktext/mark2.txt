@@ -1,0 +1,6 @@
+
+These original Project Gutenberg Etexts will be compiled into a file
+containing them all, in order to improve the content ratios of Etext
+to header material.
+
+***
