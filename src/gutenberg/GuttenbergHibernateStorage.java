@@ -86,7 +86,7 @@ public class GuttenbergHibernateStorage {
 		List<Book> result = q.getResultList();
 		newSession.getTransaction().commit();
 		newSession.close();
-		return  result;
+		return result;
 
 	}
 
@@ -94,7 +94,8 @@ public class GuttenbergHibernateStorage {
 		newSession = factory.openSession();
 		newSession.beginTransaction();
 		@SuppressWarnings("deprecation")
-		Query<Book> q = newSession.createNativeQuery("SELECT * FROM guttenberg.book  where " + field + " = " + value).addEntity(gutenberg.Book.class);
+		Query<Book> q = newSession.createNativeQuery("SELECT * FROM guttenberg.book  where " + field + " = " + value)
+				.addEntity(gutenberg.Book.class);
 		newSession.getTransaction().commit();
 		List<Book> result = q.getResultList();
 		newSession.close();

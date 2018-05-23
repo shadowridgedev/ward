@@ -24,22 +24,22 @@ import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.FileUtils;
 import org.apache.uima.util.XMLInputSource;
 
-public class WardAE{
+public class WardAE {
 	public WardAE() {
 
 		// TODO Auto-generated constructor stub
 	}
 
-	void runmain()  {
-		
+	void runmain() {
+
 	}
-	
+
 	/**
 	 * Main program.
 	 * 
 	 * @param args
 	 *            Command-line arguments - see class description
-	 
+	 */
 	public static void main(String[] args) {
 		try {
 			File taeDescriptor = null;
@@ -86,9 +86,7 @@ public class WardAE{
 			e.printStackTrace();
 		}
 	}
-*/
-	
-	
+
 	/**
 	 * Prints usage message.
 	 */

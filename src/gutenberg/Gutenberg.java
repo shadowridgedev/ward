@@ -20,7 +20,7 @@ public class Gutenberg {
 			// String base = "Z:\\gut\\";
 			// String base = "/media/sf_gutenberg/";
 
-			String base = args[0];
+			// String base = args[0];
 
 			// GuttenbergHelper helper = new
 			// GuttenbergHelper("properties\\ward.properties");

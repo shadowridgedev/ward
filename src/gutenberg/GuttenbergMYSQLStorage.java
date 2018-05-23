@@ -57,13 +57,12 @@ public class GuttenbergMYSQLStorage {
 		/*
 		 * String sql =
 		 * "INSERT  INTO guttenberg ( Author, Title, Text, Date, Path, File) VALUES ( `"
-		 * + author +"`,`" +title +"`," + "LOAD_FILE(`" + path +"`),`" +
-		 * date+"`,`" + path +"`,`"+file.getName()+ "` )"; // String sql =
-		 * "INSERT INTO guttenberg ( Title) VALUES ( 'Unknown')"; // String sql
-		 * = "INSERT INTO `guttenberg` ( `Text`) VALUES (  LOAD_FILE( '" + Path
-		 * + "'))"; // String sql =
-		 * "INSERT INTO `guttenberg` (  `Path`, `File`) VALUES ( " + "Test," +
-		 * "twat" + ")";
+		 * + author +"`,`" +title +"`," + "LOAD_FILE(`" + path +"`),`" + date+"`,`" +
+		 * path +"`,`"+file.getName()+ "` )"; // String sql =
+		 * "INSERT INTO guttenberg ( Title) VALUES ( 'Unknown')"; // String sql =
+		 * "INSERT INTO `guttenberg` ( `Text`) VALUES (  LOAD_FILE( '" + Path + "'))";
+		 * // String sql = "INSERT INTO `guttenberg` (  `Path`, `File`) VALUES ( " +
+		 * "Test," + "twat" + ")";
 		 * 
 		 * try { stmt.executeUpdate(sql); } catch (SQLException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
