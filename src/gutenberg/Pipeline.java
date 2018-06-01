@@ -9,20 +9,16 @@ import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
+// import org.apache.uima.AnalysisEngineDescription;
 
 public class Pipeline {
 
-  public static void main(String[] args) throws Exception {
-    runPipeline(
-        createReaderDescription(TextReader.class,
-            TextReader.PARAM_SOURCE_LOCATION, "document.txt",
-            TextReader.PARAM_LANGUAGE, "en"),
-        createEngineDescription(OpenNlpSegmenter.class),
-        createEngineDescription(OpenNlpPosTagger.class),
-        createEngineDescription(LanguageToolLemmatizer.class),
-        createEngineDescription(MaltParser.class),
-        createEngineDescription(Conll2006Writer.class,
-            Conll2006Writer.PARAM_TARGET_LOCATION, "."));
-  }
+	public static void main(String[] args) throws Exception {
+		runPipeline(
+				createReaderDescription(TextReader.class, TextReader.PARAM_SOURCE_LOCATION, "document.txt",
+						TextReader.PARAM_LANGUAGE, "en"),
+				createEngineDescription(OpenNlpSegmenter.class), createEngineDescription(OpenNlpPosTagger.class),
+				createEngineDescription(LanguageToolLemmatizer.class), createEngineDescription(MaltParser.class),
+				createEngineDescription(Conll2006Writer.class, Conll2006Writer.PARAM_TARGET_LOCATION, "."));
+	}
 }
-

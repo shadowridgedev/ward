@@ -11,54 +11,49 @@ import java.net.URLConnection;
 
 public class Getvideo {
 
-Getvideo ()  {
-	
-   
- 
-    int size = 4096;
-	byte[] buf = new byte[size];
+	Getvideo() {
 
+		int size = 4096;
+		byte[] buf = new byte[size];
 
-}
+	}
 
+	boolean readvideo(String destinationDir, String fAddress, String localFileName) {
+		URL url;
+		byte[] buf = null;
+		int byteRead, byteWritten = 0;
+		FilterOutputStream outStream = null;
+		InputStream is = null;
+		try {
 
-boolean readvideo ( String destinationDir, String fAddress, String localFileName )
-{
-     URL url;
-     byte[] buf = null;
-     int byteRead, byteWritten = 0;
-     FilterOutputStream outStream = null;
-     InputStream is = null;
-	try {
+			url = getFinalLocation(fAddress);
+			outStream = new BufferedOutputStream(new FileOutputStream(destinationDir + "\\" + localFileName));
+			URLConnection conn = url.openConnection();
 
-	        url = getFinalLocation(fAddress);
-	        outStream = new BufferedOutputStream(new FileOutputStream(destinationDir + "\\" + localFileName));
-	        URLConnection conn = url.openConnection();
+			conn = url.openConnection();
+			is = conn.getInputStream();
 
-	        conn = url.openConnection();
-	        is = conn.getInputStream();
-	
-	        while ((byteRead =  is.read(buf)) != -1) {
-	            outStream.write(buf, 0, byteRead);
-	            byteWritten += byteRead;
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return false;
-	    } finally {
-	        try {
-	            is.close();
-	       
+			while ((byteRead = is.read(buf)) != -1) {
+				outStream.write(buf, 0, byteRead);
+				byteWritten += byteRead;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				is.close();
+
 				outStream.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	            return false;
-	        }
-	    }
-	
-	return true;
-	
-}
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+
+		return true;
+
+	}
 
 	URL getFinalLocation(String address) throws IOException {
 		URL url = new URL(address);

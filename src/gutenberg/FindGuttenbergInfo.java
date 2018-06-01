@@ -13,16 +13,18 @@ public class FindGuttenbergInfo {
 
 	private String title;
 	LinkedList<Book> books = new LinkedList<Book>();
+
 	public FindGuttenbergInfo() {
 
 		// TODO Auto-generated constructor stub
 	}
 
 	LinkedList<Book> getinfo(LinkedList<Book> only) throws IOException {
-        Book result;
+		Book result;
 		for (Book book : only) {
 			result = getindexfileinfo(book);
-			if (result!=null) books.add(result);
+			if (result != null)
+				books.add(result);
 		}
 		return books;
 

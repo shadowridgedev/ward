@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.solr.common.util.NamedList;
+import de.citec.scie.ner.db.mapdb.MapDBDatabase;
 
 public class Gutenberg {
 	static ReverbTest Test;
@@ -15,6 +16,7 @@ public class Gutenberg {
 		NamedList<Object> result;
 		LinkedList<Book> only = new LinkedList<Book>();
 		LinkedList<Book> books = new LinkedList<Book>();
+
 		try {
 
 			// String base = "Z:\\gut\\";
@@ -43,8 +45,9 @@ public class Gutenberg {
 
 			SolrCellRequestDemo request = new SolrCellRequestDemo();
 
-			result = request.test(helper.getprop("FusionServer"), "gutenberg", helper.GuttenbergPath, filetype);
-			System.out.println("Result: " + result);
+			// result = request.test(helper.getprop("FusionServer"), "gutenberg",
+			// helper.GuttenbergPath, filetype);
+			// System.out.println("Result: " + result);
 
 			/*
 			 * Test = new ReverbTest();
@@ -54,7 +57,8 @@ public class Gutenberg {
 			 * Openiework ie = new Openiework(); Openiework.test();
 			 * 
 			 */
-
+			Openiework ie = new Openiework();
+			Openiework.test();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

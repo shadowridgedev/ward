@@ -6,34 +6,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class MySQLCon{
+class MySQLCon {
 	static Connection con;
 	ResultSet rs;
-public static void MySQLCon(String User, String Password) throws ClassNotFoundException, SQLException{
 
-Class.forName("com.mysql.jdbc.Driver");
+	public static void MySQLCon(String User, String Password) throws ClassNotFoundException, SQLException {
 
-con=DriverManager.getConnection("jdbc:mysql://localhost:3306/guttenberg",User,Password);
-//here sonoo is the database name, root is the username and root is the password
+		Class.forName("com.mysql.jdbc.Driver");
 
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/guttenberg", User, Password);
+		// here sonoo is the database name, root is the username and root is the
+		// password
 
+	}
 
-}
+	public void query(String query) throws SQLException {
+		Statement stmt = con.createStatement();
+		rs = stmt.executeQuery(query);
+	}
 
-public void query ( String query) throws SQLException
-{
-	Statement stmt=con.createStatement();
-rs=stmt.executeQuery(query);
-}
+	public void list() throws SQLException {
 
+		while (rs.next())
+			System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
 
-public void list () throws SQLException {
+		con.close();
 
-while(rs.next())
-System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-
-con.close();
-
-}
+	}
 
 }

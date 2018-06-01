@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<tm:CodeGenContext xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:tm="http://www.eclipse.org/pmf/transformation" xmi:id="_NhWWgF_5Eei3AfveSOBLwQ">
+  <validatorMap xmi:id="_NhWWgV_5Eei3AfveSOBLwQ" key="org.eclipse.pmf.ui.properties.validators.IntegerValidator" value="org.eclipse.pmf.ui.properties.validators.IntegerValidator"/>
+  <validatorMap xmi:id="_NhWWgl_5Eei3AfveSOBLwQ" key="org.eclipse.pmf.ui.properties.validators.FloatValidator" value="org.eclipse.pmf.ui.properties.validators.FloatValidator"/>
+  <validatorMap xmi:id="_NhWWg1_5Eei3AfveSOBLwQ" key="org.eclipse.pmf.ui.properties.validators.EmailValidator" value="org.eclipse.pmf.ui.properties.validators.EmailValidator"/>
+  <validatorMap xmi:id="_NhWWhF_5Eei3AfveSOBLwQ" key="org.eclipse.pmf.ui.properties.validators.RegexValidator" value="org.eclipse.pmf.ui.properties.validators.RegexValidator"/>
+</tm:CodeGenContext>
