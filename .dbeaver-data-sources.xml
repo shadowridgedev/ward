@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="neo4j_jdbc-1674289f6fd-36e082cfb526aec1" provider="generic" driver="neo4j_jdbc" name="Neo4j - localhost" save-password="true" show-system-objects="true" show-util-objects="true" read-only="true">
+		<connection host="localhost" port="7687" server="" database="" url="jdbc:neo4j:bolt://localhost:7687" user="neo4j" password="EAgJNUVGVhdl8w==" type="dev"/>
+	</data-source>
+	<data-source id="mariaDB-167428fc7dc-3b6329a343c5961a" provider="mysql" driver="mariaDB" name="MariaDB - localhost" save-password="true" show-system-objects="true" show-util-objects="true" read-only="false">
+		<connection host="localhost" port="3306" server="" database="" url="jdbc:mysql://localhost:3306/" home="/usr" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>
