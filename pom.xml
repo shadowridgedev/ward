@@ -34,8 +34,6 @@
 			<name>CogcompSoftware</name>
 			<url>http://cogcomp.org/m2repo/</url>
 		</repository>
-
-
 		<repository>
 			<releases>
 				<enabled>true</enabled>
@@ -251,7 +249,51 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-
+	<profiles>
+		<profile>
+			<id>jigsaw</id>
+			<activation>
+				<jdk>[1.9,)</jdk>
+			</activation>
+			<!-- No dependencies needed by Jigsaw -->
+			<dependencies />
+		</profile>
+		<profile>
+			<id>default-jdk</id>
+			<activation>
+				<file>
+					<exists>${java.home}/../lib/tools.jar</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+					<scope>system</scope>
+					<version>1.8</version>
+					<systemPath>${java.home}/../lib/tools.jar</systemPath>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>osx-jdk</id>
+			<activation>
+				<file>
+					<exists>${java.home}/../Classes/classes.jar</exists>
+				</file>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+					<scope>system</scope>
+					<version>1.8</version>
+					<systemPath>${java.home}/../Classes/classes.jar</systemPath>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+	
 	<!-- dpkcore -->
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.clerezza/rdf.core -->
@@ -269,6 +311,12 @@
 			<artifactId>spark-cypher</artifactId>
 			<version>0.1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.npm/lru-cache -->
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>lru-cache</artifactId>
+			<version>4.1.5</version>
+		</dependency>
 
 		<dependency>
 			<groupId>edu.illinois.cs.cogcomp</groupId>
@@ -281,6 +329,12 @@
 			<artifactId>joda-time</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.github.olivergondza/maven-jdk-tools-wrapper -->
+		<dependency>
+			<groupId>com.github.olivergondza</groupId>
+			<artifactId>maven-jdk-tools-wrapper</artifactId>
+			<version>0.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

@@ -2,10 +2,9 @@ package gutenberg;
 
 import java.io.File;
 import java.util.LinkedList;
-import java.util.List;
-
+import org.apache.tika.xmp.convert.*;
 import org.apache.solr.common.util.NamedList;
-import de.citec.scie.ner.db.mapdb.MapDBDatabase;
+import org.mapdb.*;
 
 public class Gutenberg {
 	static ReverbTest Test;
@@ -16,7 +15,7 @@ public class Gutenberg {
 		NamedList<Object> result;
 		LinkedList<Book> only = new LinkedList<Book>();
 		LinkedList<Book> books = new LinkedList<Book>();
-
+		DB db = DBMaker.fileDB("file.db").make();
 		try {
 
 			// String base = "Z:\\gut\\";
