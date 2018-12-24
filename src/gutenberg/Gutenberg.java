@@ -1,68 +1,66 @@
 package gutenberg;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
-import org.apache.tika.xmp.convert.*;
+import java.util.Properties;
+
 import org.apache.solr.common.util.NamedList;
+import org.apache.tika.xmp.convert.*;
 import org.mapdb.*;
+import org.mapdb.HTreeMap.KeySet;
+
+import de.citec.scie.ner.db.mapdb.MapDBDatabase;
+import de.citec.scie.ner.*;
+import org.apache.clerezza.rdf.core.*;
+import org.apache.uima.conceptMapper.*;
+import org.apache.uima.solrcas.*;
+import org.apache.uima.examples.*;
 
 public class Gutenberg {
 	static ReverbTest Test;
 	SolrInputDocumentWriter writer;;
+	static String propfilepath = "resources/ward.properties";
+	static Properties wardprop = new Properties();
 
-	public static void main(String[] args) {
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		NamedList<Object> result;
-		LinkedList<Book> only = new LinkedList<Book>();
-		LinkedList<Book> books = new LinkedList<Book>();
-		DB db = DBMaker.fileDB("file.db").make();
+		File initialFile = new File(propfilepath);
+		InputStream in = new FileInputStream(initialFile);
+		wardprop.load(in);
+		String dbname = wardprop.getProperty("filedb");
+
+		DB db = DBMaker.fileDB(wardprop.getProperty("filedb")).make();
+		HTreeMap<Integer, Book> map = (HTreeMap<Integer, Book>) db.hashMap("map").createOrOpen();
+
 		try {
 
-			// String base = "Z:\\gut\\";
-			// String base = "/media/sf_gutenberg/";
-
-			// String base = args[0];
-
-			// GuttenbergHelper helper = new
-			// GuttenbergHelper("properties\\ward.properties");
-			// int numfiles = Integer.parseInt(helper.getprop("numberfiles"));
-			String filetype = "txt";
-
-			GuttenbergHelper helper = new GuttenbergHelper("resources/ward.properties");
-			only = helper.searchForFilesExt(new File(helper.GuttenbergPath), only, filetype,
-					Integer.parseInt(helper.getprop("numberfiles")));
-
-			// only = helper.searchForFilesExt(new File(helper.GuttenbergPath), only,
-			// filetype, numfiles);
-
-			FindGuttenbergInfo info = new FindGuttenbergInfo();
-			books = info.getinfo(only);
-			only.clear();
-			GuttenbergHibernateStorage hibernate = new GuttenbergHibernateStorage();
-
-			int I = 1;
-
-			SolrCellRequestDemo request = new SolrCellRequestDemo();
-
-			// result = request.test(helper.getprop("FusionServer"), "gutenberg",
-			// helper.GuttenbergPath, filetype);
-			// System.out.println("Result: " + result);
-
-			/*
-			 * Test = new ReverbTest();
-			 * 
-			 * TestFusionPipelineClient connectTest = new TestFusionPipelineClient();
-			 * 
-			 * Openiework ie = new Openiework(); Openiework.test();
-			 * 
-			 */
-			Openiework ie = new Openiework();
-			Openiework.test();
+			GuttenbergHelper helper = new GuttenbergHelper(propfilepath);
+			int numfiles = Integer.parseInt(wardprop.getProperty("numberfiles"));
+			String filetype = wardprop.getProperty("filetype");
+			if (map.isEmpty()) {
+				helper.searchForFilesExt(new File(helper.GuttenbergPath), map, filetype, numfiles);
+//				FindGuttenbergInfo info = new FindGuttenbergInfo();
+//				info.getinfo(map);
+			}
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String s = "Ok";
+			while (s != "") {
+				System.out.print("Enter number");
+				s = br.readLine();
+				if (s != "")
+					System.out.print(map.get(Integer.parseInt(s)).text);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		map.close();
 	}
 
 	private static void writedoc() {

@@ -1,24 +1,56 @@
 package gutenberg;
 
+import java.io.File;
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Book implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5068990239464021287L;
+
 	int idBook;
 	String title;
 	String author;
 	String date;
+	String PostingDate;
+	String ReleaseDate;
 	String text;
-	String extra;
+	LinkedList<?> extra;
 	String filename;
 	String path;
 	String EtextNumber;
 	String source;
 	String name;
+	String language;
+	String Translatedby;
 	boolean verified = false;
+
+	private String Fix(String line) {
+		return line + System.getProperty("line.separator");
+	}
+
+	public String toString() {
+		String result = Fix(Integer.toString(idBook));
+		result += "Title  " + Fix(title);
+		result += "Author  " + Fix(author);
+		result += "Translatedby " + Fix(Translatedby);
+		result += "Date  " + Fix(date);
+		result += "Posting Date " + Fix(PostingDate);
+		result += "Release Date " + Fix(ReleaseDate);
+		result += "Text  " + Fix(text);
+		result += "Filename  " + Fix(filename);
+		result += "Path  " + Fix(path);
+		result += "EtextNumber  " + Fix(EtextNumber);
+		result += "Source  " + Fix(source);
+		result += "Name  " + Fix(name);
+		return result;
+	}
 
 	/**
 	 * @return the idBook
@@ -28,8 +60,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param idBook
-	 *            the idBook to set
+	 * @param idBook the idBook to set
 	 */
 	public void setIdBook(int idBook) {
 		this.idBook = idBook;
@@ -43,8 +74,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param title
-	 *            the title to set
+	 * @param title the title to set
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -58,8 +88,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param author
-	 *            the author to set
+	 * @param author the author to set
 	 */
 	public void setAuthor(String author) {
 		this.author = author;
@@ -73,8 +102,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param date
-	 *            the date to set
+	 * @param date the date to set
 	 */
 	public void setDate(String date) {
 		this.date = date;
@@ -88,26 +116,10 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param text
-	 *            the text to set
+	 * @param text the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	/**
-	 * @return the extra
-	 */
-	public String getExtra() {
-		return extra;
-	}
-
-	/**
-	 * @param extra
-	 *            the extra to set
-	 */
-	public void setExtra(String extra) {
-		this.extra = extra;
 	}
 
 	/**
@@ -118,8 +130,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param filename
-	 *            the filename to set
+	 * @param filename the filename to set
 	 */
 	public void setFilename(String filename) {
 		this.filename = filename;
@@ -133,8 +144,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param path
-	 *            the path to set
+	 * @param path the path to set
 	 */
 	public void setPath(String path) {
 		this.path = path;
@@ -148,8 +158,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param etextNumber
-	 *            the etextNumber to set
+	 * @param etextNumber the etextNumber to set
 	 */
 	public void setEtextNumber(String etextNumber) {
 		EtextNumber = etextNumber;
@@ -163,8 +172,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param source
-	 *            the source to set
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
@@ -178,8 +186,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -193,8 +200,7 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param verified
-	 *            the verified to set
+	 * @param verified the verified to set
 	 */
 	public void setVerified(boolean verified) {
 		this.verified = verified;
@@ -208,11 +214,50 @@ public class Book implements Serializable {
 	}
 
 	/**
-	 * @param parsed
-	 *            the parsed to set
+	 * @param parsed the parsed to set
 	 */
 	public void setParsed(boolean parsed) {
 		this.parsed = parsed;
+	}
+
+	public String getPostingDate() {
+		return PostingDate;
+	}
+
+	public void setPostingDate(String postingDate) {
+		PostingDate = postingDate;
+	}
+
+	public String getReleaseDate() {
+		return ReleaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		ReleaseDate = releaseDate;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getTranslatedby() {
+		return Translatedby;
+	}
+
+	public void setTranslatedby(String translatedby) {
+		Translatedby = translatedby;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setExtra(LinkedList<?> extra) {
+		this.extra = extra;
 	}
 
 	boolean parsed = false;

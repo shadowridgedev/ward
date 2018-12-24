@@ -87,11 +87,9 @@ public class DateUtil {
 	 * Returns a formatter that can be use by the current thread if needed to
 	 * convert Date objects to the Internal representation.
 	 *
-	 * @param d
-	 *            The input date to parse
+	 * @param d The input date to parse
 	 * @return The parsed {@link java.util.Date}
-	 * @throws java.text.ParseException
-	 *             If the input can't be parsed
+	 * @throws java.text.ParseException If the input can't be parsed
 	 */
 	public static Date parseDate(String d) throws ParseException {
 		return parseDate(d, DEFAULT_DATE_FORMATS);
@@ -110,18 +108,15 @@ public class DateUtil {
 	 * <p>
 	 * Parses the date value using the given date formats.
 	 *
-	 * @param dateValue
-	 *            the date value to parse
-	 * @param dateFormats
-	 *            the date formats to use
-	 * @param startDate
-	 *            During parsing, two digit years will be placed in the range
-	 *            <code>startDate</code> to <code>startDate + 100 years</code>. This
-	 *            value may be <code>null</code>. When <code>null</code> is given as
-	 *            a parameter, year <code>2000</code> will be used.
+	 * @param dateValue   the date value to parse
+	 * @param dateFormats the date formats to use
+	 * @param startDate   During parsing, two digit years will be placed in the
+	 *                    range <code>startDate</code> to
+	 *                    <code>startDate + 100 years</code>. This value may be
+	 *                    <code>null</code>. When <code>null</code> is given as a
+	 *                    parameter, year <code>2000</code> will be used.
 	 * @return the parsed date
-	 * @throws ParseException
-	 *             if none of the dataFormats could parse the dateValue
+	 * @throws ParseException if none of the dataFormats could parse the dateValue
 	 */
 	public static Date parseDate(String dateValue, Collection<String> dateFormats, Date startDate)
 			throws ParseException {

@@ -1,10 +1,12 @@
 package gutenberg;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,8 +14,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
+
+import org.mapdb.HTreeMap;
 
 public class GuttenbergHelper {
 	int GuttenbergFiles = 0;
@@ -27,7 +32,7 @@ public class GuttenbergHelper {
 	String CleanBook;
 	String prop;
 	Properties wardprop = new Properties();
-
+	ArrayList<String> cuttext;
 	// load a properties file
 	// wardprop.load(input);
 	// ArrayList<String> checklist = new ArrayList<String> ();
@@ -36,12 +41,12 @@ public class GuttenbergHelper {
 		File initialFile = new File(propertyfilepath);
 		InputStream in = new FileInputStream(initialFile);
 		wardprop.load(in);
-		prop = getprop("GutenbergFileBase");
+		prop = wardprop.getProperty("GutenbergFileBase");
 		GuttenbergPath = prop + "/gutenberg/";
 		NotGuttenbergPath = prop + "/NotGuttenberg/";
-		RemoveText = prop + "/RemoveText/";
+		RemoveText = "E:/RemoveText/";
 		CleanBook = prop + "/CleanBook/";
-
+		cuttext = removetext();
 	}
 
 	String getprop(String property) {
@@ -113,14 +118,21 @@ public class GuttenbergHelper {
 
 		HashMap<String, String> items = new HashMap<String, String>();
 		int index;
-		String[] lines = text.split(System.getProperty("line.separator"));
-
+		String split = System.getProperty("line.separator");
+		String[] lines = text.split(split);
+		int is;
 		for (String line : lines) {
+			if (line == null)
+				break;
 			if ((index = line.lastIndexOf("Title:")) != -1) {
-				items.put("Title", line.substring(index++).trim());
+				line = line.replace("Title:", "");
+				if (!items.containsKey("Title")) {
+					items.put("Title", line.substring(index++).trim());
+				}
 				continue;
 			}
 			if ((index = line.lastIndexOf("Author:")) != -1) {
+				line = line.replace("Author:", "");
 				items.put("Author", line.substring(index++).trim());
 				continue;
 			}
@@ -130,24 +142,62 @@ public class GuttenbergHelper {
 				}
 				continue;
 			}
-			if ((index = line.lastIndexOf("Date:")) != -1) {
-				items.put("Date", line.substring(index++).trim());
-				continue;
-			}
-			if ((index = line.lastIndexOf("Release Date:")) != -1) {
-				items.put("Date", line.substring(index++).trim());
-				if ((index = line.lastIndexOf("[EBook")) != -1) {
-					items.put("Ebook", line.substring(index++).trim());
+
+			if ((index = line.lastIndexOf("Release")) != -1) {
+				line = line.replace("Release Date:", "");
+
+				int index2;
+				String line2;
+				if (line.contains("[")) {
+					line2 = line;
+					if ((index2 = line2.lastIndexOf("[")) != -1) {
+						items.put("ReleaseDate", line2.substring(index2).trim());
+						line = line.substring(0, index2 - 1);
+					}
 				}
 				continue;
 			}
+			if ((index = line.lastIndexOf("Posting")) != -1) {
+				int index2;
+				line = line.replace("Posting Date:", "");
+				String line2 = line;
+
+				if ((index2 = line2.lastIndexOf("[")) != -1) {
+					line2 = line2.replace("[EBook #", "");
+					line2 = line2.replace("]", "");
+					line2 = line2.replace("[", "");
+					items.put("Ebook", line2.substring(index2++).trim());
+					line = line.substring(0, index2);
+				}
+
+				items.put("PostingDate", line.substring(index).trim());
+				continue;
+			}
+
+			if ((index = line.lastIndexOf("Date:")) != -1) {
+				int index2;
+				String line2 = line;
+
+				if ((index2 = line2.lastIndexOf("[")) != -1) {
+					items.put("Ebook", line2.substring(index2++).trim());
+					line = line.substring(0, index2);
+				}
+				line = line.replace("Date:", "");
+				items.put("Date", line.substring(index++).trim());
+				continue;
+			}
+
 			if ((index = line.lastIndexOf("Etext")) != -1) {
-				items.put("Ebook", line.substring(index).replace("]", "").trim());
+				line = line.replace("Etext of ", "");
+				if (!items.containsKey("Title")) {
+					items.put("Title", line.substring(index).replace("]", "").trim());
+				}
 				continue;
 			}
 
 			if ((index = line.lastIndexOf("The Project Gutenberg Etext of")) != -1) {
 				if (!items.containsKey("Title")) {
+					line.replace("Title:", "");
 					items.put("Title", line.substring(index++).trim());
 				}
 				continue;
@@ -160,6 +210,7 @@ public class GuttenbergHelper {
 
 			if ((index = line.lastIndexOf("*** START OF THIS PROJECT GUTENBERG EBOOK")) != -1) {
 				if (!items.containsKey("Title")) {
+					line.replace("Title:", "");
 					items.put("Title", line.substring(index++).replace("***", "").trim());
 				}
 				continue;
@@ -178,13 +229,17 @@ public class GuttenbergHelper {
 	Book addMetadata(Book book, HashMap<String, String> items) {
 		book.author = items.get("Author");
 		book.title = items.get("Title");
+		book.language = items.get("Language");
+		book.Translatedby = items.get("Translanted by");
+		book.date = items.get("Date");
+		book.EtextNumber = items.get("Ebook");
 		return book;
 	}
 
 	Book RemoveText(Book book) throws IOException {
-		Path p = Paths.get(book.getPath());
+
 		String text = book.getText();
-		Iterator<String> itt = removetext.listIterator();
+		Iterator<String> itt = cuttext.listIterator();
 		String replaced;
 		while (itt.hasNext()) {
 			replaced = itt.next();
@@ -195,31 +250,49 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public LinkedList<Book> searchForFilesExt(File root, LinkedList<Book> only2, String ext, int max) throws Exception {
+	public HTreeMap<Integer, Book> searchForFilesExt(File root, HTreeMap<Integer, Book> map, String ext, Integer max)
+			throws Exception {
 		// TODO Auto-generated method stub
-		if (count > max)
-			return only2;
+		// System.out.println("File " + root.toString());
 
-		if (root == null || only2 == null)
-			return only2; // just for safety || !root.getPath().toString().contains("old"))
+		if (count > max)
+			return map;
+
+		if (root == null || map == null)
+			return map; // just for safety || !root.getPath().toString().contains("old"))
 
 		if (root.isDirectory()) {
 			// System.out.println(root.toString());
+
 			for (File file : root.listFiles()) {
 				if (file != null) {
-					only2 = searchForFilesExt(file, only2, ext, max);
+					map = searchForFilesExt(file, map, ext, max);
 				}
 			}
 		} else if (root.isFile() && root.getName().endsWith(ext)) {
 			count++;
-			System.out.println(count + "    " + root.getName());
-			Book theBook = new Book();
-			theBook.path = root.getPath();
-			only2.add(theBook);
+			if (!map.containsKey(count)) {
+				Book theBook = new Book();
+				theBook.path = root.getAbsoluteFile().toString();
+				theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
+				theBook.text = new String(Files.readAllBytes(Paths.get(theBook.path)));
+				HashMap<String, String> items = GetBookMetadata(theBook.text);
+				theBook = addMetadata(theBook, items);
+				theBook = RemoveText(theBook);
+				String temp = theBook.text;
+				theBook.text = null;
+				System.out.println(count + " " + theBook.toString());
+				theBook.text = temp;
+				map.put(count, theBook);
+			}
 		}
-		return only2;
+
+		return map;
 	}
 
+	String printBook(Book book) {
+		return book.toString();
+	}
 	/*
 	 * void ProcessFiles(ArrayList<File> only, int max) { while ( i++ != max) {
 	 * 

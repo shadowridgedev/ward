@@ -37,8 +37,7 @@ public class WardAE {
 	/**
 	 * Main program.
 	 * 
-	 * @param args
-	 *            Command-line arguments - see class description
+	 * @param args Command-line arguments - see class description
 	 */
 	public static void main(String[] args) {
 		try {
@@ -98,12 +97,9 @@ public class WardAE {
 	/**
 	 * Processes a single XML file and prints annotations to System.out
 	 * 
-	 * @param aFile
-	 *            file to process
-	 * @param aAE
-	 *            Analysis Engine that will process the file
-	 * @param aCAS
-	 *            CAS that will be used to hold analysis results
+	 * @param aFile file to process
+	 * @param aAE   Analysis Engine that will process the file
+	 * @param aCAS  CAS that will be used to hold analysis results
 	 */
 	public static void processFile(File aFile, AnalysisEngine aAE, CAS aCAS)
 			throws IOException, AnalysisEngineProcessException {
@@ -150,12 +146,9 @@ public class WardAE {
 	/**
 	 * Prints all Annotations of a specified Type to a PrintStream.
 	 * 
-	 * @param aCAS
-	 *            the CAS containing the FeatureStructures to print
-	 * @param aAnnotType
-	 *            the Type of Annotation to be printed
-	 * @param aOut
-	 *            the PrintStream to which output will be written
+	 * @param aCAS       the CAS containing the FeatureStructures to print
+	 * @param aAnnotType the Type of Annotation to be printed
+	 * @param aOut       the PrintStream to which output will be written
 	 */
 	public static void printAnnotations(CAS aCAS, Type aAnnotType, PrintStream aOut) {
 		// get iterator over annotations
@@ -172,14 +165,10 @@ public class WardAE {
 	/**
 	 * Prints a FeatureStructure to a PrintStream.
 	 * 
-	 * @param aFS
-	 *            the FeatureStructure to print
-	 * @param aCAS
-	 *            the CAS containing the FeatureStructure
-	 * @param aNestingLevel
-	 *            number of tabs to print before each line
-	 * @param aOut
-	 *            the PrintStream to which output will be written
+	 * @param aFS           the FeatureStructure to print
+	 * @param aCAS          the CAS containing the FeatureStructure
+	 * @param aNestingLevel number of tabs to print before each line
+	 * @param aOut          the PrintStream to which output will be written
 	 */
 	public static void printFS(FeatureStructure aFS, CAS aCAS, int aNestingLevel, PrintStream aOut) {
 		Type stringType = aCAS.getTypeSystem().getType(CAS.TYPE_NAME_STRING);
@@ -293,10 +282,8 @@ public class WardAE {
 	/**
 	 * Prints tabs to a PrintStream.
 	 * 
-	 * @param aNumTabs
-	 *            number of tabs to print
-	 * @param aOut
-	 *            the PrintStream to which output will be written
+	 * @param aNumTabs number of tabs to print
+	 * @param aOut     the PrintStream to which output will be written
 	 */
 	private static void printTabs(int aNumTabs, PrintStream aOut) {
 		for (int i = 0; i < aNumTabs; i++) {

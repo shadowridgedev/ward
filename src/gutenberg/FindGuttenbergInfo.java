@@ -9,24 +9,28 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.mapdb.HTreeMap;
+
 public class FindGuttenbergInfo {
 
 	private String title;
-	LinkedList<Book> books = new LinkedList<Book>();
 
 	public FindGuttenbergInfo() {
 
 		// TODO Auto-generated constructor stub
 	}
 
-	LinkedList<Book> getinfo(LinkedList<Book> only) throws IOException {
+	void getinfo(HTreeMap<Integer, Book> map) throws IOException {
 		Book result;
-		for (Book book : only) {
-			result = getindexfileinfo(book);
+		Integer count = 1;
+		while (map.containsKey(count)) {
+			result = getindexfileinfo(map.get(count));
 			if (result != null)
-				books.add(result);
+				map.put(count, getindexfileinfo(result));
+
+			count = count + 1;
 		}
-		return books;
+		return;
 
 	}
 
@@ -35,17 +39,21 @@ public class FindGuttenbergInfo {
 			String path = current.path.toString();
 			if (!(path.contains("old") || path.contains("readme") || path.contains("-") || path.contains("etext")
 					|| path.contains("cache"))) {
-				current.text = new String(Files.readAllBytes(Paths.get(current.path)));
+				current.text = new String(Files(Paths.get(path)));
 				current.source = "Index";
 				current.verified = false;
 				current.parsed = false;
 				System.out.println("Book stored Name" + current.path);
 			} else
 				System.out.println("Book not stored  " + current.path);
-			return null;
 		}
 		return current;
 
+	}
+
+	private String Files(Path path) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	String removeBracket(String line) {
