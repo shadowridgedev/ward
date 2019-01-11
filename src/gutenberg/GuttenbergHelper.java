@@ -18,7 +18,14 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 import org.mapdb.HTreeMap;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 public class GuttenbergHelper {
 	int GuttenbergFiles = 0;
@@ -30,23 +37,25 @@ public class GuttenbergHelper {
 	String NotGuttenbergPath;
 	String RemoveText;
 	String CleanBook;
-	String prop;
+	Prop prop;
 	Properties wardprop = new Properties();
 	ArrayList<String> cuttext;
+	int max;
 	// load a properties file
 	// wardprop.load(input);
 	// ArrayList<String> checklist = new ArrayList<String> ();
 
-	GuttenbergHelper(String propertyfilepath) throws IOException {
-		File initialFile = new File(propertyfilepath);
-		InputStream in = new FileInputStream(initialFile);
-		wardprop.load(in);
-		prop = wardprop.getProperty("GutenbergFileBase");
-		GuttenbergPath = prop + "/gutenberg/";
-		NotGuttenbergPath = prop + "/NotGuttenberg/";
-		RemoveText = "E:/RemoveText/";
+	GuttenbergHelper(Prop theprop, WardDB theWardDB) throws IOException {
+		prop = theprop;
+		WardDB wardDB = theWardDB;
+		String base = prop.GutenbergFileBase;
+		GuttenbergPath = base + "/gutenberg/";
+		NotGuttenbergPath = base + "/NotGuttenberg/";
+		RemoveText = base + "/RemoveText";
 		CleanBook = prop + "/CleanBook/";
 		cuttext = removetext();
+		max = prop.numfiles;
+		ScriptEngine engine = new ScriptEngineManager().getEngineByName("python");
 	}
 
 	String getprop(String property) {
@@ -250,13 +259,13 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public HTreeMap<Integer, Book> searchForFilesExt(File root, HTreeMap<Integer, Book> map, String ext, Integer max)
+	public HTreeMap<Integer, Book> searchForFilesExt(File root, HTreeMap<Integer, Book> map, String ext, int max)
 			throws Exception {
 		// TODO Auto-generated method stub
 		// System.out.println("File " + root.toString());
 
 		if (count > max)
-			return map;
+			return null;
 
 		if (root == null || map == null)
 			return map; // just for safety || !root.getPath().toString().contains("old"))
