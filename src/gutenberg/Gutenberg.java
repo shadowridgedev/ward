@@ -47,6 +47,7 @@ public class Gutenberg {
 	}
 
 	private static void writedoc() {
+
 	}
 
 	interface SolarInputDocumentWriter {

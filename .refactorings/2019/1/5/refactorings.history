@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ward/pom2.xml&apos; to &apos;pom2.old&apos;" description="Rename resource &apos;pom2.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pom2.xml" name="pom2.old" stamp="1548719960497" updateReferences="true"/>
+</session>
