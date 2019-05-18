@@ -265,23 +265,6 @@
 			<!-- No dependencies needed by Jigsaw -->
 			<dependencies />
 		</profile>
-		<profile>
-			<id>default-jdk</id>
-			<activation>
-				<file>
-					<exists>${java.home}/../lib/tools.jar</exists>
-				</file>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>com.sun</groupId>
-					<artifactId>tools</artifactId>
-					<scope>system</scope>
-					<version>1.8</version>
-					<systemPath>${java.home}/../lib/tools.jar</systemPath>
-				</dependency>
-			</dependencies>
-		</profile>
 
 	</profiles>
 
