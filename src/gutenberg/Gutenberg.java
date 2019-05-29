@@ -28,7 +28,7 @@ public class Gutenberg {
 	SolrInputDocumentWriter writer;;
 
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Prop prop = new Prop(args[0]);
 		WardDB wardDB = new WardDB(prop);
@@ -38,7 +38,7 @@ public class Gutenberg {
 		GuttenbergHelper helper = new GuttenbergHelper(prop, wardDB);
 
 		if (wardDB.map.isEmpty()) {
-			helper.searchForFilesExt(prop.GutenbergFileBase, prop.numfiles);
+			helper.searchForFilesExt(null, null, prop.GutenbergFileBase, prop.numfiles);
 //				FindGuttenbergInfo info = new FindGuttenbergInfo();
 //				info.getinfo(map);
 		}
