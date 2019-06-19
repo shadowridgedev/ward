@@ -30,7 +30,8 @@ public class Gutenberg {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Prop prop = new Prop(args[0]);
+		String PropPath = System.getProperty("user.dir") + args[0];
+		Prop prop = new Prop(PropPath);
 		WardDB wardDB = new WardDB(prop);
 
 		Maker db = DBMaker.fileDB(prop.filedb);
