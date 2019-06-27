@@ -34,7 +34,7 @@ public class Prop {
 	}
 
 	public String getFiledb() {
-		return filedb;
+		return wardprop.getProperty(filedb);
 	}
 
 	public void setFiledb(String filedb) {

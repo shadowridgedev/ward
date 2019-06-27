@@ -34,7 +34,7 @@ public class Gutenberg {
 		Prop prop = new Prop(PropPath);
 		WardDB wardDB = new WardDB(prop);
 
-		Maker db = DBMaker.fileDB(prop.filedb);
+//		Maker db = DBMaker.fileDB(prop.filedb);
 
 		GuttenbergHelper helper = new GuttenbergHelper(prop, wardDB);
 
