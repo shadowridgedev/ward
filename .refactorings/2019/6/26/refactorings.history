@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;gutenberg.HelloWorldExmaple.java&apos; to &apos;HelloWorld.java&apos;&#x0D;&#x0A;- Original project: &apos;ward&apos;&#x0D;&#x0A;- Original element: &apos;gutenberg.HelloWorldExmaple.java&apos;&#x0D;&#x0A;- Renamed element: &apos;gutenberg.HelloWorld.java&apos;" description="Rename compilation unit &apos;HelloWorldExmaple.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;gutenberg{HelloWorldExmaple.java" name="HelloWorld.java" references="false" stamp="1561705559044" version="1.0"/>
+</session>
