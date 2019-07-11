@@ -1,32 +1,13 @@
 package gutenberg;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-import java.util.ArrayList;
-import org.apache.solr.common.util.NamedList;
-import org.apache.tika.xmp.convert.*;
-import org.mapdb.*;
+
+import org.mapdb.DBMaker;
 import org.mapdb.DBMaker.Maker;
-import org.mapdb.HTreeMap.KeySet;
-
-import com.hp.hpl.jena.sparql.pfunction.library.str;
-
-import de.citec.scie.ner.db.mapdb.MapDBDatabase;
-import de.citec.scie.ner.*;
-import org.apache.clerezza.rdf.core.*;
-import org.apache.uima.conceptMapper.*;
-import org.apache.uima.solrcas.*;
 
 public class Gutenberg {
 	static public void main(String[] args) throws IOException {
