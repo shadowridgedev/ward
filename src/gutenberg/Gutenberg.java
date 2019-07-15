@@ -10,31 +10,33 @@ import org.mapdb.DBMaker;
 import org.mapdb.DBMaker.Maker;
 
 public class Gutenberg {
-	static public void main(String[] args) throws IOException {
-		List<String> options;
+	static ArrayList<String> options;
+	static String PropPath;
+	static Prop prop;
+
+	static public void main(String[] args) throws Exception {
 
 		options = getargs(args);
-
+		String PropPath = System.getProperty("user.dir") + "\\" + options.get(1);
+		Prop prop = new Prop(PropPath);
 		if (options != null) {
 
 			String function = options.get(0);
-			Prop prop = new Prop(System.getProperty("user.dir") + options.get(1));
-			;
 
-			if (function == "youtube") {
-
+			if (function.equals("youtube")) {
+				Getvideo video = new Getvideo(options, prop);
 			}
-
-			if (function == "GetFiles") {
-
+			if (function.equals("GetFiles")) {
+				doparse();
 			}
 		}
 	}
 
-	static List<String> getargs(String[] args) {
+	static ArrayList<String> getargs(String[] args) {
 		final Map<String, List<String>> params = new HashMap<>();
 
-		List<String> options = null;
+		ArrayList<String> options = new ArrayList<String>();
+
 		for (int i = 0; i < args.length; i++) {
 			final String a = args[i];
 
@@ -44,7 +46,6 @@ public class Gutenberg {
 					return null;
 				}
 
-				options = new ArrayList<>();
 				params.put(a.substring(1), options);
 			} else if (options != null) {
 				options.add(a);
@@ -56,14 +57,9 @@ public class Gutenberg {
 		return options;
 	}
 
-	static ReverbTest Test;
-	SolrInputDocumentWriter writer;;
-
 	@SuppressWarnings("unchecked")
-	public void doparse(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		String PropPath = System.getProperty("user.dir") + args[0];
-		Prop prop = new Prop(PropPath);
+	public static void doparse() throws Exception {
+
 		WardDB wardDB = new WardDB(prop);
 
 		Maker db = DBMaker.fileDB(prop.filedb);

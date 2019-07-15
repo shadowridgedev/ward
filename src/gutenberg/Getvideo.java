@@ -8,17 +8,24 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 public class Getvideo {
+	ArrayList op;
+	Prop theprop;
 
-	Getvideo() {
+	Getvideo(ArrayList options, Prop prop) {
 
 		int size = 4096;
 		byte[] buf = new byte[size];
+		op = options;
+		theprop = prop;
+
+		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
 
 	}
 
-	boolean readvideo(String destinationDir, String fAddress, String localFileName) {
+	boolean readvideo(Object destinationDir, Object fAddress, Object localFileName) {
 		URL url;
 		byte[] buf = null;
 		int byteRead, byteWritten = 0;
@@ -26,12 +33,17 @@ public class Getvideo {
 		InputStream is = null;
 		try {
 
-			url = getFinalLocation(fAddress);
-			outStream = new BufferedOutputStream(new FileOutputStream(destinationDir + "\\" + localFileName));
+			url = getFinalLocation(fAddress.toString());
+
+			outStream = new BufferedOutputStream(
+					new FileOutputStream(destinationDir.toString() + "\\" + localFileName.toString()));
 			URLConnection conn = url.openConnection();
+			Object obj = conn.getContent();
 
 			conn = url.openConnection();
+			obj = conn.getContent();
 			is = conn.getInputStream();
+			int j = is.available();
 
 			while ((byteRead = is.read(buf)) != -1) {
 				outStream.write(buf, 0, byteRead);
