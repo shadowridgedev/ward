@@ -260,6 +260,19 @@
 
 	<!-- dpkcore -->
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/fr.univ-nantes.julestar/uima-profiler -->
+		<dependency>
+			<groupId>fr.univ-nantes.julestar</groupId>
+			<artifactId>uima-profiler</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- https://parquet.apache.org/ -->
+		<dependency>
+			<groupId>org.apache.parquet</groupId>
+			<artifactId>parquet-avro</artifactId>
+			<version>1.9.0</version> <!-- or latest version -->
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.clerezza/rdf.core -->
 		<dependency>
 			<groupId>org.apache.clerezza</groupId>
