@@ -10,6 +10,7 @@
 		<solr.version>6.5.1</solr.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<cleartk.version>2.0.0</cleartk.version>
 	</properties>
 	<distributionManagement>
 		<snapshotRepository>
@@ -266,7 +267,16 @@
 			<artifactId>uima-profiler</artifactId>
 			<version>1.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml</artifactId>
+			<version>${cleartk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml-liblinear</artifactId>
+			<version>${cleartk.version}</version>
+		</dependency>
 		<!-- https://parquet.apache.org/ -->
 		<dependency>
 			<groupId>org.apache.parquet</groupId>
