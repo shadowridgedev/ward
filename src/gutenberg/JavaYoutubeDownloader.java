@@ -153,6 +153,7 @@ public class JavaYoutubeDownloader {
 							}
 						}
 					}
+
 				}
 
 				filename = cleanFilename(filename);
@@ -169,6 +170,7 @@ public class JavaYoutubeDownloader {
 				}
 			}
 		}
+
 	}
 
 	private static void downloadWithHttpClient(String userAgent, String downloadUrl, File outputfile) throws Throwable {
