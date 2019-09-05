@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;gutenberg&apos; to &apos;com.myexperiments.ward&apos;&#x0D;&#x0A;- Original project: &apos;ward&apos;&#x0D;&#x0A;- Original element: &apos;ward/src/gutenberg&apos;&#x0D;&#x0A;- Renamed element: &apos;ward/src/com.myexperiments.ward&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update fully qualified names in &apos;*&apos; files&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;gutenberg&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;gutenberg" name="com.myexperiments.ward" patterns="*" qualified="true" references="true" stamp="1567464526283" textual="true" version="1.0"/>
+</session>

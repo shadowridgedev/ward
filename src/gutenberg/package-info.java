@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author shado
- *
- */
-package gutenberg;
