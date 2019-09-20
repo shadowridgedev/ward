@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
-gradle_home_to_use=C\:\\gradle-5.6-all
+gradle_home_to_use=C\:\\gradle-5.6-all\\gradle-5.6
+gradle_option_debug=true
 java_home_to_use=C\:\\Program Files\\Java\\jdk1.8.0_211
