@@ -16,7 +16,7 @@ public class Prop {
 	public File initialFile;
 	public String GutenbergFileBase;
 
-	Prop(String thepropfilepath) throws IOException {
+	public Prop(String thepropfilepath) throws IOException {
 		propfilepath = thepropfilepath;
 		wardprop = new Properties();
 		File initialFile = new File(propfilepath);

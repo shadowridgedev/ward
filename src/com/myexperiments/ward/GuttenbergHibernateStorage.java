@@ -82,7 +82,8 @@ public class GuttenbergHibernateStorage {
 	List<Book> returnBooks() {
 		newSession = factory.openSession();
 		newSession.beginTransaction();
-		Query<Book> q = newSession.createNativeQuery("SELECT * FROM guttenberg.book").addEntity(com.myexperiments.ward.Book.class);
+		Query<Book> q = newSession.createNativeQuery("SELECT * FROM guttenberg.book")
+				.addEntity(com.myexperiments.ward.Book.class);
 		List<Book> result = q.getResultList();
 		newSession.getTransaction().commit();
 		newSession.close();

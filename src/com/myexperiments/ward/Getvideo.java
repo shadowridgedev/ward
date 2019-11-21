@@ -14,7 +14,7 @@ public class Getvideo {
 	ArrayList<?> op;
 	Prop theprop;
 
-	Getvideo(ArrayList<?> options, Prop prop) {
+	public Getvideo(ArrayList<?> options, Prop prop) {
 
 		int size = 4096;
 		byte[] buf = new byte[size];

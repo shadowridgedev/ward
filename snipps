@@ -1,0 +1,132 @@
+/**
+	 * @param posTagFile
+	 * @param modelDirectory
+	 * @param language
+	 * @throws UIMAException
+	 * @throws IOException
+	 */
+	public static void writeModel(File posTagFile, String modelDirectory, String language)
+			throws UIMAException, IOException {
+
+		CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
+				posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
+
+		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
+
+		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class, NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
+				"src/main/resources/feature/features.xml", NERAnnotator.PARAM_IS_TRAINING, true,
+				DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, modelDirectory,
+				DefaultDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME, CrfSuiteStringOutcomeDataWriter.class);
+
+		runPipeline(posTagFileReader, createEngine(NERReader.class), snowballStemmer, nerAnnotator);
+	}
+
+	public static void classifyTestFile(String modelDirectory, File testPosFile, String language)
+			throws ResourceInitializationException, UIMAException, IOException {
+
+		CollectionReader testPosFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
+				testPosFile.getAbsolutePath(), NERReader.CONLL_VIEW, testPosFile.getName());
+
+		AnalysisEngine nerReader = createEngine(NERReader.class);
+		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
+		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class,
+
+				NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE, "src/main/resources/feature/features.xml",
+				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, modelDirectory + "model.jar");
+		AnalysisEngine nerWriter = createEngine(NERWriter.class, NERWriter.PARAM_NULL_TYPE, "O",
+				NERWriter.PARAM_EXPECTED_ENTITY_TYPE_NUM, 9, NERWriter.PARAM_FILENAME,
+				"src/test/resources/evaluation/eval.txt", NERWriter.PARAM_VERBOSE, true);
+
+		runPipeline(testPosFileReader, nerReader, snowballStemmer, nerAnnotator, nerWriter);
+	}
+
+	/**
+	 * @param posTagFile
+	 * @param configFileName
+	 * @param language
+	 * @throws UIMAException
+	 * @throws IOException
+	 */
+	private void writeModelSnowball(File posTagFile, String language, String configFileName)
+			throws UIMAException, IOException {
+
+		new File(getModelDir()).mkdirs();
+
+		CollectionReader posTagFileReader = FilesCollectionReader.getCollectionReaderWithSuffixes(
+				posTagFile.getAbsolutePath(), NERReader.CONLL_VIEW, posTagFile.getName());
+
+		AnalysisEngine snowballStemmer = createEngine(SnowballStemmer.class, SnowballStemmer.PARAM_LANGUAGE, language);
+
+		AnalysisEngine nerAnnotator = createEngine(NERAnnotator.class, NERAnnotator.PARAM_FEATURE_EXTRACTION_FILE,
+				FEATURE_EXTRACTOR_CONFIG_DIRECTORY + configFileName, NERAnnotator.PARAM_IS_TRAINING, true,
+				DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, getModelDir(),
+				DefaultDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME, CrfSuiteStringOutcomeDataWriter.class);
+
+		runPipeline(posTagFileReader, createEngine(NERReader.class), snowballStemmer, nerAnnotator);
+	}
+
+	public void train(CollectionReader collectionReader, File outputDirectory) throws Exception {
+		AggregateBuilder builder = new AggregateBuilder();
+		builder.add(UriToDocumentTextAnnotator.getDescription());
+		builder.add(SentenceAnnotator.getDescription());
+		builder.add(TokenAnnotator.getDescription());
+		builder.add(PosTaggerAnnotator.getDescription());
+		builder.add(DefaultSnowballStemmer.getDescription("English"));
+		builder.add(AnalysisEngineFactory.createEngineDescription(GoldQuestionCategoryAnnotator.class));
+		AnalysisEngineDescription documentClassificationAnnotator = AnalysisEngineFactory.createEngineDescription(
+				QuestionCategoryAnnotator.class, CleartkAnnotator.PARAM_IS_TRAINING, true,
+				DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, outputDirectory,
+				DefaultDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME, LibSvmStringOutcomeDataWriter.class.getName());
+		builder.add(documentClassificationAnnotator);
+		SimplePipeline.runPipeline(collectionReader, builder.createAggregateDescription());
+		System.err.println("Train model and write model.jar file.");
+		HideOutput hider = new HideOutput();
+		Train.main(outputDirectory, this.trainingArguments.toArray(new String[this.trainingArguments.size()]));
+		hider.restoreOutput();
+	}
+package com.myexperiments.ward;
+
+import java.io.File;
+
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.collection.CollectionReader;
+import org.apache.uima.fit.factory.AggregateBuilder;
+import org.apache.uima.fit.factory.CollectionReaderFactory;
+import org.apache.uima.fit.pipeline.SimplePipeline;
+import org.apache.uima.util.XMLInputSource;
+import org.cleartk.util.ae.XmiWriter;
+import org.ie4opendata.octroy.FilesCollectionReader;
+
+// Run an IE pipeline for Amount / Company / Reason over text files, output a TSV file
+
+public class RunPipelineXmi {
+
+	public static void main(String[] args) throws Exception {
+		if (args.length != 3) {
+			System.out.println("arguments: " //
+					+ "path to XML descriptor for pipeline, " //
+					+ "folder with text files, " //
+					+ "folder to output xmi files");
+			System.exit(-1);
+		}
+
+		// A collection reader that reads text files
+		CollectionReader reader = CollectionReaderFactory.createReader(FilesCollectionReader.class, null,
+				FilesCollectionReader.PARAM_ROOT_FILE, args[1]);
+
+		AggregateBuilder builder = new AggregateBuilder();
+		AnalysisEngineDescription descriptor = (AnalysisEngineDescription) createResourceCreationSpecifier(
+				new XMLInputSource(RunPipelineXmi.class.getClassLoader().getResourceAsStream(args[0]), new File(".")),
+				new Object[0]);
+		builder.add(descriptor);
+		builder.add(XmiWriter.getDescription(new File(args[2])));
+
+		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
+	}
+
+	private static AnalysisEngineDescription createResourceCreationSpecifier(XMLInputSource xmlInputSource,
+			Object[] objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

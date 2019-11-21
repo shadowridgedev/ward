@@ -287,6 +287,20 @@
 
 	<!-- dpkcore -->
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/de.cit-ec.scie/ner-mapdb -->
+<dependency>
+    <groupId>de.cit-ec.scie</groupId>
+    <artifactId>ner-mapdb</artifactId>
+    <version>2.0.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/de.cit-ec.scie/ner-core -->
+<dependency>
+    <groupId>de.cit-ec.scie</groupId>
+    <artifactId>ner-core</artifactId>
+    <version>2.0.1</version>
+</dependency>
+	
+	
 		<!-- https://mvnrepository.com/artifact/org.apache.clerezza/rdf.core -->
 		<dependency>
 			<groupId>org.apache.clerezza</groupId>

@@ -1,8 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-	http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.apache.uima</groupId>
+		<artifactId>uimaj-parent</artifactId>
+		<version>3.0.2</version>
+		<relativePath>../uimaj-parent/pom.xml</relativePath>
+	</parent>
 	<groupId>net.myexperimemnts</groupId>
 	<artifactId>ward</artifactId>
 	<version>1.0.0</version>
@@ -254,18 +260,80 @@
 	<profiles>
 
 		<profile>
-			<id>jigsaw</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
-			<!-- No dependencies needed by Jigsaw -->
-			<dependencies />
+			<id>default-jdk</id>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+					<scope>system</scope>
+					<version>1.8</version>
+					<systemPath>C:\Users\shado\.m2\repository\jdk\tools\jdk.tools\1.8\tools.jar</systemPath>
+				</dependency>
+			</dependencies>
 		</profile>
 
 	</profiles>
 
+
 	<!-- dpkcore -->
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.dkpro.core/dkpro-core-api-ner-asl -->
+	<dependency>
+		<groupId>org.dkpro.core</groupId>
+		<artifactId>dkpro-core-api-ner-asl</artifactId>
+		<version>2.0.0</version>
+	</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/org.dkpro/dkpro-parent-pom -->
+		<dependency>
+			<groupId>org.dkpro</groupId>
+			<artifactId>dkpro-parent-pom</artifactId>
+			<version>23</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimaj-examples -->
+		<dependency>
+			<groupId>org.apache.uima</groupId>
+			<artifactId>uimaj-examples</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-jdbc -->
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-jdbc</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core -->
+		<dependency>
+			<groupId>com.datastax.cassandra</groupId>
+			<artifactId>cassandra-driver-core</artifactId>
+			<version>4.0.0</version>
+			<type>pom</type>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.datastax.oss/java-driver-mapper-processor -->
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-mapper-processor</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.datastax.oss/java-driver-mapper-runtime -->
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-mapper-runtime</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.datastax.oss/java-driver-query-builder -->
+		<dependency>
+			<groupId>com.datastax.oss</groupId>
+			<artifactId>java-driver-query-builder</artifactId>
+			<version>4.3.0</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/graphframes/graphframes -->
 		<dependency>
@@ -755,24 +823,7 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>reserve-tomcat-port</id>
-							<goals>
-								<goal>reserve-network-port</goal>
-							</goals>
-							<phase>process-resources</phase>
-							<configuration>
-								<portNames>
-									<portName>tomcat.http.port</portName>
-								</portNames>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
