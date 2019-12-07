@@ -45,13 +45,15 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.*;
 
 import edu.stanford.nlp.pipeline.SentenceAnnotator;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
+
+/*
 import org.ie4opendata.octroy.ContractClassifier;
 import org.ie4opendata.octroy.AmountAnnotator;
 import org.ie4opendata.octroy.FilesCollectionReader;
 import org.ie4opendata.octroy.ReasonAnnotator;
 import org.ie4opendata.octroy.ContractFlowController;
 import org.ie4opendata.octroy.TsvWriter;
-
+*/
 public class Gutenberg {
 	static ArrayList<String> options;
 	static String PropPath;
