@@ -1,6 +1,7 @@
 package com.myexperiments.ward;
 
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
@@ -10,18 +11,19 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+import org.apache.commons.io.FileUtils;
+
 public class Getvideo {
 	ArrayList<?> op;
 	Prop theprop;
 
-	public Getvideo(ArrayList<?> options, Prop prop) {
+	public Getvideo(URL url, File f) throws IOException {
 
 		int size = 4096;
 		byte[] buf = new byte[size];
-		op = options;
-		theprop = prop;
 
-		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
+		FileUtils.copyURLToFile(url, f);
+//		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
 
 	}
 

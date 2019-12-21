@@ -42,6 +42,7 @@ import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.UriUtils;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.SAXException;
 
 /**
@@ -81,6 +82,7 @@ public class XmiWriterCasConsumer extends CasConsumer_ImplBase {
 	 * 
 	 * @see org.apache.uima.collection.base_cpm.CasObjectProcessor#processCas(org.apache.uima.cas.CAS)
 	 */
+	@Autowired
 	public void processCas(CAS aCAS) throws ResourceProcessException {
 		String modelFileName = null;
 		JCas jcas;

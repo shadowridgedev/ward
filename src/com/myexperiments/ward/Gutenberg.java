@@ -2,6 +2,7 @@ package com.myexperiments.ward;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,21 +61,21 @@ public class Gutenberg {
 	static Prop prop;
 
 	static public void main(String[] args) throws Exception {
-
-		options = getargs(args);
-		String PropPath = System.getProperty("user.dir") + "\\" + options.get(1);
-		Prop prop = new Prop(PropPath);
-		if (options != null) {
-
-			String function = options.get(0);
-
-			if (function.equals("youtube")) {
-				Getvideo video = new Getvideo(options, prop);
-			}
-			if (function.equals("GetFiles")) {
-				doparse();
-			}
-		}
+//		URL url = new URL("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+		URL url = new URL("https://youtu.be/4scs6J33B9E");
+		File f = new File("H:/test.txt");
+		Getvideo video = new Getvideo(url, f);
+		/*
+		 * options = getargs(args); String PropPath = System.getProperty("user.dir") +
+		 * "\\" + options.get(0); Prop prop = new Prop(PropPath); if (options != null) {
+		 * 
+		 * String function = options.get(1);
+		 * 
+		 * if (function.equals("youtube")) { URL url = new
+		 * URL("https://youtu.be/4scs6J33B9E"); File f = new File("H:/test.txt");
+		 * Getvideo video = new Getvideo(url, f); } if (function.equals("GetFiles")) {
+		 * doparse(); } }
+		 */
 	}
 
 	static public ArrayList<String> getargs(String[] args) {

@@ -25,234 +25,18 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-
-	<repositories>
-		<repository>
-			<id>CogcompSoftware</id>
-			<name>CogcompSoftware</name>
-			<url>http://cogcomp.org/m2repo/</url>
-		</repository>
-		<repository>
-			<id>spark</id>
-			<name>spark</name>
-			<url>	https://dl.bintray.com/spark-packages/maven/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-			<id>com-springsource-repository-bundles-release</id>
-			<name>EBR Spring Release</name>
-			<url>http://repository.springsource.com/maven/bundles/release/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>com-springsource-repository-bundles-external</id>
-			<name>EBR External Release</name>
-			<url>http://repository.springsource.com/maven/bundles/external/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>bintray</id>
-			<name>Bintray JCenter</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>java-net-public</id>
-			<name>Java Net Public</name>
-			<url>https://maven.java.net/content/groups/public/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>redhat-ga-repository</id>
-			<name>Red Hat GA repository</name>
-			<url>http://maven.repository.redhat.com/ga/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>jboss-public-repository</id>
-			<name>JBoss Public</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>repository-apache-org</id>
-			<name>Apache Repository</name>
-			<url>https://repository.apache.org/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>jboss</id>
-			<name>Jboss</name>
-			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-		</repository>
-		<repository>
-			<id>net.billylieurance</id>
-			<name>BillyLieuranceNet</name>
-			<url>http://www.billylieurance.net/maven2</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>Central Repository</name>
-			<url>https://repo.maven.apache.org/maven2</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>com-springsource-repository-bundles-release</id>
-			<name>EBR Spring Release</name>
-			<url>http://repository.springsource.com/maven/bundles/release/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>com-springsource-repository-bundles-external</id>
-			<name>EBR External Release</name>
-			<url>http://repository.springsource.com/maven/bundles/external/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>bintray</id>
-			<name>Bintray JCenter</name>
-			<url>https://jcenter.bintray.com</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>java-net-public</id>
-			<name>Java Net Public</name>
-			<url>https://maven.java.net/content/groups/public/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>redhat-ga-repository</id>
-			<name>Red Hat GA repository</name>
-			<url>http://maven.repository.redhat.com/ga/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>jboss-public-repository</id>
-			<name>JBoss Public</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-				<updatePolicy>daily</updatePolicy>
-			</snapshots>
-			<id>repository-apache-org</id>
-			<name>Apache Repository</name>
-			<url>https://repository.apache.org/content/groups/public/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<releases>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>Central Repository</name>
-			<url>https://repo.maven.apache.org/maven2</url>
-		</pluginRepository>
-	</pluginRepositories>
-
+	<!-- <activeProfiles> <activeProfile>mvnrepository</activeProfile> </activeProfiles> -->
 	<profiles>
+
+		<profile>
+			<repositories>
+				<repository>
+					<id>mvnrepository</id>
+					<name>mvnrepository</name>
+					<url>http://www.mvnrepository.com</url>
+				</repository>
+			</repositories>
+		</profile>
 
 		<profile>
 			<id>default-jdk</id>
@@ -273,6 +57,20 @@
 
 	<!-- dpkcore -->
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.12.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.github.axet</groupId> <artifactId>vget</artifactId> 
+			<version>1.2.6</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.dkpro.core/dkpro-core-api-ner-asl -->
 		<dependency>
 			<groupId>org.dkpro.core</groupId>
@@ -330,12 +128,9 @@
 		</dependency>
 
 
-		<!-- https://mvnrepository.com/artifact/graphframes/graphframes -->
-		<dependency>
-			<groupId>graphframes</groupId>
-			<artifactId>graphframes</artifactId>
-			<version>0.7.0-spark2.4-s_2.11</version>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/graphframes/graphframes <dependency> 
+			<groupId>graphframes</groupId> <artifactId>graphframes</artifactId> <version>0.7.0-spark2.4-s_2.11</version> 
+			</dependency> -->
 		<dependency>
 			<groupId> org.apache.spark</groupId>
 			<artifactId> spark-core_2.11</artifactId>
