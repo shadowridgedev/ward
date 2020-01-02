@@ -39,17 +39,7 @@
 		</profile>
 
 		<profile>
-			<id>default-jdk</id>
 
-			<dependencies>
-				<dependency>
-					<groupId>com.sun</groupId>
-					<artifactId>tools</artifactId>
-					<scope>system</scope>
-					<version>1.8</version>
-					<systemPath>C:\Users\shado\.m2\repository\jdk\tools\jdk.tools\1.8\tools.jar</systemPath>
-				</dependency>
-			</dependencies>
 		</profile>
 
 	</profiles>
