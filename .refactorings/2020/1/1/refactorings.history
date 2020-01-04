@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ward/tools.jar&apos; to &apos;tools-1.8.jar&apos;" description="Rename resource &apos;tools.jar&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tools.jar" name="tools-1.8.jar" stamp="1577977813635" updateReferences="true"/>
+</session>
