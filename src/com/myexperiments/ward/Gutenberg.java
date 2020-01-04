@@ -46,6 +46,7 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.*;
 
 import edu.stanford.nlp.pipeline.SentenceAnnotator;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
+// test
 
 /*
 import org.ie4opendata.octroy.ContractClassifier;
