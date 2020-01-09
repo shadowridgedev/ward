@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;ward/tools.jar&apos; to &apos;tools-1.8.jar&apos;" description="Rename resource &apos;tools.jar&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tools.jar" name="tools-1.8.jar" stamp="1577977813635" updateReferences="true"/>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;ward/tools.jar&apos; to &apos;tools-1.8.jar&apos;" description="Rename resource &apos;tools.jar&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tools.jar" name="tools-1.8.jar" stamp="1577977813635" updateReferences="true"/>&#x0A;<refactoring accessors="true" comment="Delete element from project &apos;ward&apos;&#x0A;- Original project: &apos;ward&apos;&#x0A;- Original element: &apos;test.txt&apos;" description="Delete element" element1="test.txt" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1578172496733" subPackages="false" version="1.0"/>
 </session>
