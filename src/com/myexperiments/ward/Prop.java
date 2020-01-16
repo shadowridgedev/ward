@@ -12,17 +12,34 @@ public class Prop {
 	public String filedb;
 	public int numfiles;
 	public String dbname;
-	public Properties wardprop;
+	public Properties prop;
 	public File initialFile;
 	public String GutenbergFileBase;
+	public Properties theProp;
 
 	public Prop(String thepropfilepath) throws IOException {
 		propfilepath = thepropfilepath;
-		wardprop = new Properties();
+		theProp = new Properties();
 		File initialFile = new File(propfilepath);
 		InputStream in = new FileInputStream(initialFile);
-		wardprop.load(in);
+		theProp.load(in);
 
+	}
+
+	public Properties getProp() {
+		return prop;
+	}
+
+	public void setProp(Properties prop) {
+		this.prop = prop;
+	}
+
+	public Properties getTheProp() {
+		return theProp;
+	}
+
+	public void setTheProp(Properties theProp) {
+		this.theProp = theProp;
 	}
 
 	public String getPropfilepath() {
@@ -31,10 +48,6 @@ public class Prop {
 
 	public void setPropfilepath(String propfilepath) {
 		this.propfilepath = propfilepath;
-	}
-
-	public String getFiledb() {
-		return wardprop.getProperty(filedb);
 	}
 
 	public void setFiledb(String filedb) {
@@ -55,14 +68,6 @@ public class Prop {
 
 	public void setDbname(String dbname) {
 		this.dbname = dbname;
-	}
-
-	public Properties getWardprop() {
-		return wardprop;
-	}
-
-	public void setWardprop(Properties wardprop) {
-		this.wardprop = wardprop;
 	}
 
 	public File getInitialFile() {

@@ -13,7 +13,7 @@ public class WardDB {
 
 	WardDB(Prop prop) {
 
-		DBMaker.fileDB(prop.getFiledb());
+		DBMaker.fileDB(prop.getDbname());
 
 		/*
 		 * 

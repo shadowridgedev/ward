@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 public class Getvideo {
 	ArrayList<?> op;
 	Prop theprop;
+	File local;
 
 	public Getvideo(URL url, File f) throws IOException {
 
@@ -23,6 +24,7 @@ public class Getvideo {
 		byte[] buf = new byte[size];
 
 		FileUtils.copyURLToFile(url, f);
+		local = f;
 //		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
 
 	}
