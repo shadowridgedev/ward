@@ -16,6 +16,7 @@ public class Gutenberg {
 	static String PropPath;
 	static Prop prop;
 	static Properties Theprop;
+	static Boolean isWindows;
 
 	static public void main(String[] args) throws Exception {
 		/*
@@ -24,10 +25,15 @@ public class Gutenberg {
 		 * Getvideo video = new Getvideo(url, f);
 		 */
 
+		isWindows = test();
+
 		options = getargs(args);
 		String PropPath = System.getProperty("user.dir") + "/properties";
-
-		PropPath += "/" + options.get(3);
+		isWindows = testOS();
+		if (isWindows)
+			PropPath += "/" + "wardwindows.properties";
+		else
+			PropPath += "/" + "wardlinux.properties";
 
 		Properties prop = new Prop(PropPath).theProp;
 
@@ -46,6 +52,13 @@ public class Gutenberg {
 			}
 		}
 
+	}
+
+	static boolean testOS() {
+		if (System.getProperty("user.dir").startsWith("\""))
+			return false;
+		else
+			return true;
 	}
 
 	static public ArrayList<String> getargs(String[] args) {
