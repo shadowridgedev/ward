@@ -25,7 +25,7 @@ public class Gutenberg {
 		 * Getvideo video = new Getvideo(url, f);
 		 */
 
-		isWindows = test();
+		isWindows = testOS();
 
 		options = getargs(args);
 		String PropPath = System.getProperty("user.dir") + "/properties";
