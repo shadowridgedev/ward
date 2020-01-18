@@ -22,9 +22,41 @@ public class Book implements Serializable {
 	String EtextNumber;
 	String source;
 	String name;
+
+	public boolean isParsedUIMA() {
+		return parsedUIMA;
+	}
+
+	public void setParsedUIMA(boolean parsedUIMA) {
+		this.parsedUIMA = parsedUIMA;
+	}
+
+	public String getUIMAref() {
+		return UIMAref;
+	}
+
+	public void setUIMAref(String uIMAref) {
+		UIMAref = uIMAref;
+	}
+
+	public String getNeo4Jref() {
+		return Neo4Jref;
+	}
+
+	public void setNeo4Jref(String neo4Jref) {
+		Neo4Jref = neo4Jref;
+	}
+
+	public LinkedList<?> getExtra() {
+		return extra;
+	}
+
 	String language;
 	String Translatedby;
 	boolean verified = false;
+	boolean parsedUIMA = false;
+	String UIMAref;
+	String Neo4Jref;
 
 	private String Fix(String line) {
 		return line + System.getProperty("line.separator");

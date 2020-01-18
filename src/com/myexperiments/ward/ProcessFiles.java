@@ -1,18 +1,29 @@
 package com.myexperiments.ward;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterInputStream;
+
+import org.apache.commons.io.IOUtils;
+import org.roaringbitmap.longlong.LongBitmapDataProvider;
+
+import spire.math.ULongIsSigned;
 
 public class ProcessFiles {
 	protected DisplayMemory dm = new DisplayMemory();
+	protected String base;
+	Long total = (long) 0;
 
 	public int getFiles(Properties theprop, String extension, ArrayList map) throws IOException {
 		int count = 0;
-		String base = theprop.getProperty("GutenbergFileBase");
+		base = theprop.getProperty("GutenbergFileBase");
 
 		File root = new File(base);
 
@@ -61,24 +72,40 @@ public class ProcessFiles {
 			Book theBook = new Book();
 			theBook.filename = root.getName();
 			theBook.verified = false;
-			theBook.path = root.getAbsoluteFile().toString();
+			theBook.path = root.getAbsoluteFile().toString().replace(base, "");
 			theBook.parsed = false;
 			theBook.source = "Guttenberg";
-			// theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
-			String text = new String(Files.readAllBytes(Paths.get(theBook.path)));
-			// theBook.text = text;
-			// HashMap<String, String> items = GetBookMetadata(theBook.text);
-			// theBook = addMetadata(theBook, items);
-			// theBook = RemoveText(theBook);
-			System.out.println("");
-			System.out.println("Filename  " + theBook.filename);
-			System.out.println("Book Count " + Integer.toString(count));
-			System.out.println("Text Length" + Integer.toString(text.length()));
+			theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
+			/*
+			 * String text = new String(Files.readAllBytes(Paths.get(theBook.path))); String
+			 * org = new String(Files.readAllBytes(root.toPath())); FileOutputStream fos =
+			 * new FileOutputStream("temp"); DeflaterOutputStream dos = new
+			 * DeflaterOutputStream(fos); dos.write(Files.readAllBytes(root.toPath()));
+			 * dos.close();
+			 * 
+			 * FileInputStream fis = new FileInputStream("temp"); byte[] b =
+			 * IOUtils.toByteArray(fis); String text = new String(b); int orglength =
+			 * org.length(); int textlength = text.length(); int dif = orglength -
+			 * textlength; theBook.text = text; b = null; text = null; fis.close();
+			 * 
+			 * // theBook.text = text; // HashMap<String, String> items =
+			 * GetBookMetadata(theBook.text); // theBook = addMetadata(theBook, items); //
+			 * theBook = RemoveText(theBook); System.out.println("");
+			 * System.out.println("original " + Integer.toString(orglength));
+			 * System.out.println("dif " + Integer.toString(dif));
+			 * System.out.println("Filename  " + theBook.filename);
+			 * System.out.println("Book Count " + Integer.toString(count));
+			 * System.out.println("Text Length " + Integer.toString(theBook.text.length()));
+			 */
+			String text = new String(Files.readAllBytes(root.toPath()));
 			map.add(theBook);
-			text = null;
+			int len = text.length();
+			this.total += len;
+			String total = this.total.toString();
 			if (count > 0) {
-				// System.out.println("Count " + Integer.toString(count));
-				dm.display();
+				System.out.println(
+						"Count " + Integer.toString(count) + " length " + Integer.toString(len) + " total " + total);
+//				dm.display();
 			}
 		}
 
