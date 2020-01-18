@@ -1,7 +1,10 @@
 package com.myexperiments.ward;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +12,9 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.mapdb.DBMaker;
+import org.mapdb.HTreeMap;
 import org.mapdb.DBMaker.Maker;
+import org.neo4j.jdbc.impl.ListArray;
 
 public class Gutenberg {
 	static ArrayList<String> options;
@@ -25,15 +30,13 @@ public class Gutenberg {
 		 * Getvideo video = new Getvideo(url, f);
 		 */
 
-		isWindows = testOS();
-
 		options = getargs(args);
 		String PropPath = System.getProperty("user.dir") + "/properties";
 		isWindows = testOS();
 		if (isWindows)
-			PropPath += "/" + "wardwindows.properties";
+			PropPath += "/wardwindows.properties";
 		else
-			PropPath += "/" + "wardlinux.properties";
+			PropPath += "/wardlinux.properties";
 
 		Properties prop = new Prop(PropPath).theProp;
 
@@ -48,14 +51,21 @@ public class Gutenberg {
 
 			}
 			if (function.equals("GetFiles")) {
-				doparse();
+				ProcessFiles process = new ProcessFiles();
+				ArrayList<Book> map = new ArrayList<Book>();
+				@SuppressWarnings("rawtypes")
+				int count = process.getFiles(prop, "txt", map);
+				System.out.println("Final Count" + Integer.toString(count));
+				System.out.println("Map Size " + Integer.toString(map.size()));
+
 			}
 		}
-
 	}
 
 	static boolean testOS() {
-		if (System.getProperty("user.dir").startsWith("\""))
+		String test = System.getProperty("user.dir");
+
+		if (test.startsWith("/"))
 			return false;
 		else
 			return true;
@@ -87,21 +97,21 @@ public class Gutenberg {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void doparse() throws Exception {
+	public static void doparse(Properties prop) throws Exception {
 
 		WardDB wardDB = new WardDB(prop);
 
-		Maker db = DBMaker.fileDB(prop.filedb);
+		Maker db = DBMaker.fileDB(prop.getProperty("filedb"));
 
 		GuttenbergHelper helper = new GuttenbergHelper(prop, wardDB);
 
 		if (wardDB.map.isEmpty()) {
-			helper.searchForFilesExt(null, null, prop.GutenbergFileBase, prop.numfiles);
+			helper.searchForFilesExt(null, null, prop.getProperty("GutenbergFileBase"), prop.getProperty("numfiles"));
 			FindGuttenbergInfo info = new FindGuttenbergInfo();
 //			info.getinfo(map);
 		}
 
-		prop.close();
+//		prop.close();
 	}
 
 }

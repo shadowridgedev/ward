@@ -35,17 +35,18 @@ public class GuttenbergHelper {
 	// wardprop.load(input);
 	// ArrayList<String> checklist = new ArrayList<String> ();
 
-	GuttenbergHelper(Prop theprop, WardDB theWardDB) throws IOException {
-		prop = theprop;
+	GuttenbergHelper(Properties prop, WardDB theWardDB) throws IOException {
+
 		WardDB wardDB = theWardDB;
-		String base = prop.GutenbergFileBase;
+		String base = prop.getProperty("GutenbergFileBase");
 		GuttenbergPath = base + "/com.myexperiments.ward/";
 		NotGuttenbergPath = base + "/NotGuttenberg/";
 		RemoveText = base + "/RemoveText";
 		CleanBook = prop + "/CleanBook/";
 		cuttext = removetext();
-		max = prop.numfiles;
-		ScriptEngine engine = new ScriptEngineManager().getEngineByName("python");
+
+		max = Integer.parseInt(prop.getProperty("numfiles"));
+//		ScriptEngine engine = new ScriptEngineManager().getEngineByName("python");
 	}
 
 	String getprop(String property) {
@@ -249,13 +250,13 @@ public class GuttenbergHelper {
 		return book;
 	}
 
-	public HTreeMap<Integer, Book> searchForFilesExt(File root, HTreeMap<Integer, Book> map, String ext, int max)
+	public HTreeMap<Integer, Book> searchForFilesExt(File root, HTreeMap<Integer, Book> map, String ext, String string)
 			throws Exception {
 		// TODO Auto-generated method stub
 		// System.out.println("File " + root.toString());
 
-		if (count > max)
-			return null;
+//		if (count > string)
+//			return null;
 
 		if (root == null || map == null)
 			return map; // just for safety || !root.getPath().toString().contains("old"))
@@ -265,7 +266,7 @@ public class GuttenbergHelper {
 
 			for (File file : root.listFiles()) {
 				if (file != null) {
-					map = searchForFilesExt(file, map, ext, max);
+					map = searchForFilesExt(file, map, ext, string);
 				}
 			}
 		} else if (root.isFile() && root.getName().endsWith(ext)) {

@@ -1,5 +1,7 @@
 package com.myexperiments.ward;
 
+import java.util.Properties;
+
 import org.mapdb.*;
 import org.mapdb.HTreeMap.KeySet;
 import org.mapdb.DBMaker;
@@ -11,9 +13,9 @@ public class WardDB {
 	public MapDBDatabase db1;
 	private DBMaker maker;
 
-	WardDB(Prop prop) {
+	WardDB(Properties prop) {
 
-		DBMaker.fileDB(prop.getDbname());
+//		DBMaker.fileDB((String) prop.get("Dbname"));
 
 		/*
 		 * 
