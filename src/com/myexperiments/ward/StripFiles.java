@@ -27,7 +27,7 @@ public class StripFiles {
 		return text;
 	}
 
-	String CreateRemoveStruing(String one, String two) throws IOException {
+	String CreateRemoveString(String one, String two) throws IOException {
 
 		String[] lines1 = one.split(System.getProperty("line.separator"));
 		String[] lines2 = two.split(System.getProperty("line.separator"));
