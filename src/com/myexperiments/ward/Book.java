@@ -3,6 +3,15 @@ package com.myexperiments.ward;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "book")
 public class Book implements Serializable {
 	/**
 	 * 
@@ -16,12 +25,17 @@ public class Book implements Serializable {
 	String PostingDate;
 	String ReleaseDate;
 	String text;
-	LinkedList<?> extra;
 	String filename;
 	String path;
 	String EtextNumber;
 	String source;
 	String name;
+	String language;
+	String Translatedby;
+	boolean verified = false;
+	boolean parsedUIMA = false;
+	String UIMAref;
+	String Neo4Jref;
 
 	public boolean isParsedUIMA() {
 		return parsedUIMA;
@@ -47,17 +61,6 @@ public class Book implements Serializable {
 		Neo4Jref = neo4Jref;
 	}
 
-	public LinkedList<?> getExtra() {
-		return extra;
-	}
-
-	String language;
-	String Translatedby;
-	boolean verified = false;
-	boolean parsedUIMA = false;
-	String UIMAref;
-	String Neo4Jref;
-
 	private String Fix(String line) {
 		return line + System.getProperty("line.separator");
 	}
@@ -82,14 +85,17 @@ public class Book implements Serializable {
 	/**
 	 * @return the idBook
 	 */
-	public int getIdBook() {
+	@Id
+	@Column(name = "idBook")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getidBook() {
 		return idBook;
 	}
 
 	/**
 	 * @param idBook the idBook to set
 	 */
-	public void setIdBook(int idBook) {
+	public void setidBook(int idBook) {
 		this.idBook = idBook;
 	}
 
@@ -281,10 +287,6 @@ public class Book implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public void setExtra(LinkedList<?> extra) {
-		this.extra = extra;
 	}
 
 	boolean parsed = false;

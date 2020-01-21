@@ -15,13 +15,14 @@ import org.apache.commons.io.IOUtils;
 import org.roaringbitmap.longlong.LongBitmapDataProvider;
 
 import spire.math.ULongIsSigned;
+import javax.persistence.*;
 
 public class ProcessFiles {
 	protected DisplayMemory dm = new DisplayMemory();
 	protected String base;
 	Long total = (long) 0;
 
-	public int getFiles(Properties theprop, String extension, ArrayList map) throws IOException {
+	public int getFiles(Properties theprop, String extension, ArrayList<Book> map) throws IOException {
 		int count = 0;
 		base = theprop.getProperty("GutenbergFileBase");
 
@@ -31,7 +32,7 @@ public class ProcessFiles {
 			if (root.canRead()) {
 				if (root.isDirectory()) {
 
-					int max = Integer.parseInt(theprop.getProperty("numberfiles"));
+					int max = Integer.parseInt(theprop.getProperty("max"));
 					return searchForFiles(root, map, extension, count, max);
 				}
 			} else {

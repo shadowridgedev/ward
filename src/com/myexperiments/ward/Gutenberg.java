@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -57,6 +58,14 @@ public class Gutenberg {
 				int count = process.getFiles(prop, "txt", map);
 				System.out.println("Final Count" + Integer.toString(count));
 				System.out.println("Map Size " + Integer.toString(map.size()));
+				BookManager manager = new BookManager();
+				manager.setup();
+				Book thebook = null;
+				for (Iterator<Book> i = map.iterator(); i.hasNext(); thebook = i.next()) {
+
+					manager.create(thebook);
+				}
+				manager.exit();
 
 			}
 		}
