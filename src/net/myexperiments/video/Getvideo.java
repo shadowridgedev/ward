@@ -1,4 +1,4 @@
-package com.myexperiments.ward;
+package net.myexperiments.video;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 
+import com.myexperiments.ward.Prop;
+
 public class Getvideo {
 	ArrayList<?> op;
 	Prop theprop;
@@ -25,7 +27,7 @@ public class Getvideo {
 
 		FileUtils.copyURLToFile(url, f);
 		local = f;
-//		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
+		boolean result = readvideo(op.get(3), op.get(4), op.get(5));
 
 	}
 
