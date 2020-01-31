@@ -152,7 +152,7 @@ public class WardAE {
 	 */
 	public static void printAnnotations(CAS aCAS, Type aAnnotType, PrintStream aOut) {
 		// get iterator over annotations
-		FSIterator iter = aCAS.getAnnotationIndex(aAnnotType).iterator();
+		FSIterator<?> iter = aCAS.getAnnotationIndex(aAnnotType).iterator();
 
 		// iterate
 		while (iter.isValid()) {
@@ -191,8 +191,8 @@ public class WardAE {
 		}
 
 		// print all features
-		List aFeatures = aFS.getType().getFeatures();
-		Iterator iter = aFeatures.iterator();
+		List<?> aFeatures = aFS.getType().getFeatures();
+		Iterator<?> iter = aFeatures.iterator();
 		while (iter.hasNext()) {
 			Feature feat = (Feature) iter.next();
 			printTabs(aNestingLevel + 1, aOut);
