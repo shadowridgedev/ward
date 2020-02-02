@@ -1,4 +1,4 @@
-package com.myexperiments.ward;
+package net.myexperiments.video;
 
 /*
  * https://stackoverflow.com/questions/4032766/how-to-download-videos-from-youtube-on-java
