@@ -1,0 +1,77 @@
+{
+	"folders": {},
+	"connections": {
+		"neo4j_jdbc-1674289f6fd-36e082cfb526aec1": {
+			"provider": "generic",
+			"driver": "neo4j_jdbc",
+			"name": "Neo4j - localhost",
+			"save-password": true,
+			"show-system-objects": true,
+			"show-util-objects": true,
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "7687",
+				"url": "jdbc:neo4j:bolt://localhost:7687",
+				"type": "dev"
+			}
+		},
+		"mariaDB-167428fc7dc-3b6329a343c5961a": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "MariaDB - localhost",
+			"save-password": true,
+			"show-system-objects": true,
+			"show-util-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"home": "/usr",
+				"type": "dev"
+			}
+		},
+		"neo4j_jdbc-16742a1d31e-4c809c3435a1f064": {
+			"provider": "generic",
+			"driver": "neo4j_jdbc",
+			"name": "Neo4j - localhost 2",
+			"save-password": true,
+			"show-system-objects": true,
+			"show-util-objects": true,
+			"read-only": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "7687",
+				"url": "jdbc:neo4j:bolt://localhost:7687",
+				"type": "dev",
+				"handlers": {}
+			}
+		},
+		"neo4j_jdbc-167433e7788-34b94a2c47b23d2e": {
+			"provider": "generic",
+			"driver": "neo4j_jdbc",
+			"name": "Neo4j - 127.0.0.1",
+			"save-password": true,
+			"show-system-objects": true,
+			"show-util-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "127.0.0.1",
+				"port": "7687",
+				"url": "jdbc:neo4j:bolt://127.0.0.1:7687",
+				"type": "dev"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}
