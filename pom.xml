@@ -98,33 +98,26 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.6.Final</version>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.4.2</version>
+			<scope>compile</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.4.Final</version>
+			<artifactId>hibernate-agroal</artifactId>
+			<version>5.4.11.Final</version>
+			<type>pom</type>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.5-Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>4.0.4.Final</version>
-		</dependency>
+
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.7</version>
 		</dependency>
-
-
-
+		
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -152,13 +145,8 @@
 		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 
 		<!-- https://mvnrepository.com/artifact/org.openjax.xml/sax -->
-		<!-- https://mvnrepository.com/artifact/sax/sax 
-<dependency>
-    <groupId>sax</groupId>
-    <artifactId>sax</artifactId>
-    <version>2.0.1</version>
-</dependency>
--->
+		<!-- https://mvnrepository.com/artifact/sax/sax <dependency> <groupId>sax</groupId> 
+			<artifactId>sax</artifactId> <version>2.0.1</version> </dependency> -->
 
 
 		<dependency>
@@ -319,7 +307,6 @@
 			<groupId>org.mapdb</groupId>
 			<artifactId>mapdb</artifactId>
 			<!-- <version>3.0.7</version> -->
-			<version>4.0</version>
 
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/de.cit-ec.scie/ner-mapdb -->
@@ -347,7 +334,6 @@
 		<dependency>
 			<groupId>org.mapdb</groupId>
 			<artifactId>mapdb</artifactId>
-			<version>3.0.7</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.facebook4j/facebook4j-core -->
 		<dependency>
@@ -411,8 +397,7 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimafit-core</artifactId>
-			<version>3.0.0</version>
-		</dependency>
+			</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimaj-as-activemq -->
 		<dependency>
@@ -446,7 +431,6 @@
 		<dependency>
 			<groupId>org.mapdb</groupId>
 			<artifactId>mapdb</artifactId>
-			<version>3.0.7</version>
 		</dependency>
 
 		<dependency>
@@ -1282,6 +1266,11 @@
 				<groupId>org.apache.uima</groupId>
 				<artifactId>Solrcas</artifactId>
 				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mapdb</groupId>
+				<artifactId>mapdb</artifactId>
+				<version>3.0.7</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
