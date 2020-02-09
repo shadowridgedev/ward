@@ -117,7 +117,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.7</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -397,7 +397,7 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimafit-core</artifactId>
-			</dependency>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimaj-as-activemq -->
 		<dependency>
