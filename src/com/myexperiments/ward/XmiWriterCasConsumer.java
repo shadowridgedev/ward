@@ -92,7 +92,7 @@ public class XmiWriterCasConsumer extends CasConsumer_ImplBase {
 			throw new ResourceProcessException(e);
 		}
 		// retrieve the filename of the input file from the CAS
-		FSIterator it = jcas.getAnnotationIndex(SourceDocumentInformation.type).iterator();
+		FSIterator<?> it = jcas.getAnnotationIndex(SourceDocumentInformation.type).iterator();
 		File outFile = null;
 		if (it.hasNext()) {
 			SourceDocumentInformation fileLoc = (SourceDocumentInformation) it.next();
