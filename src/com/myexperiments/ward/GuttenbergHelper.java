@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -230,9 +233,9 @@ public class GuttenbergHelper {
 		book.author = items.get("Author");
 		book.title = items.get("Title");
 		book.language = items.get("Language");
-		book.Translatedby = items.get("Translanted by");
-		book.date = items.get("Date");
-		book.EtextNumber = items.get("Ebook");
+		book.translatedby = items.get("Translanted by");
+//		book.date = items.get("Date");
+		book.etextnumber = items.get("Ebook");
 		return book;
 	}
 
@@ -274,7 +277,7 @@ public class GuttenbergHelper {
 			if (!map.containsKey(count)) {
 				Book theBook = new Book();
 				theBook.path = root.getAbsoluteFile().toString();
-				theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
+				theBook.etextnumber = root.getParent().replaceAll("\\D+", "");
 				theBook.text = new String(Files.readAllBytes(Paths.get(theBook.path)));
 				HashMap<String, String> items = GetBookMetadata(theBook.text);
 				theBook = addMetadata(theBook, items);
@@ -325,4 +328,10 @@ public class GuttenbergHelper {
 	 * helper.GuttenbergFiles + " Not Guttenberg Files " +
 	 * helper.NotGuttenbergFiles); }
 	 */
+
+	Date StringToDatein(String date) throws ParseException {
+
+		Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+		return date1;
+	}
 }

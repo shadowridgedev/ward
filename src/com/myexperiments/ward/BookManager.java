@@ -7,6 +7,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BookManager {
 	protected SessionFactory sessionFactory;
@@ -14,8 +16,8 @@ public class BookManager {
 
 	protected void setup() {
 		// code to load Hibernate Session factory
-		// String cfgpath = System.getProperty("user.dir") + "/hibernate.cfg.xml";
-		String cfgpath = "src/hibernate.cfg.xml";
+		String cfgpath = System.getProperty("user.dir") + "/hibernate.cfg.xml";
+		// String cfgpath = "src/hibernate.cfg.xml";
 		/*
 		 * final StandardServiceRegistry registry = new
 		 * StandardServiceRegistryBuilder().configure(cfgpath).build(); try {

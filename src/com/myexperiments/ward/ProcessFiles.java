@@ -76,7 +76,7 @@ public class ProcessFiles {
 			theBook.path = root.getAbsoluteFile().toString().replace(base, "");
 			theBook.parsed = false;
 			theBook.source = "Guttenberg";
-			theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
+			theBook.etextnumber = root.getParent().replaceAll("\\D+", "");
 			/*
 			 * String text = new String(Files.readAllBytes(Paths.get(theBook.path))); String
 			 * org = new String(Files.readAllBytes(root.toPath())); FileOutputStream fos =

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "book")
@@ -16,49 +18,103 @@ public class Book implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5068990239464021287L;
+	private static long serialVersionUID = -5068990239464021287L;
 
 	int idBook;
 	String title;
 	String author;
-	String date;
-	String PostingDate;
-	String ReleaseDate;
+	Date date;
+
+	Date postingdate;
+	Date releasedate;
 	String text;
+	String filebase;
 	String filename;
 	String path;
-	String EtextNumber;
+	String etextnumber;
 	String source;
 	String name;
 	String language;
-	String Translatedby;
+	String translatedby;
 	boolean verified = false;
-	boolean parsedUIMA = false;
-	String UIMAref;
-	String Neo4Jref;
+	boolean parseduima = false;
+	boolean parsedneo4j;
+	String neo4jref;
 
-	public boolean isParsedUIMA() {
-		return parsedUIMA;
+	public int getIdBook() {
+		return idBook;
 	}
 
-	public void setParsedUIMA(boolean parsedUIMA) {
-		this.parsedUIMA = parsedUIMA;
+	public void setIdBook(int idBook) {
+		this.idBook = idBook;
 	}
 
-	public String getUIMAref() {
-		return UIMAref;
+	public String getFilebase() {
+		return filebase;
 	}
 
-	public void setUIMAref(String uIMAref) {
-		UIMAref = uIMAref;
+	public void setFilebase(String filebase) {
+		this.filebase = filebase;
+	}
+
+	public static void setSerialversionuid(long serialversionuid) {
+		serialVersionUID = serialversionuid;
 	}
 
 	public String getNeo4Jref() {
-		return Neo4Jref;
+		return neo4jref;
 	}
 
 	public void setNeo4Jref(String neo4Jref) {
-		Neo4Jref = neo4Jref;
+		neo4jref = neo4Jref;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public static void setSerialVersionUID(long serialVersionUID) {
+		Book.serialVersionUID = serialVersionUID;
+	}
+
+	public Date getPostingdate() {
+		return postingdate;
+	}
+
+	public void setPostingdate(Date postingdate) {
+		this.postingdate = postingdate;
+	}
+
+	public Date getReleasedate() {
+		return releasedate;
+	}
+
+	public void setReleasedate(Date releasedate) {
+		this.releasedate = releasedate;
+	}
+
+	public boolean isParseduima() {
+		return parseduima;
+	}
+
+	public void setParseduima(boolean parseduima) {
+		this.parseduima = parseduima;
+	}
+
+	public boolean isParsedneo4j() {
+		return parsedneo4j;
+	}
+
+	public void setParsedneo4j(boolean parsedneo4j) {
+		this.parsedneo4j = parsedneo4j;
+	}
+
+	public String getNeo4jref() {
+		return neo4jref;
+	}
+
+	public void setNeo4jref(String neo4jref) {
+		this.neo4jref = neo4jref;
 	}
 
 	private String Fix(String line) {
@@ -69,14 +125,14 @@ public class Book implements Serializable {
 		String result = Fix(Integer.toString(idBook));
 		result += "Title  " + Fix(title);
 		result += "Author  " + Fix(author);
-		result += "Translatedby " + Fix(Translatedby);
-		result += "Date  " + Fix(date);
-		result += "Posting Date " + Fix(PostingDate);
-		result += "Release Date " + Fix(ReleaseDate);
+		result += "Translatedby " + Fix(translatedby);
+		result += "Date  " + Fix(date.toString());
+		result += "Posting Date " + Fix(postingdate.toString());
+		result += "Release Date " + Fix(releasedate.toString());
 		result += "Text  " + Fix(text);
 		result += "Filename  " + Fix(filename);
 		result += "Path  " + Fix(path);
-		result += "EtextNumber  " + Fix(EtextNumber);
+		result += "etextNumber  " + Fix(etextnumber);
 		result += "Source  " + Fix(source);
 		result += "Name  " + Fix(name);
 		return result;
@@ -130,14 +186,14 @@ public class Book implements Serializable {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -187,14 +243,14 @@ public class Book implements Serializable {
 	 * @return the etextNumber
 	 */
 	public String getEtextNumber() {
-		return EtextNumber;
+		return etextnumber;
 	}
 
 	/**
 	 * @param etextNumber the etextNumber to set
 	 */
 	public void setEtextNumber(String etextNumber) {
-		EtextNumber = etextNumber;
+		etextnumber = etextNumber;
 	}
 
 	/**
@@ -253,20 +309,12 @@ public class Book implements Serializable {
 		this.parsed = parsed;
 	}
 
-	public String getPostingDate() {
-		return PostingDate;
+	public Date getPostingDate() {
+		return postingdate;
 	}
 
-	public void setPostingDate(String postingDate) {
-		PostingDate = postingDate;
-	}
-
-	public String getReleaseDate() {
-		return ReleaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		ReleaseDate = releaseDate;
+	public Date getReleaseDate() {
+		return releasedate;
 	}
 
 	public String getLanguage() {
@@ -278,11 +326,11 @@ public class Book implements Serializable {
 	}
 
 	public String getTranslatedby() {
-		return Translatedby;
+		return translatedby;
 	}
 
 	public void setTranslatedby(String translatedby) {
-		Translatedby = translatedby;
+		translatedby = translatedby;
 	}
 
 	public static long getSerialversionuid() {

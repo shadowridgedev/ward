@@ -77,6 +77,28 @@
 				"type": "dev",
 				"handlers": {}
 			}
+		},
+		"postgres-jdbc-170ce0a65f3-1253c8c4a946dd83": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
 		}
 	},
 	"connection-types": {

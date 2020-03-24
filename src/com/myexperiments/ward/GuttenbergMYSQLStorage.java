@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.myexperiments.ward.Book;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GuttenbergMYSQLStorage {
 	// static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -52,7 +54,7 @@ public class GuttenbergMYSQLStorage {
 		String path = book.getPath();
 		String author = book.getAuthor();
 		String title = book.getTitle();
-		String date = book.getDate();
+		Date date = book.getDate();
 		String file = book.getFilename();
 		/*
 		 * String sql =
