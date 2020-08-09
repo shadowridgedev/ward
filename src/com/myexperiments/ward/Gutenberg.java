@@ -17,6 +17,7 @@ import org.mapdb.HTreeMap;
 import org.mapdb.DBMaker.Maker;
 import org.neo4j.jdbc.impl.ListArray;
 
+import jcifs.smb.SmbFile;
 import net.myexperiments.video.Getvideo;
 
 public class Gutenberg {
@@ -69,6 +70,10 @@ public class Gutenberg {
 				}
 				manager.exit();
 
+			}
+			if (function.equals("OpenRemote")) {
+				NetworkDirectory remote = new NetworkDirectory("smb:\\\\R710-1\\gut");
+				SmbFile[] list = remote.createlist();
 			}
 		}
 	}

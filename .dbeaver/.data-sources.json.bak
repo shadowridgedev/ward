@@ -44,8 +44,7 @@
 				"host": "localhost",
 				"port": "7687",
 				"url": "jdbc:neo4j:bolt://localhost:7687",
-				"type": "dev",
-				"handlers": {}
+				"type": "dev"
 			}
 		},
 		"neo4j_jdbc-167433e7788-34b94a2c47b23d2e": {
@@ -74,7 +73,61 @@
 				"port": "3306",
 				"url": "jdbc:mysql://localhost:3306/",
 				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev"
+			}
+		},
+		"postgres-jdbc-170ce0a65f3-1253c8c4a946dd83": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-12",
 				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				}
+			}
+		},
+		"mariaDB-172a0c06df0-35647e02be1dfb2e": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "localhost",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		},
+		"mariaDB-172a0cf49b5-339d7c73992eba49": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "localhost 2",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
+				"auth-model": "native",
 				"handlers": {}
 			}
 		}

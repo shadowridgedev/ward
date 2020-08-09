@@ -106,7 +106,7 @@ public class ProcessFiles {
 			if (count > 0) {
 				System.out.println(
 						"Count " + Integer.toString(count) + " length " + Integer.toString(len) + " total " + total);
-//				dm.display();
+				dm.display();
 			}
 		}
 

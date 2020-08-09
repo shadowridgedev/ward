@@ -17,6 +17,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="tools-1.8.jar"/>
+	<classpathentry kind="lib" path="C:/Java_Binding_1_1/WolframAlphaJavaLibrary/WolframAlpha-1.1.jar" sourcepath="C:/Java_Binding_1_1/WolframAlphaJavaLibrary/Source"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
