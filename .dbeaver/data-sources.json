@@ -44,8 +44,7 @@
 				"host": "localhost",
 				"port": "7687",
 				"url": "jdbc:neo4j:bolt://localhost:7687",
-				"type": "dev",
-				"handlers": {}
+				"type": "dev"
 			}
 		},
 		"neo4j_jdbc-167433e7788-34b94a2c47b23d2e": {
