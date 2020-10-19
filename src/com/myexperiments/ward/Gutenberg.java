@@ -43,7 +43,7 @@ public class Gutenberg {
 			PropPath += "/wardlinux.properties";
 
 		Properties prop = new Prop(PropPath).theProp;
-
+//Test
 		if (options != null) {
 
 			String function = options.get(1);
