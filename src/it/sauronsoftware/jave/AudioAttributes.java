@@ -30,14 +30,14 @@ public class AudioAttributes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * This value can be setted in the codec field to perform a direct stream
-	 * copy, without re-encoding of the audio stream.
+	 * This value can be setted in the codec field to perform a direct stream copy,
+	 * without re-encoding of the audio stream.
 	 */
 	public static final String DIRECT_STREAM_COPY = "copy";
 
 	/**
-	 * The codec name for the encoding process. If null or not specified the
-	 * encoder will perform a direct stream copy.
+	 * The codec name for the encoding process. If null or not specified the encoder
+	 * will perform a direct stream copy.
 	 */
 	private String codec = null;
 
@@ -48,20 +48,20 @@ public class AudioAttributes implements Serializable {
 	private Integer bitRate = null;
 
 	/**
-	 * The samplingRate value for the encoding process. If null or not specified
-	 * a default value will be picked.
+	 * The samplingRate value for the encoding process. If null or not specified a
+	 * default value will be picked.
 	 */
 	private Integer samplingRate = null;
 
 	/**
-	 * The channels value (1=mono, 2=stereo) for the encoding process. If null
-	 * or not specified a default value will be picked.
+	 * The channels value (1=mono, 2=stereo) for the encoding process. If null or
+	 * not specified a default value will be picked.
 	 */
 	private Integer channels = null;
 
 	/**
-	 * The volume value for the encoding process. If null or not specified a
-	 * default value will be picked. If 256 no volume change will be performed.
+	 * The volume value for the encoding process. If null or not specified a default
+	 * value will be picked. If 256 no volume change will be performed.
 	 */
 	private Integer volume = null;
 
@@ -75,8 +75,8 @@ public class AudioAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the codec name for the encoding process. If null or not specified
-	 * the encoder will perform a direct stream copy.
+	 * Sets the codec name for the encoding process. If null or not specified the
+	 * encoder will perform a direct stream copy.
 	 * 
 	 * Be sure the supplied codec name is in the list returned by
 	 * {@link Encoder#getAudioEncoders()}.
@@ -84,8 +84,7 @@ public class AudioAttributes implements Serializable {
 	 * A special value can be picked from
 	 * {@link AudioAttributes#DIRECT_STREAM_COPY}.
 	 * 
-	 * @param codec
-	 *            The codec name for the encoding process.
+	 * @param codec The codec name for the encoding process.
 	 */
 	public void setCodec(String codec) {
 		this.codec = codec;
@@ -101,11 +100,10 @@ public class AudioAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the bitrate value for the encoding process. If null or not specified
-	 * a default value will be picked.
+	 * Sets the bitrate value for the encoding process. If null or not specified a
+	 * default value will be picked.
 	 * 
-	 * @param bitRate
-	 *            The bitrate value for the encoding process.
+	 * @param bitRate The bitrate value for the encoding process.
 	 */
 	public void setBitRate(Integer bitRate) {
 		this.bitRate = bitRate;
@@ -124,8 +122,7 @@ public class AudioAttributes implements Serializable {
 	 * Sets the samplingRate value for the encoding process. If null or not
 	 * specified a default value will be picked.
 	 * 
-	 * @param samplingRate
-	 *            The samplingRate value for the encoding process.
+	 * @param samplingRate The samplingRate value for the encoding process.
 	 */
 	public void setSamplingRate(Integer samplingRate) {
 		this.samplingRate = samplingRate;
@@ -141,12 +138,11 @@ public class AudioAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the channels value (1=mono, 2=stereo) for the encoding process. If
-	 * null or not specified a default value will be picked.
+	 * Sets the channels value (1=mono, 2=stereo) for the encoding process. If null
+	 * or not specified a default value will be picked.
 	 * 
-	 * @param channels
-	 *            The channels value (1=mono, 2=stereo) for the encoding
-	 *            process.
+	 * @param channels The channels value (1=mono, 2=stereo) for the encoding
+	 *                 process.
 	 */
 	public void setChannels(Integer channels) {
 		this.channels = channels;
@@ -162,21 +158,18 @@ public class AudioAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the volume value for the encoding process. If null or not specified
-	 * a default value will be picked. If 256 no volume change will be
-	 * performed.
+	 * Sets the volume value for the encoding process. If null or not specified a
+	 * default value will be picked. If 256 no volume change will be performed.
 	 * 
-	 * @param volume
-	 *            The volume value for the encoding process.
+	 * @param volume The volume value for the encoding process.
 	 */
 	public void setVolume(Integer volume) {
 		this.volume = volume;
 	}
 
 	public String toString() {
-		return getClass().getName() + "(codec=" + codec + ", bitRate="
-				+ bitRate + ", samplingRate=" + samplingRate + ", channels="
-				+ channels + ", volume=" + volume + ")";
+		return getClass().getName() + "(codec=" + codec + ", bitRate=" + bitRate + ", samplingRate=" + samplingRate
+				+ ", channels=" + channels + ", volume=" + volume + ")";
 	}
 
 }

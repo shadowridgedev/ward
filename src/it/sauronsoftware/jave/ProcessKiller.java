@@ -34,8 +34,7 @@ class ProcessKiller extends Thread {
 	/**
 	 * Builds the killer.
 	 * 
-	 * @param process
-	 *            The process to kill.
+	 * @param process The process to kill.
 	 */
 	public ProcessKiller(Process process) {
 		this.process = process;

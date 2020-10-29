@@ -12,17 +12,17 @@ public class Employee {
 	private Long id;
 
 	private String name;
-	
+
 	@ManyToOne
 	private Department department;
 
-	public Employee() {}
+	public Employee() {
+	}
 
 	public Employee(String name, Department department) {
 		this.name = name;
 		this.department = department;
 	}
-	
 
 	public Employee(String name) {
 		this.name = name;
@@ -54,8 +54,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", department="
-				+ department.getName() + "]";
+		return "Employee [id=" + id + ", name=" + name + ", department=" + department.getName() + "]";
 	}
 
 }

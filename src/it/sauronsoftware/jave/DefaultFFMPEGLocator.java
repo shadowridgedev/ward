@@ -59,8 +59,7 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 			isWindows = false;
 		}
 		// Temp dir?
-		File temp = new File(System.getProperty("java.io.tmpdir"), "jave-"
-				+ myEXEversion);
+		File temp = new File(System.getProperty("java.io.tmpdir"), "jave-" + myEXEversion);
 		if (!temp.exists()) {
 			temp.mkdirs();
 			temp.deleteOnExit();
@@ -82,8 +81,7 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 		if (!isWindows) {
 			Runtime runtime = Runtime.getRuntime();
 			try {
-				runtime.exec(new String[] { "/bin/chmod", "755",
-						exe.getAbsolutePath() });
+				runtime.exec(new String[] { "/bin/chmod", "755", exe.getAbsolutePath() });
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -99,12 +97,9 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 	/**
 	 * Copies a file bundled in the package to the supplied destination.
 	 * 
-	 * @param path
-	 *            The name of the bundled file.
-	 * @param dest
-	 *            The destination.
-	 * @throws RuntimeException
-	 *             If aun unexpected error occurs.
+	 * @param path The name of the bundled file.
+	 * @param dest The destination.
+	 * @throws RuntimeException If aun unexpected error occurs.
 	 */
 	private void copyFile(String path, File dest) throws RuntimeException {
 		InputStream input = null;
@@ -118,8 +113,7 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 				output.write(buffer, 0, l);
 			}
 		} catch (IOException e) {
-			throw new RuntimeException("Cannot write file "
-					+ dest.getAbsolutePath());
+			throw new RuntimeException("Cannot write file " + dest.getAbsolutePath());
 		} finally {
 			if (output != null) {
 				try {

@@ -37,8 +37,8 @@ public class VideoInfo {
 	private VideoSize size = null;
 
 	/**
-	 * The video stream (average) bit rate. If less than 0, this information is
-	 * not available.
+	 * The video stream (average) bit rate. If less than 0, this information is not
+	 * available.
 	 */
 	private int bitRate = -1;
 
@@ -59,8 +59,7 @@ public class VideoInfo {
 	/**
 	 * Sets the video stream decoder name.
 	 * 
-	 * @param decoder
-	 *            The video stream decoder name.
+	 * @param decoder The video stream decoder name.
 	 */
 	void setDecoder(String codec) {
 		this.decoder = codec;
@@ -78,8 +77,7 @@ public class VideoInfo {
 	/**
 	 * Sets the video size.
 	 * 
-	 * @param size
-	 *            The video size.
+	 * @param size The video size.
 	 */
 	void setSize(VideoSize size) {
 		this.size = size;
@@ -98,16 +96,15 @@ public class VideoInfo {
 	/**
 	 * Sets the video frame rate.
 	 * 
-	 * @param frameRate
-	 *            The video frame rate.
+	 * @param frameRate The video frame rate.
 	 */
 	void setFrameRate(float frameRate) {
 		this.frameRate = frameRate;
 	}
 
 	/**
-	 * Returns the video stream (average) bit rate. If less than 0, this
-	 * information is not available.
+	 * Returns the video stream (average) bit rate. If less than 0, this information
+	 * is not available.
 	 * 
 	 * @return The video stream (average) bit rate.
 	 */
@@ -118,16 +115,15 @@ public class VideoInfo {
 	/**
 	 * Sets the video stream (average) bit rate.
 	 * 
-	 * @param bitRate
-	 *            The video stream (average) bit rate.
+	 * @param bitRate The video stream (average) bit rate.
 	 */
 	void setBitRate(int bitRate) {
 		this.bitRate = bitRate;
 	}
 
 	public String toString() {
-		return getClass().getName() + " (decoder=" + decoder + ", size=" + size
-				+ ", bitRate=" + bitRate + ", frameRate=" + frameRate + ")";
+		return getClass().getName() + " (decoder=" + decoder + ", size=" + size + ", bitRate=" + bitRate
+				+ ", frameRate=" + frameRate + ")";
 	}
 
 }

@@ -41,8 +41,7 @@ class RBufferedReader extends BufferedReader {
 	/**
 	 * It builds the reader.
 	 * 
-	 * @param in
-	 *            The underlying reader.
+	 * @param in The underlying reader.
 	 */
 	public RBufferedReader(Reader in) {
 		super(in);
@@ -63,8 +62,7 @@ class RBufferedReader extends BufferedReader {
 	 * Reinserts a line in the stream. The line will be returned at the next
 	 * {@link RBufferedReader#readLine()} call.
 	 * 
-	 * @param line
-	 *            The line.
+	 * @param line The line.
 	 */
 	public void reinsertLine(String line) {
 		lines.add(0, line);

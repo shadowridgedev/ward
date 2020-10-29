@@ -10,6 +10,7 @@ import java.util.Properties;
 public class ScanFiles {
 	static ArrayList<String> options;
 	static String PropPath;
+	static String Textstring;
 	static Prop prop;
 	static Properties Theprop;
 	static Boolean isWindows;
@@ -25,6 +26,9 @@ public class ScanFiles {
 			PropPath += "/wardlinux.properties";
 
 		Properties prop = new Prop(PropPath).theProp;
+		PropPath = prop.getProperty("GutPath");
+		Textstring = prop.getProperty("TextString");
+
 	}
 
 	static public ArrayList<String> getargs(String[] args) {

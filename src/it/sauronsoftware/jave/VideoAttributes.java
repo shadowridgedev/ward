@@ -30,14 +30,14 @@ public class VideoAttributes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * This value can be setted in the codec field to perform a direct stream
-	 * copy, without re-encoding of the audio stream.
+	 * This value can be setted in the codec field to perform a direct stream copy,
+	 * without re-encoding of the audio stream.
 	 */
 	public static final String DIRECT_STREAM_COPY = "copy";
 
 	/**
-	 * The codec name for the encoding process. If null or not specified the
-	 * encoder will perform a direct stream copy.
+	 * The codec name for the encoding process. If null or not specified the encoder
+	 * will perform a direct stream copy.
 	 */
 	private String codec = null;
 
@@ -59,8 +59,8 @@ public class VideoAttributes implements Serializable {
 	private Integer frameRate = null;
 
 	/**
-	 * The video size for the encoding process. If null or not specified the
-	 * source video size will not be modified.
+	 * The video size for the encoding process. If null or not specified the source
+	 * video size will not be modified.
 	 */
 	private VideoSize size = null;
 
@@ -74,8 +74,8 @@ public class VideoAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the codec name for the encoding process. If null or not specified
-	 * the encoder will perform a direct stream copy.
+	 * Sets the codec name for the encoding process. If null or not specified the
+	 * encoder will perform a direct stream copy.
 	 * 
 	 * Be sure the supplied codec name is in the list returned by
 	 * {@link Encoder#getVideoEncoders()}.
@@ -83,8 +83,7 @@ public class VideoAttributes implements Serializable {
 	 * A special value can be picked from
 	 * {@link VideoAttributes#DIRECT_STREAM_COPY}.
 	 * 
-	 * @param codec
-	 *            The codec name for the encoding process.
+	 * @param codec The codec name for the encoding process.
 	 */
 	public void setCodec(String codec) {
 		this.codec = codec;
@@ -102,8 +101,7 @@ public class VideoAttributes implements Serializable {
 	/**
 	 * Sets the forced tag/fourcc value for the video stream.
 	 * 
-	 * @param tag
-	 *            The the forced tag/fourcc value for the video stream.
+	 * @param tag The the forced tag/fourcc value for the video stream.
 	 */
 	public void setTag(String tag) {
 		this.tag = tag;
@@ -119,11 +117,10 @@ public class VideoAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the bitrate value for the encoding process. If null or not specified
-	 * a default value will be picked.
+	 * Sets the bitrate value for the encoding process. If null or not specified a
+	 * default value will be picked.
 	 * 
-	 * @param bitRate
-	 *            The bitrate value for the encoding process.
+	 * @param bitRate The bitrate value for the encoding process.
 	 */
 	public void setBitRate(Integer bitRate) {
 		this.bitRate = bitRate;
@@ -139,11 +136,10 @@ public class VideoAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the frame rate value for the encoding process. If null or not
-	 * specified a default value will be picked.
+	 * Sets the frame rate value for the encoding process. If null or not specified
+	 * a default value will be picked.
 	 * 
-	 * @param frameRate
-	 *            The frame rate value for the encoding process.
+	 * @param frameRate The frame rate value for the encoding process.
 	 */
 	public void setFrameRate(Integer frameRate) {
 		this.frameRate = frameRate;
@@ -159,19 +155,18 @@ public class VideoAttributes implements Serializable {
 	}
 
 	/**
-	 * Sets the video size for the encoding process. If null or not specified
-	 * the source video size will not be modified.
+	 * Sets the video size for the encoding process. If null or not specified the
+	 * source video size will not be modified.
 	 * 
-	 * @param size
-	 *            he video size for the encoding process.
+	 * @param size he video size for the encoding process.
 	 */
 	public void setSize(VideoSize size) {
 		this.size = size;
 	}
 
 	public String toString() {
-		return getClass().getName() + "(codec=" + codec + ", bitRate="
-				+ bitRate + ", frameRate=" + frameRate + ", size=" + size + ")";
+		return getClass().getName() + "(codec=" + codec + ", bitRate=" + bitRate + ", frameRate=" + frameRate
+				+ ", size=" + size + ")";
 	}
 
 }

@@ -35,68 +35,61 @@ import java.util.regex.Pattern;
 public class Encoder {
 
 	/**
-	 * This regexp is used to parse the ffmpeg output about the supported
-	 * formats.
+	 * This regexp is used to parse the ffmpeg output about the supported formats.
 	 */
-	private static final Pattern FORMAT_PATTERN = Pattern
-			.compile("^\\s*([D ])([E ])\\s+([\\w,]+)\\s+.+$");
+	private static final Pattern FORMAT_PATTERN = Pattern.compile("^\\s*([D ])([E ])\\s+([\\w,]+)\\s+.+$");
 
 	/**
 	 * This regexp is used to parse the ffmpeg output about the included
 	 * encoders/decoders.
 	 */
-	private static final Pattern ENCODER_DECODER_PATTERN = Pattern.compile(
-			"^\\s*([D ])([E ])([AVS]).{3}\\s+(.+)$", Pattern.CASE_INSENSITIVE);
+	private static final Pattern ENCODER_DECODER_PATTERN = Pattern.compile("^\\s*([D ])([E ])([AVS]).{3}\\s+(.+)$",
+			Pattern.CASE_INSENSITIVE);
 
 	/**
 	 * This regexp is used to parse the ffmpeg output about the ongoing encoding
 	 * process.
 	 */
-	private static final Pattern PROGRESS_INFO_PATTERN = Pattern.compile(
-			"\\s*(\\w+)\\s*=\\s*(\\S+)\\s*", Pattern.CASE_INSENSITIVE);
+	private static final Pattern PROGRESS_INFO_PATTERN = Pattern.compile("\\s*(\\w+)\\s*=\\s*(\\S+)\\s*",
+			Pattern.CASE_INSENSITIVE);
 
 	/**
 	 * This regexp is used to parse the ffmpeg output about the size of a video
 	 * stream.
 	 */
-	private static final Pattern SIZE_PATTERN = Pattern.compile(
-			"(\\d+)x(\\d+)", Pattern.CASE_INSENSITIVE);
+	private static final Pattern SIZE_PATTERN = Pattern.compile("(\\d+)x(\\d+)", Pattern.CASE_INSENSITIVE);
 
 	/**
-	 * This regexp is used to parse the ffmpeg output about the frame rate value
-	 * of a video stream.
+	 * This regexp is used to parse the ffmpeg output about the frame rate value of
+	 * a video stream.
 	 */
-	private static final Pattern FRAME_RATE_PATTERN = Pattern.compile(
-			"([\\d.]+)\\s+(?:fps|tb\\(r\\))", Pattern.CASE_INSENSITIVE);
+	private static final Pattern FRAME_RATE_PATTERN = Pattern.compile("([\\d.]+)\\s+(?:fps|tb\\(r\\))",
+			Pattern.CASE_INSENSITIVE);
 
 	/**
-	 * This regexp is used to parse the ffmpeg output about the bit rate value
-	 * of a stream.
+	 * This regexp is used to parse the ffmpeg output about the bit rate value of a
+	 * stream.
 	 */
-	private static final Pattern BIT_RATE_PATTERN = Pattern.compile(
-			"(\\d+)\\s+kb/s", Pattern.CASE_INSENSITIVE);
+	private static final Pattern BIT_RATE_PATTERN = Pattern.compile("(\\d+)\\s+kb/s", Pattern.CASE_INSENSITIVE);
 
 	/**
-	 * This regexp is used to parse the ffmpeg output about the sampling rate of
+	 * This regexp is used to parse the ffmpeg output about the sampling rate of an
+	 * audio stream.
+	 */
+	private static final Pattern SAMPLING_RATE_PATTERN = Pattern.compile("(\\d+)\\s+Hz", Pattern.CASE_INSENSITIVE);
+
+	/**
+	 * This regexp is used to parse the ffmpeg output about the channels number of
 	 * an audio stream.
 	 */
-	private static final Pattern SAMPLING_RATE_PATTERN = Pattern.compile(
-			"(\\d+)\\s+Hz", Pattern.CASE_INSENSITIVE);
-
-	/**
-	 * This regexp is used to parse the ffmpeg output about the channels number
-	 * of an audio stream.
-	 */
-	private static final Pattern CHANNELS_PATTERN = Pattern.compile(
-			"(mono|stereo)", Pattern.CASE_INSENSITIVE);
+	private static final Pattern CHANNELS_PATTERN = Pattern.compile("(mono|stereo)", Pattern.CASE_INSENSITIVE);
 
 	/**
 	 * This regexp is used to parse the ffmpeg output about the success of an
 	 * encoding operation.
 	 */
-	private static final Pattern SUCCESS_PATTERN = Pattern.compile(
-			"^\\s*video\\:\\S+\\s+audio\\:\\S+\\s+global headers\\:\\S+.*$",
-			Pattern.CASE_INSENSITIVE);
+	private static final Pattern SUCCESS_PATTERN = Pattern
+			.compile("^\\s*video\\:\\S+\\s+audio\\:\\S+\\s+global headers\\:\\S+.*$", Pattern.CASE_INSENSITIVE);
 
 	/**
 	 * The locator of the ffmpeg executable used by this encoder.
@@ -104,8 +97,8 @@ public class Encoder {
 	private FFMPEGLocator locator;
 
 	/**
-	 * It builds an encoder using a {@link DefaultFFMPEGLocator} instance to
-	 * locate the ffmpeg executable to use.
+	 * It builds an encoder using a {@link DefaultFFMPEGLocator} instance to locate
+	 * the ffmpeg executable to use.
 	 */
 	public Encoder() {
 		this.locator = new DefaultFFMPEGLocator();
@@ -114,9 +107,8 @@ public class Encoder {
 	/**
 	 * It builds an encoder with a custom {@link FFMPEGLocator}.
 	 * 
-	 * @param locator
-	 *            The locator picking up the ffmpeg executable used by the
-	 *            encoder.
+	 * @param locator The locator picking up the ffmpeg executable used by the
+	 *                encoder.
 	 */
 	public Encoder(FFMPEGLocator locator) {
 		this.locator = locator;
@@ -124,12 +116,12 @@ public class Encoder {
 
 	/**
 	 * Returns a list with the names of all the audio decoders bundled with the
-	 * ffmpeg distribution in use. An audio stream can be decoded only if a
-	 * decoder for its format is available.
+	 * ffmpeg distribution in use. An audio stream can be decoded only if a decoder
+	 * for its format is available.
 	 * 
 	 * @return A list with the names of all the included audio decoders.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getAudioDecoders() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -138,8 +130,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -151,8 +142,7 @@ public class Encoder {
 					if (matcher.matches()) {
 						String decoderFlag = matcher.group(1);
 						String audioVideoFlag = matcher.group(3);
-						if ("D".equals(decoderFlag)
-								&& "A".equals(audioVideoFlag)) {
+						if ("D".equals(decoderFlag) && "A".equals(audioVideoFlag)) {
 							String name = matcher.group(4);
 							res.add(name);
 						}
@@ -178,12 +168,12 @@ public class Encoder {
 
 	/**
 	 * Returns a list with the names of all the audio encoders bundled with the
-	 * ffmpeg distribution in use. An audio stream can be encoded using one of
-	 * these encoders.
+	 * ffmpeg distribution in use. An audio stream can be encoded using one of these
+	 * encoders.
 	 * 
 	 * @return A list with the names of all the included audio encoders.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getAudioEncoders() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -192,8 +182,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -205,8 +194,7 @@ public class Encoder {
 					if (matcher.matches()) {
 						String encoderFlag = matcher.group(2);
 						String audioVideoFlag = matcher.group(3);
-						if ("E".equals(encoderFlag)
-								&& "A".equals(audioVideoFlag)) {
+						if ("E".equals(encoderFlag) && "A".equals(audioVideoFlag)) {
 							String name = matcher.group(4);
 							res.add(name);
 						}
@@ -232,12 +220,12 @@ public class Encoder {
 
 	/**
 	 * Returns a list with the names of all the video decoders bundled with the
-	 * ffmpeg distribution in use. A video stream can be decoded only if a
-	 * decoder for its format is available.
+	 * ffmpeg distribution in use. A video stream can be decoded only if a decoder
+	 * for its format is available.
 	 * 
 	 * @return A list with the names of all the included video decoders.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getVideoDecoders() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -246,8 +234,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -259,8 +246,7 @@ public class Encoder {
 					if (matcher.matches()) {
 						String decoderFlag = matcher.group(1);
 						String audioVideoFlag = matcher.group(3);
-						if ("D".equals(decoderFlag)
-								&& "V".equals(audioVideoFlag)) {
+						if ("D".equals(decoderFlag) && "V".equals(audioVideoFlag)) {
 							String name = matcher.group(4);
 							res.add(name);
 						}
@@ -286,12 +272,12 @@ public class Encoder {
 
 	/**
 	 * Returns a list with the names of all the video encoders bundled with the
-	 * ffmpeg distribution in use. A video stream can be encoded using one of
-	 * these encoders.
+	 * ffmpeg distribution in use. A video stream can be encoded using one of these
+	 * encoders.
 	 * 
 	 * @return A list with the names of all the included video encoders.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getVideoEncoders() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -300,8 +286,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -313,8 +298,7 @@ public class Encoder {
 					if (matcher.matches()) {
 						String encoderFlag = matcher.group(2);
 						String audioVideoFlag = matcher.group(3);
-						if ("E".equals(encoderFlag)
-								&& "V".equals(audioVideoFlag)) {
+						if ("E".equals(encoderFlag) && "V".equals(audioVideoFlag)) {
 							String name = matcher.group(4);
 							res.add(name);
 						}
@@ -339,15 +323,14 @@ public class Encoder {
 	}
 
 	/**
-	 * Returns a list with the names of all the file formats supported at
-	 * encoding time by the underlying ffmpeg distribution. A multimedia file
-	 * could be encoded and generated only if the specified format is in this
-	 * list.
+	 * Returns a list with the names of all the file formats supported at encoding
+	 * time by the underlying ffmpeg distribution. A multimedia file could be
+	 * encoded and generated only if the specified format is in this list.
 	 * 
-	 * @return A list with the names of all the supported file formats at
-	 *         encoding time.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @return A list with the names of all the supported file formats at encoding
+	 *         time.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getSupportedEncodingFormats() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -356,8 +339,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -399,14 +381,14 @@ public class Encoder {
 	}
 
 	/**
-	 * Returns a list with the names of all the file formats supported at
-	 * decoding time by the underlying ffmpeg distribution. A multimedia file
-	 * could be open and decoded only if its format is in this list.
+	 * Returns a list with the names of all the file formats supported at decoding
+	 * time by the underlying ffmpeg distribution. A multimedia file could be open
+	 * and decoded only if its format is in this list.
 	 * 
-	 * @return A list with the names of all the supported file formats at
-	 *         decoding time.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @return A list with the names of all the supported file formats at decoding
+	 *         time.
+	 * @throws EncoderException If a problem occurs calling the underlying ffmpeg
+	 *                          executable.
 	 */
 	public String[] getSupportedDecodingFormats() throws EncoderException {
 		ArrayList res = new ArrayList();
@@ -415,8 +397,7 @@ public class Encoder {
 		try {
 			ffmpeg.execute();
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getInputStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getInputStream()));
 			String line;
 			boolean evaluate = false;
 			while ((line = reader.readLine()) != null) {
@@ -461,17 +442,14 @@ public class Encoder {
 	 * Returns a set informations about a multimedia file, if its format is
 	 * supported for decoding.
 	 * 
-	 * @param source
-	 *            The source multimedia file.
+	 * @param source The source multimedia file.
 	 * @return A set of informations about the file and its contents.
-	 * @throws InputFormatException
-	 *             If the format of the source file cannot be recognized and
-	 *             decoded.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws InputFormatException If the format of the source file cannot be
+	 *                              recognized and decoded.
+	 * @throws EncoderException     If a problem occurs calling the underlying
+	 *                              ffmpeg executable.
 	 */
-	public MultimediaInfo getInfo(File source) throws InputFormatException,
-			EncoderException {
+	public MultimediaInfo getInfo(File source) throws InputFormatException, EncoderException {
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-i");
 		ffmpeg.addArgument(source.getAbsolutePath());
@@ -482,8 +460,7 @@ public class Encoder {
 		}
 		try {
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getErrorStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getErrorStream()));
 			return parseMultimediaInfo(source, reader);
 		} finally {
 			ffmpeg.destroy();
@@ -491,31 +468,23 @@ public class Encoder {
 	}
 
 	/**
-	 * Private utility. It parses the ffmpeg output, extracting informations
-	 * about a source multimedia file.
+	 * Private utility. It parses the ffmpeg output, extracting informations about a
+	 * source multimedia file.
 	 * 
-	 * @param source
-	 *            The source multimedia file.
-	 * @param reader
-	 *            The ffmpeg output channel.
+	 * @param source The source multimedia file.
+	 * @param reader The ffmpeg output channel.
 	 * @return A set of informations about the source multimedia file and its
 	 *         contents.
-	 * @throws InputFormatException
-	 *             If the format of the source file cannot be recognized and
-	 *             decoded.
-	 * @throws EncoderException
-	 *             If a problem occurs calling the underlying ffmpeg executable.
+	 * @throws InputFormatException If the format of the source file cannot be
+	 *                              recognized and decoded.
+	 * @throws EncoderException     If a problem occurs calling the underlying
+	 *                              ffmpeg executable.
 	 */
-	private MultimediaInfo parseMultimediaInfo(File source,
-			RBufferedReader reader) throws InputFormatException,
-			EncoderException {
-		Pattern p1 = Pattern.compile("^\\s*Input #0, (\\w+).+$\\s*",
-				Pattern.CASE_INSENSITIVE);
-		Pattern p2 = Pattern.compile(
-				"^\\s*Duration: (\\d\\d):(\\d\\d):(\\d\\d)\\.(\\d).*$",
-				Pattern.CASE_INSENSITIVE);
-		Pattern p3 = Pattern.compile(
-				"^\\s*Stream #\\S+: ((?:Audio)|(?:Video)|(?:Data)): (.*)\\s*$",
+	private MultimediaInfo parseMultimediaInfo(File source, RBufferedReader reader)
+			throws InputFormatException, EncoderException {
+		Pattern p1 = Pattern.compile("^\\s*Input #0, (\\w+).+$\\s*", Pattern.CASE_INSENSITIVE);
+		Pattern p2 = Pattern.compile("^\\s*Duration: (\\d\\d):(\\d\\d):(\\d\\d)\\.(\\d).*$", Pattern.CASE_INSENSITIVE);
+		Pattern p3 = Pattern.compile("^\\s*Stream #\\S+: ((?:Audio)|(?:Video)|(?:Data)): (.*)\\s*$",
 				Pattern.CASE_INSENSITIVE);
 		MultimediaInfo info = null;
 		try {
@@ -545,8 +514,7 @@ public class Encoder {
 						long minutes = Integer.parseInt(m.group(2));
 						long seconds = Integer.parseInt(m.group(3));
 						long dec = Integer.parseInt(m.group(4));
-						long duration = (dec * 100L) + (seconds * 1000L)
-								+ (minutes * 60L * 1000L)
+						long duration = (dec * 100L) + (seconds * 1000L) + (minutes * 60L * 1000L)
 								+ (hours * 60L * 60L * 1000L);
 						info.setDuration(duration);
 						step++;
@@ -570,20 +538,16 @@ public class Encoder {
 									// Video size.
 									Matcher m2 = SIZE_PATTERN.matcher(token);
 									if (!parsed && m2.find()) {
-										int width = Integer.parseInt(m2
-												.group(1));
-										int height = Integer.parseInt(m2
-												.group(2));
-										video.setSize(new VideoSize(width,
-												height));
+										int width = Integer.parseInt(m2.group(1));
+										int height = Integer.parseInt(m2.group(2));
+										video.setSize(new VideoSize(width, height));
 										parsed = true;
 									}
 									// Frame rate.
 									m2 = FRAME_RATE_PATTERN.matcher(token);
 									if (!parsed && m2.find()) {
 										try {
-											float frameRate = Float
-													.parseFloat(m2.group(1));
+											float frameRate = Float.parseFloat(m2.group(1));
 											video.setFrameRate(frameRate);
 										} catch (NumberFormatException e) {
 											;
@@ -593,8 +557,7 @@ public class Encoder {
 									// Bit rate.
 									m2 = BIT_RATE_PATTERN.matcher(token);
 									if (!parsed && m2.find()) {
-										int bitRate = Integer.parseInt(m2
-												.group(1));
+										int bitRate = Integer.parseInt(m2.group(1));
 										video.setBitRate(bitRate);
 										parsed = true;
 									}
@@ -611,11 +574,9 @@ public class Encoder {
 								} else {
 									boolean parsed = false;
 									// Sampling rate.
-									Matcher m2 = SAMPLING_RATE_PATTERN
-											.matcher(token);
+									Matcher m2 = SAMPLING_RATE_PATTERN.matcher(token);
 									if (!parsed && m2.find()) {
-										int samplingRate = Integer.parseInt(m2
-												.group(1));
+										int samplingRate = Integer.parseInt(m2.group(1));
 										audio.setSamplingRate(samplingRate);
 										parsed = true;
 									}
@@ -625,8 +586,7 @@ public class Encoder {
 										String ms = m2.group(1);
 										if ("mono".equalsIgnoreCase(ms)) {
 											audio.setChannels(1);
-										} else if ("stereo"
-												.equalsIgnoreCase(ms)) {
+										} else if ("stereo".equalsIgnoreCase(ms)) {
 											audio.setChannels(2);
 										}
 										parsed = true;
@@ -634,8 +594,7 @@ public class Encoder {
 									// Bit rate.
 									m2 = BIT_RATE_PATTERN.matcher(token);
 									if (!parsed && m2.find()) {
-										int bitRate = Integer.parseInt(m2
-												.group(1));
+										int bitRate = Integer.parseInt(m2.group(1));
 										audio.setBitRate(bitRate);
 										parsed = true;
 									}
@@ -663,14 +622,12 @@ public class Encoder {
 
 	/**
 	 * Private utility. Parse a line and try to match its contents against the
-	 * {@link Encoder#PROGRESS_INFO_PATTERN} pattern. It the line can be parsed,
-	 * it returns a hashtable with progress informations, otherwise it returns
-	 * null.
+	 * {@link Encoder#PROGRESS_INFO_PATTERN} pattern. It the line can be parsed, it
+	 * returns a hashtable with progress informations, otherwise it returns null.
 	 * 
-	 * @param line
-	 *            The line from the ffmpeg output.
-	 * @return A hashtable with the value reported in the line, or null if the
-	 *         given line can not be parsed.
+	 * @param line The line from the ffmpeg output.
+	 * @return A hashtable with the value reported in the line, or null if the given
+	 *         line can not be parsed.
 	 */
 	private Hashtable parseProgressInfoLine(String line) {
 		Hashtable table = null;
@@ -689,65 +646,53 @@ public class Encoder {
 	/**
 	 * Re-encode a multimedia file.
 	 * 
-	 * @param source
-	 *            The source multimedia file. It cannot be null. Be sure this
-	 *            file can be decoded (see
-	 *            {@link Encoder#getSupportedDecodingFormats()},
-	 *            {@link Encoder#getAudioDecoders()} and
-	 *            {@link Encoder#getVideoDecoders()}).
-	 * @param target
-	 *            The target multimedia re-encoded file. It cannot be null. If
-	 *            this file already exists, it will be overwrited.
-	 * @param attributes
-	 *            A set of attributes for the encoding process.
-	 * @throws IllegalArgumentException
-	 *             If both audio and video parameters are null.
-	 * @throws InputFormatException
-	 *             If the source multimedia file cannot be decoded.
-	 * @throws EncoderException
-	 *             If a problems occurs during the encoding process.
+	 * @param source     The source multimedia file. It cannot be null. Be sure this
+	 *                   file can be decoded (see
+	 *                   {@link Encoder#getSupportedDecodingFormats()},
+	 *                   {@link Encoder#getAudioDecoders()} and
+	 *                   {@link Encoder#getVideoDecoders()}).
+	 * @param target     The target multimedia re-encoded file. It cannot be null.
+	 *                   If this file already exists, it will be overwrited.
+	 * @param attributes A set of attributes for the encoding process.
+	 * @throws IllegalArgumentException If both audio and video parameters are null.
+	 * @throws InputFormatException     If the source multimedia file cannot be
+	 *                                  decoded.
+	 * @throws EncoderException         If a problems occurs during the encoding
+	 *                                  process.
 	 */
 	public void encode(File source, File target, EncodingAttributes attributes)
-			throws IllegalArgumentException, InputFormatException,
-			EncoderException {
+			throws IllegalArgumentException, InputFormatException, EncoderException {
 		encode(source, target, attributes, null);
 	}
 
 	/**
 	 * Re-encode a multimedia file.
 	 * 
-	 * @param source
-	 *            The source multimedia file. It cannot be null. Be sure this
-	 *            file can be decoded (see
-	 *            {@link Encoder#getSupportedDecodingFormats()},
-	 *            {@link Encoder#getAudioDecoders()} and
-	 *            {@link Encoder#getVideoDecoders()}).
-	 * @param target
-	 *            The target multimedia re-encoded file. It cannot be null. If
-	 *            this file already exists, it will be overwrited.
-	 * @param attributes
-	 *            A set of attributes for the encoding process.
-	 * @param listener
-	 *            An optional progress listener for the encoding process. It can
-	 *            be null.
-	 * @throws IllegalArgumentException
-	 *             If both audio and video parameters are null.
-	 * @throws InputFormatException
-	 *             If the source multimedia file cannot be decoded.
-	 * @throws EncoderException
-	 *             If a problems occurs during the encoding process.
+	 * @param source     The source multimedia file. It cannot be null. Be sure this
+	 *                   file can be decoded (see
+	 *                   {@link Encoder#getSupportedDecodingFormats()},
+	 *                   {@link Encoder#getAudioDecoders()} and
+	 *                   {@link Encoder#getVideoDecoders()}).
+	 * @param target     The target multimedia re-encoded file. It cannot be null.
+	 *                   If this file already exists, it will be overwrited.
+	 * @param attributes A set of attributes for the encoding process.
+	 * @param listener   An optional progress listener for the encoding process. It
+	 *                   can be null.
+	 * @throws IllegalArgumentException If both audio and video parameters are null.
+	 * @throws InputFormatException     If the source multimedia file cannot be
+	 *                                  decoded.
+	 * @throws EncoderException         If a problems occurs during the encoding
+	 *                                  process.
 	 */
-	public void encode(File source, File target, EncodingAttributes attributes,
-			EncoderProgressListener listener) throws IllegalArgumentException,
-			InputFormatException, EncoderException {
+	public void encode(File source, File target, EncodingAttributes attributes, EncoderProgressListener listener)
+			throws IllegalArgumentException, InputFormatException, EncoderException {
 		String formatAttribute = attributes.getFormat();
 		Float offsetAttribute = attributes.getOffset();
 		Float durationAttribute = attributes.getDuration();
 		AudioAttributes audioAttributes = attributes.getAudioAttributes();
 		VideoAttributes videoAttributes = attributes.getVideoAttributes();
 		if (audioAttributes == null && videoAttributes == null) {
-			throw new IllegalArgumentException(
-					"Both audio and video attributes are null");
+			throw new IllegalArgumentException("Both audio and video attributes are null");
 		}
 		target = target.getAbsoluteFile();
 		target.getParentFile().mkdirs();
@@ -788,8 +733,7 @@ public class Encoder {
 			VideoSize size = videoAttributes.getSize();
 			if (size != null) {
 				ffmpeg.addArgument("-s");
-				ffmpeg.addArgument(String.valueOf(size.getWidth()) + "x"
-						+ String.valueOf(size.getHeight()));
+				ffmpeg.addArgument(String.valueOf(size.getWidth()) + "x" + String.valueOf(size.getHeight()));
 			}
 		}
 		if (audioAttributes == null) {
@@ -835,17 +779,14 @@ public class Encoder {
 			long duration;
 			long progress = 0;
 			RBufferedReader reader = null;
-			reader = new RBufferedReader(new InputStreamReader(ffmpeg
-					.getErrorStream()));
+			reader = new RBufferedReader(new InputStreamReader(ffmpeg.getErrorStream()));
 			MultimediaInfo info = parseMultimediaInfo(source, reader);
 			if (durationAttribute != null) {
-				duration = (long) Math
-						.round((durationAttribute.floatValue() * 1000L));
+				duration = (long) Math.round((durationAttribute.floatValue() * 1000L));
 			} else {
 				duration = info.getDuration();
 				if (offsetAttribute != null) {
-					duration -= (long) Math
-							.round((offsetAttribute.floatValue() * 1000L));
+					duration -= (long) Math.round((offsetAttribute.floatValue() * 1000L));
 				}
 			}
 			if (listener != null) {
@@ -894,18 +835,15 @@ public class Encoder {
 								String time = (String) table.get("time");
 								if (time != null) {
 									int dot = time.indexOf('.');
-									if (dot > 0 && dot == time.length() - 2
-											&& duration > 0) {
+									if (dot > 0 && dot == time.length() - 2 && duration > 0) {
 										String p1 = time.substring(0, dot);
 										String p2 = time.substring(dot + 1);
 										try {
 											long i1 = Long.parseLong(p1);
 											long i2 = Long.parseLong(p2);
-											progress = (i1 * 1000L)
-													+ (i2 * 100L);
+											progress = (i1 * 1000L) + (i2 * 100L);
 											int perm = (int) Math
-													.round((double) (progress * 1000L)
-															/ (double) duration);
+													.round((double) (progress * 1000L) / (double) duration);
 											if (perm > 1000) {
 												perm = 1000;
 											}

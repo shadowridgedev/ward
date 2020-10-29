@@ -30,8 +30,8 @@ public class EncodingAttributes implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The format name for the encoded target multimedia file. Be sure this
-	 * format is supported (see {@link Encoder#getSupportedEncodingFormats()}.
+	 * The format name for the encoded target multimedia file. Be sure this format
+	 * is supported (see {@link Encoder#getSupportedEncodingFormats()}.
 	 */
 	private String format = null;
 
@@ -42,23 +42,23 @@ public class EncodingAttributes implements Serializable {
 	private Float offset = null;
 
 	/**
-	 * The duration (seconds) of the re-encoded stream. If null or not specified
-	 * the source stream, starting from the offset, will be completely
-	 * re-encoded in the target stream.
+	 * The duration (seconds) of the re-encoded stream. If null or not specified the
+	 * source stream, starting from the offset, will be completely re-encoded in the
+	 * target stream.
 	 */
 	private Float duration = null;
 
 	/**
-	 * The attributes for the encoding of the audio stream in the target
-	 * multimedia file. If null of not specified no audio stream will be
-	 * encoded. It cannot be null if also the video field is null.
+	 * The attributes for the encoding of the audio stream in the target multimedia
+	 * file. If null of not specified no audio stream will be encoded. It cannot be
+	 * null if also the video field is null.
 	 */
 	private AudioAttributes audioAttributes = null;
 
 	/**
-	 * The attributes for the encoding of the video stream in the target
-	 * multimedia file. If null of not specified no video stream will be
-	 * encoded. It cannot be null if also the audio field is null.
+	 * The attributes for the encoding of the video stream in the target multimedia
+	 * file. If null of not specified no video stream will be encoded. It cannot be
+	 * null if also the audio field is null.
 	 */
 	private VideoAttributes videoAttributes = null;
 
@@ -75,8 +75,7 @@ public class EncodingAttributes implements Serializable {
 	 * Sets the format name for the encoded target multimedia file. Be sure this
 	 * format is supported (see {@link Encoder#getSupportedEncodingFormats()}.
 	 * 
-	 * @param format
-	 *            The format name for the encoded target multimedia file.
+	 * @param format The format name for the encoded target multimedia file.
 	 */
 	public void setFormat(String format) {
 		this.format = format;
@@ -95,8 +94,7 @@ public class EncodingAttributes implements Serializable {
 	 * Sets the start offset time (seconds). If null or not specified no start
 	 * offset will be applied.
 	 * 
-	 * @param offset
-	 *            The start offset time (seconds).
+	 * @param offset The start offset time (seconds).
 	 */
 	public void setOffset(Float offset) {
 		this.offset = offset;
@@ -116,8 +114,7 @@ public class EncodingAttributes implements Serializable {
 	 * specified the source stream, starting from the offset, will be completely
 	 * re-encoded in the target stream.
 	 * 
-	 * @param duration
-	 *            The duration (seconds) of the re-encoded stream.
+	 * @param duration The duration (seconds) of the re-encoded stream.
 	 */
 	public void setDuration(Float duration) {
 		this.duration = duration;
@@ -136,12 +133,11 @@ public class EncodingAttributes implements Serializable {
 
 	/**
 	 * Sets the attributes for the encoding of the audio stream in the target
-	 * multimedia file. If null of not specified no audio stream will be
-	 * encoded. It cannot be null if also the video field is null.
+	 * multimedia file. If null of not specified no audio stream will be encoded. It
+	 * cannot be null if also the video field is null.
 	 * 
-	 * @param audioAttributes
-	 *            The attributes for the encoding of the audio stream in the
-	 *            target multimedia file.
+	 * @param audioAttributes The attributes for the encoding of the audio stream in
+	 *                        the target multimedia file.
 	 */
 	public void setAudioAttributes(AudioAttributes audioAttributes) {
 		this.audioAttributes = audioAttributes;
@@ -160,22 +156,19 @@ public class EncodingAttributes implements Serializable {
 
 	/**
 	 * Sets the attributes for the encoding of the video stream in the target
-	 * multimedia file. If null of not specified no video stream will be
-	 * encoded. It cannot be null if also the audio field is null.
+	 * multimedia file. If null of not specified no video stream will be encoded. It
+	 * cannot be null if also the audio field is null.
 	 * 
-	 * @param videoAttributes
-	 *            The attributes for the encoding of the video stream in the
-	 *            target multimedia file.
+	 * @param videoAttributes The attributes for the encoding of the video stream in
+	 *                        the target multimedia file.
 	 */
 	public void setVideoAttributes(VideoAttributes videoAttributes) {
 		this.videoAttributes = videoAttributes;
 	}
 
 	public String toString() {
-		return getClass().getName() + "(format=" + format + ", offset="
-				+ offset + ", duration=" + duration + ", audioAttributes="
-				+ audioAttributes + ", videoAttributes=" + videoAttributes
-				+ ")";
+		return getClass().getName() + "(format=" + format + ", offset=" + offset + ", duration=" + duration
+				+ ", audioAttributes=" + audioAttributes + ", videoAttributes=" + videoAttributes + ")";
 	}
 
 }

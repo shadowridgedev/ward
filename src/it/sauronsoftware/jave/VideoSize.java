@@ -42,10 +42,8 @@ public class VideoSize implements Serializable {
 	/**
 	 * It builds the bean.
 	 * 
-	 * @param width
-	 *            The video width.
-	 * @param height
-	 *            The video height.
+	 * @param width  The video width.
+	 * @param height The video height.
 	 */
 	public VideoSize(int width, int height) {
 		this.width = width;
@@ -71,8 +69,7 @@ public class VideoSize implements Serializable {
 	}
 
 	public String toString() {
-		return getClass().getName() + " (width=" + width + ", height=" + height
-				+ ")";
+		return getClass().getName() + " (width=" + width + ", height=" + height + ")";
 	}
 
 }

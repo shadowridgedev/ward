@@ -46,8 +46,8 @@ class FFMPEGExecutor {
 	private Process ffmpeg = null;
 
 	/**
-	 * A process killer to kill the ffmpeg process with a shutdown hook, useful
-	 * if the jvm execution is shutted down during an ongoing encoding process.
+	 * A process killer to kill the ffmpeg process with a shutdown hook, useful if
+	 * the jvm execution is shutted down during an ongoing encoding process.
 	 */
 	private ProcessKiller ffmpegKiller = null;
 
@@ -69,8 +69,7 @@ class FFMPEGExecutor {
 	/**
 	 * It build the executor.
 	 * 
-	 * @param ffmpegExecutablePath
-	 *            The path of the ffmpeg executable.
+	 * @param ffmpegExecutablePath The path of the ffmpeg executable.
 	 */
 	public FFMPEGExecutor(String ffmpegExecutablePath) {
 		this.ffmpegExecutablePath = ffmpegExecutablePath;
@@ -79,8 +78,7 @@ class FFMPEGExecutor {
 	/**
 	 * Adds an argument to the ffmpeg executable call.
 	 * 
-	 * @param arg
-	 *            The argument.
+	 * @param arg The argument.
 	 */
 	public void addArgument(String arg) {
 		args.add(arg);
@@ -89,8 +87,7 @@ class FFMPEGExecutor {
 	/**
 	 * Executes the ffmpeg process with the previous given arguments.
 	 * 
-	 * @throws IOException
-	 *             If the process call fails.
+	 * @throws IOException If the process call fails.
 	 */
 	public void execute() throws IOException {
 		int argsSize = args.size();

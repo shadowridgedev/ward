@@ -37,14 +37,14 @@ public class MultimediaInfo {
 	private long duration = -1;
 
 	/**
-	 * A set of audio-specific informations. If null, there's no audio stream in
-	 * the multimedia file.
+	 * A set of audio-specific informations. If null, there's no audio stream in the
+	 * multimedia file.
 	 */
 	private AudioInfo audio = null;
 
 	/**
-	 * A set of video-specific informations. If null, there's no video stream in
-	 * the multimedia file.
+	 * A set of video-specific informations. If null, there's no video stream in the
+	 * multimedia file.
 	 */
 	private VideoInfo video = null;
 
@@ -60,19 +60,18 @@ public class MultimediaInfo {
 	/**
 	 * Sets the multimedia file format name.
 	 * 
-	 * @param format
-	 *            The multimedia file format name.
+	 * @param format The multimedia file format name.
 	 */
 	void setFormat(String format) {
 		this.format = format;
 	}
 
 	/**
-	 * Returns the stream duration in millis. If less than 0 this information is
-	 * not available.
+	 * Returns the stream duration in millis. If less than 0 this information is not
+	 * available.
 	 * 
-	 * @return The stream duration in millis. If less than 0 this information is
-	 *         not available.
+	 * @return The stream duration in millis. If less than 0 this information is not
+	 *         available.
 	 */
 	public long getDuration() {
 		return duration;
@@ -81,8 +80,7 @@ public class MultimediaInfo {
 	/**
 	 * Sets the stream duration in millis.
 	 * 
-	 * @param duration
-	 *            The stream duration in millis.
+	 * @param duration The stream duration in millis.
 	 */
 	void setDuration(long duration) {
 		this.duration = duration;
@@ -101,8 +99,7 @@ public class MultimediaInfo {
 	/**
 	 * Sets a set of audio-specific informations.
 	 * 
-	 * @param audio
-	 *            A set of audio-specific informations.
+	 * @param audio A set of audio-specific informations.
 	 */
 	void setAudio(AudioInfo audio) {
 		this.audio = audio;
@@ -121,16 +118,15 @@ public class MultimediaInfo {
 	/**
 	 * Sets a set of video-specific informations.
 	 * 
-	 * @param video
-	 *            A set of video-specific informations.
+	 * @param video A set of video-specific informations.
 	 */
 	void setVideo(VideoInfo video) {
 		this.video = video;
 	}
 
 	public String toString() {
-		return getClass().getName() + " (format=" + format + ", duration="
-				+ duration + ", video=" + video + ", audio=" + audio + ")";
+		return getClass().getName() + " (format=" + format + ", duration=" + duration + ", video=" + video + ", audio="
+				+ audio + ")";
 	}
 
 }

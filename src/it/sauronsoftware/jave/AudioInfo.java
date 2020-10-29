@@ -44,8 +44,8 @@ public class AudioInfo {
 	private int channels = -1;
 
 	/**
-	 * The audio stream (average) bit rate. If less than 0, this information is
-	 * not available.
+	 * The audio stream (average) bit rate. If less than 0, this information is not
+	 * available.
 	 */
 	private int bitRate = -1;
 
@@ -61,16 +61,15 @@ public class AudioInfo {
 	/**
 	 * Sets the audio stream decoder name.
 	 * 
-	 * @param decoder
-	 *            The audio stream decoder name.
+	 * @param decoder The audio stream decoder name.
 	 */
 	void setDecoder(String format) {
 		this.decoder = format;
 	}
 
 	/**
-	 * Returns the audio stream sampling rate. If less than 0, this information
-	 * is not available.
+	 * Returns the audio stream sampling rate. If less than 0, this information is
+	 * not available.
 	 * 
 	 * @return The audio stream sampling rate.
 	 */
@@ -81,16 +80,15 @@ public class AudioInfo {
 	/**
 	 * Sets the audio stream sampling rate.
 	 * 
-	 * @param samplingRate
-	 *            The audio stream sampling rate.
+	 * @param samplingRate The audio stream sampling rate.
 	 */
 	void setSamplingRate(int samplingRate) {
 		this.samplingRate = samplingRate;
 	}
 
 	/**
-	 * Returns the audio stream channels number (1=mono, 2=stereo). If less than
-	 * 0, this information is not available.
+	 * Returns the audio stream channels number (1=mono, 2=stereo). If less than 0,
+	 * this information is not available.
 	 * 
 	 * @return the channels The audio stream channels number (1=mono, 2=stereo).
 	 */
@@ -101,16 +99,15 @@ public class AudioInfo {
 	/**
 	 * Sets the audio stream channels number (1=mono, 2=stereo).
 	 * 
-	 * @param channels
-	 *            The audio stream channels number (1=mono, 2=stereo).
+	 * @param channels The audio stream channels number (1=mono, 2=stereo).
 	 */
 	void setChannels(int channels) {
 		this.channels = channels;
 	}
 
 	/**
-	 * Returns the audio stream (average) bit rate. If less than 0, this
-	 * information is not available.
+	 * Returns the audio stream (average) bit rate. If less than 0, this information
+	 * is not available.
 	 * 
 	 * @return The audio stream (average) bit rate.
 	 */
@@ -121,17 +118,15 @@ public class AudioInfo {
 	/**
 	 * Sets the audio stream (average) bit rate.
 	 * 
-	 * @param bitRate
-	 *            The audio stream (average) bit rate.
+	 * @param bitRate The audio stream (average) bit rate.
 	 */
 	void setBitRate(int bitRate) {
 		this.bitRate = bitRate;
 	}
 
 	public String toString() {
-		return getClass().getName() + " (decoder=" + decoder + ", samplingRate="
-				+ samplingRate + ", channels=" + channels + ", bitRate="
-				+ bitRate + ")";
+		return getClass().getName() + " (decoder=" + decoder + ", samplingRate=" + samplingRate + ", channels="
+				+ channels + ", bitRate=" + bitRate + ")";
 	}
 
 }
