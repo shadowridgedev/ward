@@ -47,7 +47,7 @@ public class Gutenberg {
 //Test
 		if (options != null) {
 
-			String function = options.get(1);
+			String function = options.get(0);
 
 			if (function.equals("youtube")) {
 				URL url = new URL("https://youtu.be/4scs6J33B9E");
@@ -59,7 +59,7 @@ public class Gutenberg {
 				ProcessFiles process = new ProcessFiles();
 				ArrayList<Book> map = new ArrayList<Book>();
 				@SuppressWarnings("rawtypes")
-				int count = process.getFiles(prop, "txt", map);
+				int count = process.getFiles(prop, options.get(1), map);
 				System.out.println("Final Count" + Integer.toString(count));
 				System.out.println("Map Size " + Integer.toString(map.size()));
 				BookManager manager = new BookManager();
