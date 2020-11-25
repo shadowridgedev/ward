@@ -2,13 +2,8 @@ package com.myexperiments.ward;
 
 import java.io.File;
 import java.net.URL;
+
 import com.github.axet.vget.VGet;
-import com.github.axet.vget.info.VideoFileInfo;
-import com.github.axet.vget.info.VideoInfo;
-import com.github.axet.vget.vhs.YouTubeInfo.StreamCombined;
-import com.github.axet.vget.vhs.YouTubeInfo.YoutubeQuality;
-import com.github.axet.wget.info.ex.DownloadError;
-import com.github.axet.wget.info.ex.DownloadRetry;
 
 public class DirectDownload {
 

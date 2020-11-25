@@ -5,26 +5,6 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableList;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-/*
-import lombok.experimental.Wither;
-import no.obos.util.servicebuilder.JerseyConfig;
-import no.obos.util.servicebuilder.ServiceConfig;
-import no.obos.util.servicebuilder.model.Addon;
-import no.obos.util.servicebuilder.util.GuavaHelper;
-import org.h2.jdbcx.JdbcConnectionPool;
-*/
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class JpaEntityManager {
 	private EntityManagerFactory emFactoryObj;

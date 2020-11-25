@@ -179,6 +179,7 @@ public class JavaYoutubeDownloader {
 		httpget2.setHeader("User-Agent", userAgent);
 
 		log.finer("Executing " + httpget2.getURI());
+		@SuppressWarnings("resource")
 		HttpClient httpclient2 = new DefaultHttpClient();
 		HttpResponse response2 = httpclient2.execute(httpget2);
 		HttpEntity entity2 = response2.getEntity();
