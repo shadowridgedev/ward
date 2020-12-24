@@ -154,7 +154,6 @@ public class JavaYoutubeDownloader {
 							}
 						}
 					}
-
 				}
 
 				filename = cleanFilename(filename);

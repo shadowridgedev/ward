@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ward/resources/remove.txt/Untitled 1&apos; to &apos;remove&apos;" description="Rename resource &apos;Untitled 1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="resources/remove.txt/Untitled 1" name="remove" stamp="1608577984616" updateReferences="true"/>
+</session>

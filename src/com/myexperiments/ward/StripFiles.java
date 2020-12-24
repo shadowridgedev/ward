@@ -24,6 +24,7 @@ public class StripFiles {
 		while ((result = br2.readLine()) != null && result.length() != 0) {
 			text += result;
 		}
+		br1.close();
 		return text;
 	}
 
