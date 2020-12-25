@@ -58,7 +58,6 @@ public class Gutenberg {
 			if (function.equals("GetFiles")) {
 				ProcessFiles process = new ProcessFiles();
 				ArrayList<Book> map = new ArrayList<Book>();
-				@SuppressWarnings("rawtypes")
 				int count = process.getFiles(prop, options.get(1), map);
 				System.out.println("Final Count" + Integer.toString(count));
 				System.out.println("Map Size " + Integer.toString(map.size()));
@@ -109,7 +108,6 @@ public class Gutenberg {
 		return options;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void doparse(Properties prop) throws Exception {
 
 		WardDB wardDB = new WardDB(prop);
