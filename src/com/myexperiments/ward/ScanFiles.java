@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import com.myexperiments.ward.ExampleApplication;
 
 public class ScanFiles {
 	static ArrayList<String> options;
@@ -14,6 +15,8 @@ public class ScanFiles {
 	static Prop prop;
 	static Properties Theprop;
 	static Boolean isWindows;
+
+	static ExampleApplication example = new ExampleApplication();
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub

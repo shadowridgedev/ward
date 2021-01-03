@@ -20,30 +20,32 @@ public class Book implements Serializable {
 	private static final long serialVersionUID = -5068990239464021287L;
 
 	int idBook;
-	String title;
-	String author;
-	String date;
+	String Title;
+	String Author;
+	String Date;
 	String PostingDate;
 	String ReleaseDate;
-	String text;
+	String Text;
 	String filename;
-	String path;
+	String Path;
 	String EtextNumber;
-	String source;
-	String name;
+	String Source;
+	String Host;
+	String FileName;
+	String Ext;
 	String language;
 	String Translatedby;
-	boolean verified = false;
-	boolean parsedUIMA = false;
+	boolean Verified = false;
+	boolean ParsedUIMA = false;
 	String UIMAref;
 	String Neo4Jref;
 
 	public boolean isParsedUIMA() {
-		return parsedUIMA;
+		return ParsedUIMA;
 	}
 
 	public void setParsedUIMA(boolean parsedUIMA) {
-		this.parsedUIMA = parsedUIMA;
+		this.ParsedUIMA = parsedUIMA;
 	}
 
 	public String getUIMAref() {
@@ -68,18 +70,18 @@ public class Book implements Serializable {
 
 	public String toString() {
 		String result = Fix(Integer.toString(idBook));
-		result += "Title  " + Fix(title);
-		result += "Author  " + Fix(author);
+		result += "Title  " + Fix(Title);
+		result += "Author  " + Fix(Author);
 		result += "Translatedby " + Fix(Translatedby);
-		result += "Date  " + Fix(date);
+		result += "Date  " + Fix(Date);
 		result += "Posting Date " + Fix(PostingDate);
 		result += "Release Date " + Fix(ReleaseDate);
-		result += "Text  " + Fix(text);
+		result += "Text  " + Fix(Text);
 		result += "Filename  " + Fix(filename);
-		result += "Path  " + Fix(path);
+		result += "Path  " + Fix(Path);
 		result += "EtextNumber  " + Fix(EtextNumber);
-		result += "Source  " + Fix(source);
-		result += "Name  " + Fix(name);
+		result += "Source  " + Fix(Source);
+		result += "Name  " + Fix(FileName);
 		return result;
 	}
 
@@ -104,56 +106,56 @@ public class Book implements Serializable {
 	 * @return the title
 	 */
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 
 	/**
 	 * @param title the title to set
 	 */
 	public void setTitle(String title) {
-		this.title = title;
+		this.Title = title;
 	}
 
 	/**
 	 * @return the author
 	 */
 	public String getAuthor() {
-		return author;
+		return Author;
 	}
 
 	/**
 	 * @param author the author to set
 	 */
 	public void setAuthor(String author) {
-		this.author = author;
+		this.Author = author;
 	}
 
 	/**
 	 * @return the date
 	 */
 	public String getDate() {
-		return date;
+		return Date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
 	public void setDate(String date) {
-		this.date = date;
+		this.Date = date;
 	}
 
 	/**
 	 * @return the text
 	 */
 	public String getText() {
-		return text;
+		return Text;
 	}
 
 	/**
 	 * @param text the text to set
 	 */
 	public void setText(String text) {
-		this.text = text;
+		this.Text = text;
 	}
 
 	/**
@@ -174,14 +176,14 @@ public class Book implements Serializable {
 	 * @return the path
 	 */
 	public String getPath() {
-		return path;
+		return Path;
 	}
 
 	/**
 	 * @param path the path to set
 	 */
 	public void setPath(String path) {
-		this.path = path;
+		this.Path = path;
 	}
 
 	/**
@@ -202,42 +204,42 @@ public class Book implements Serializable {
 	 * @return the source
 	 */
 	public String getSource() {
-		return source;
+		return Source;
 	}
 
 	/**
 	 * @param source the source to set
 	 */
 	public void setSource(String source) {
-		this.source = source;
+		this.Source = source;
 	}
 
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return FileName;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.FileName = name;
 	}
 
 	/**
 	 * @return the verified
 	 */
 	public boolean isVerified() {
-		return verified;
+		return Verified;
 	}
 
 	/**
 	 * @param verified the verified to set
 	 */
 	public void setVerified(boolean verified) {
-		this.verified = verified;
+		this.Verified = verified;
 	}
 
 	/**

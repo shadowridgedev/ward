@@ -72,10 +72,10 @@ public class ProcessFiles {
 
 			Book theBook = new Book();
 			theBook.filename = root.getName();
-			theBook.verified = false;
-			theBook.path = root.getAbsoluteFile().toString().replace(base, "");
+			theBook.Verified = false;
+			theBook.Path = root.getAbsoluteFile().toString().replace(base, "");
 			theBook.parsed = false;
-			theBook.source = "Guttenberg";
+			theBook.Source = "Guttenberg";
 			theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
 			/*
 			 * String text = new String(Files.readAllBytes(Paths.get(theBook.path))); String

@@ -48,7 +48,7 @@ public class ExampleApplication {
 	 * 
 	 * @param args Command-line arguments - see class description
 	 */
-	public static void main(String[] args) {
+	public ExampleApplication() {
 		try {
 			File taeDescriptor = null;
 			File inputDir = null;
@@ -56,8 +56,8 @@ public class ExampleApplication {
 			// Read and validate command line arguments
 			boolean validArgs = false;
 			if (args.length == 2) {
-				taeDescriptor = new File(args[0]);
-				inputDir = new File(args[1]);
+				// taeDescriptor = new File(args[0]);
+				// inputDir = new File(args[1]);
 
 				validArgs = taeDescriptor.exists() && !taeDescriptor.isDirectory() && inputDir.isDirectory();
 			}

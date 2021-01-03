@@ -30,17 +30,17 @@ public class FindGuttenbergInfo {
 	}
 
 	private Book getindexfileinfo(Book current) throws IOException {
-		if (current.path != null) {
-			String path = current.path.toString();
+		if (current.Path != null) {
+			String path = current.Path.toString();
 			if (!(path.contains("old") || path.contains("readme") || path.contains("-") || path.contains("etext")
 					|| path.contains("cache"))) {
-				current.text = new String(Files(Paths.get(path)));
-				current.source = "Index";
-				current.verified = false;
+				current.Text = new String(Files(Paths.get(path)));
+				current.Source = "Index";
+				current.Verified = false;
 				current.parsed = false;
-				System.out.println("Book stored Name" + current.path);
+				System.out.println("Book stored Name" + current.Path);
 			} else
-				System.out.println("Book not stored  " + current.path);
+				System.out.println("Book not stored  " + current.Path);
 		}
 		return current;
 
@@ -75,8 +75,8 @@ public class FindGuttenbergInfo {
 		}
 		title = title.replace(",", " ");
 		author = author.replace("by", "");
-		current.title = title.trim();
-		current.author = author.trim();
+		current.Title = title.trim();
+		current.Author = author.trim();
 		return current;
 	}
 

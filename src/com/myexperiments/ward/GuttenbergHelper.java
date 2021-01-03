@@ -227,11 +227,11 @@ public class GuttenbergHelper {
 	}
 
 	Book addMetadata(Book book, HashMap<String, String> items) {
-		book.author = items.get("Author");
-		book.title = items.get("Title");
+		book.Author = items.get("Author");
+		book.Title = items.get("Title");
 		book.language = items.get("Language");
 		book.Translatedby = items.get("Translanted by");
-		book.date = items.get("Date");
+		book.Date = items.get("Date");
 		book.EtextNumber = items.get("Ebook");
 		return book;
 	}
@@ -273,16 +273,16 @@ public class GuttenbergHelper {
 			count++;
 			if (!map.containsKey(count)) {
 				Book theBook = new Book();
-				theBook.path = root.getAbsoluteFile().toString();
+				theBook.Path = root.getAbsoluteFile().toString();
 				theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
-				theBook.text = new String(Files.readAllBytes(Paths.get(theBook.path)));
-				HashMap<String, String> items = GetBookMetadata(theBook.text);
+				theBook.Text = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+				HashMap<String, String> items = GetBookMetadata(theBook.Text);
 				theBook = addMetadata(theBook, items);
 				theBook = RemoveText(theBook);
-				String temp = theBook.text;
-				theBook.text = null;
+				String temp = theBook.Text;
+				theBook.Text = null;
 				System.out.println(count + " " + theBook.toString());
-				theBook.text = temp;
+				theBook.Text = temp;
 				map.put(count, theBook);
 			}
 		}

@@ -10,7 +10,7 @@ class MySQLCon {
 	static Connection con;
 	ResultSet rs;
 
-	public static void MySQLCon(String User, String Password) throws ClassNotFoundException, SQLException {
+	public MySQLCon(String User, String Password) throws ClassNotFoundException, SQLException {
 
 		Class.forName("com.mysql.jdbc.Driver");
 

@@ -196,7 +196,7 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimaj-examples</artifactId>
-			</dependency>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/org.neo4j/neo4j-jdbc -->
@@ -390,7 +390,8 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimaj-core</artifactId>
-		</dependency>
+			</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimafit-core -->
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimafit-core -->
 		<dependency>

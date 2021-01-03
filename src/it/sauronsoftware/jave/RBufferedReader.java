@@ -36,6 +36,7 @@ class RBufferedReader extends BufferedReader {
 	/**
 	 * Re-inserted lines buffer.
 	 */
+	@SuppressWarnings("rawtypes")
 	private ArrayList lines = new ArrayList();
 
 	/**
