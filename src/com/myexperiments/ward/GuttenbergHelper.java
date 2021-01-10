@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -226,12 +229,12 @@ public class GuttenbergHelper {
 
 	}
 
-	Book addMetadata(Book book, HashMap<String, String> items) {
+	Book addMetadata(Book book, HashMap<String, String> items) throws ParseException {
 		book.Author = items.get("Author");
 		book.Title = items.get("Title");
-		book.language = items.get("Language");
+		book.Language = items.get("Language");
 		book.Translatedby = items.get("Translanted by");
-		book.Date = items.get("Date");
+		book.Date = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(items.get("Date"));
 		book.EtextNumber = items.get("Ebook");
 		return book;
 	}

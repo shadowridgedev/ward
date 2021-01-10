@@ -71,7 +71,7 @@ public class ProcessFiles {
 			count++;
 
 			Book theBook = new Book();
-			theBook.filename = root.getName();
+			theBook.FileName = root.getName();
 			theBook.Verified = false;
 			theBook.Path = root.getAbsoluteFile().toString().replace(base, "");
 			theBook.parsed = false;

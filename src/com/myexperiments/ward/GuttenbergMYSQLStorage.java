@@ -1,6 +1,7 @@
 package com.myexperiments.ward;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,7 +53,7 @@ public class GuttenbergMYSQLStorage {
 		String path = book.getPath();
 		String author = book.getAuthor();
 		String title = book.getTitle();
-		String date = book.getDate();
+		Date date = book.getDate();
 		String file = book.getFilename();
 		/*
 		 * String sql =

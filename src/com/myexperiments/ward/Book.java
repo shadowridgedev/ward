@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 // change
 @Entity
@@ -22,23 +23,22 @@ public class Book implements Serializable {
 	int idBook;
 	String Title;
 	String Author;
-	String Date;
-	String PostingDate;
-	String ReleaseDate;
+	String FileName;
+	Date Date;
+	Date PostingDate;
+	Date ReleaseDate;
 	String Text;
-	String filename;
 	String Path;
 	String EtextNumber;
 	String Source;
 	String Host;
-	String FileName;
 	String Ext;
-	String language;
+	String Language;
 	String Translatedby;
 	boolean Verified = false;
 	boolean ParsedUIMA = false;
-	String UIMAref;
-	String Neo4Jref;
+	int UIMAref;
+	int Neo4Jref;
 
 	public boolean isParsedUIMA() {
 		return ParsedUIMA;
@@ -48,20 +48,20 @@ public class Book implements Serializable {
 		this.ParsedUIMA = parsedUIMA;
 	}
 
-	public String getUIMAref() {
+	public int getUIMAref() {
 		return UIMAref;
 	}
 
 	public void setUIMAref(String uIMAref) {
-		UIMAref = uIMAref;
+		UIMAref = UIMAref;
 	}
 
-	public String getNeo4Jref() {
+	public int getNeo4Jref() {
 		return Neo4Jref;
 	}
 
 	public void setNeo4Jref(String neo4Jref) {
-		Neo4Jref = neo4Jref;
+		Neo4Jref = Neo4Jref;
 	}
 
 	private String Fix(String line) {
@@ -73,11 +73,11 @@ public class Book implements Serializable {
 		result += "Title  " + Fix(Title);
 		result += "Author  " + Fix(Author);
 		result += "Translatedby " + Fix(Translatedby);
-		result += "Date  " + Fix(Date);
-		result += "Posting Date " + Fix(PostingDate);
-		result += "Release Date " + Fix(ReleaseDate);
+		result += "Date  " + Fix(Date.toString());
+		result += "Posting Date " + Fix(PostingDate.toString());
+		result += "Release Date " + Fix(ReleaseDate.toString());
 		result += "Text  " + Fix(Text);
-		result += "Filename  " + Fix(filename);
+		result += "Filename  " + Fix(FileName);
 		result += "Path  " + Fix(Path);
 		result += "EtextNumber  " + Fix(EtextNumber);
 		result += "Source  " + Fix(Source);
@@ -133,14 +133,14 @@ public class Book implements Serializable {
 	/**
 	 * @return the date
 	 */
-	public String getDate() {
+	public java.sql.Date getDate() {
 		return Date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(String date) {
+	public void setDate(java.sql.Date date) {
 		this.Date = date;
 	}
 
@@ -162,14 +162,14 @@ public class Book implements Serializable {
 	 * @return the filename
 	 */
 	public String getFilename() {
-		return filename;
+		return FileName;
 	}
 
 	/**
 	 * @param filename the filename to set
 	 */
 	public void setFilename(String filename) {
-		this.filename = filename;
+		this.FileName = filename;
 	}
 
 	/**
@@ -256,28 +256,28 @@ public class Book implements Serializable {
 		this.parsed = parsed;
 	}
 
-	public String getPostingDate() {
+	public java.sql.Date getPostingDate() {
 		return PostingDate;
 	}
 
-	public void setPostingDate(String postingDate) {
+	public void setPostingDate(java.sql.Date postingDate) {
 		PostingDate = postingDate;
 	}
 
-	public String getReleaseDate() {
+	public java.sql.Date getReleaseDate() {
 		return ReleaseDate;
 	}
 
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(java.sql.Date releaseDate) {
 		ReleaseDate = releaseDate;
 	}
 
 	public String getLanguage() {
-		return language;
+		return Language;
 	}
 
 	public void setLanguage(String language) {
-		this.language = language;
+		this.Language = language;
 	}
 
 	public String getTranslatedby() {
