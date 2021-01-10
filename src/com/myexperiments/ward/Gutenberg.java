@@ -57,7 +57,7 @@ public class Gutenberg {
 			}
 			if (function.equals("GetFiles")) {
 				ProcessFiles process = new ProcessFiles();
-				ArrayList<Book> map = new ArrayList<Book>();
+				ArrayList<Book> map = new ArrayList<>();
 				int count = process.getFiles(prop, options.get(1), map);
 				System.out.println("Final Count" + Integer.toString(count));
 				System.out.println("Map Size " + Integer.toString(map.size()));
@@ -86,7 +86,7 @@ public class Gutenberg {
 	static public ArrayList<String> getargs(String[] args) {
 		final Map<String, List<String>> params = new HashMap<>();
 
-		ArrayList<String> options = new ArrayList<String>();
+		ArrayList<String> options = new ArrayList<>();
 
 		for (int i = 0; i < args.length; i++) {
 			final String a = args[i];

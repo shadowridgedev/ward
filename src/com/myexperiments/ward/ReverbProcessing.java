@@ -50,7 +50,7 @@ public class ReverbProcessing {
 
 	// Prints out extractions from the sentence.
 	LinkedList<ChunkedBinaryExtraction> ReverbChunk(ChunkedSentence sent) {
-		LinkedList<ChunkedBinaryExtraction> extractions = new LinkedList<ChunkedBinaryExtraction>();
+		LinkedList<ChunkedBinaryExtraction> extractions = new LinkedList<>();
 
 		for (ChunkedBinaryExtraction extr : reverb.extract(sent)) {
 			extractions.add(extr);

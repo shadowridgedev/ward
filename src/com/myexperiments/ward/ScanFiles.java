@@ -1,5 +1,6 @@
 package com.myexperiments.ward;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,10 +16,12 @@ public class ScanFiles {
 	static Prop prop;
 	static Properties Theprop;
 	static Boolean isWindows;
+	private static File taeDescriptor;
+	private static File inputDir;
 
-	static ExampleApplication example = new ExampleApplication();
+	static
 
-	public static void main(String[] args) throws IOException {
+	public void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		options = getargs(args);
 		String PropPath = System.getProperty("user.dir") + "/properties";
@@ -31,13 +34,14 @@ public class ScanFiles {
 		Properties prop = new Prop(PropPath).theProp;
 		PropPath = prop.getProperty("GutPath");
 		Textstring = prop.getProperty("TextString");
-
+		// ExampleApplication example = new ExampleApplication( taeDescriptor,
+		// inputDir);
 	}
 
 	static public ArrayList<String> getargs(String[] args) {
 		final Map<String, List<String>> params = new HashMap<>();
 
-		ArrayList<String> options = new ArrayList<String>();
+		ArrayList<String> options = new ArrayList<>();
 
 		for (int i = 0; i < args.length; i++) {
 			final String a = args[i];

@@ -104,7 +104,7 @@ public class JavaYoutubeDownloader {
 	private static void play(String videoId, int format, String encoding, String userAgent, File outputdir,
 			String extension) throws Throwable {
 		log.fine("Retrieving " + videoId);
-		List<NameValuePair> qparams = new ArrayList<NameValuePair>();
+		List<NameValuePair> qparams = new ArrayList<>();
 		qparams.add(new BasicNameValuePair("video_id", videoId));
 		qparams.add(new BasicNameValuePair("fmt", "" + format));
 		URI uri = getUri("get_video_info", qparams);
@@ -113,6 +113,7 @@ public class JavaYoutubeDownloader {
 		HttpContext localContext = new BasicHttpContext();
 		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
 
+		@SuppressWarnings("resource")
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpGet httpget = new HttpGet(uri);
 		httpget.setHeader("User-Agent", userAgent);
@@ -124,7 +125,7 @@ public class JavaYoutubeDownloader {
 			InputStream instream = entity.getContent();
 			String videoInfo = getStringFromInputStream(encoding, instream);
 			if (videoInfo != null && videoInfo.length() > 0) {
-				List<NameValuePair> infoMap = new ArrayList<NameValuePair>();
+				List<NameValuePair> infoMap = new ArrayList<>();
 				URLEncodedUtils.parse(infoMap, new Scanner(videoInfo), encoding);
 				String token = null;
 				String downloadUrl = null;
@@ -168,6 +169,7 @@ public class JavaYoutubeDownloader {
 				if (downloadUrl != null) {
 					downloadWithHttpClient(userAgent, downloadUrl, outputfile);
 				}
+
 			}
 		}
 

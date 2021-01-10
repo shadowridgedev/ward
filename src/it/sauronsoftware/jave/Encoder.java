@@ -124,7 +124,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getAudioDecoders() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -176,7 +176,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getAudioEncoders() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -228,7 +228,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getVideoDecoders() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -280,7 +280,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getVideoEncoders() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -333,7 +333,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getSupportedEncodingFormats() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -391,7 +391,7 @@ public class Encoder {
 	 *                          executable.
 	 */
 	public String[] getSupportedDecodingFormats() throws EncoderException {
-		ArrayList res = new ArrayList();
+		ArrayList<String> res = new ArrayList<>();
 		FFMPEGExecutor ffmpeg = locator.createExecutor();
 		ffmpeg.addArgument("-formats");
 		try {
@@ -629,12 +629,12 @@ public class Encoder {
 	 * @return A hashtable with the value reported in the line, or null if the given
 	 *         line can not be parsed.
 	 */
-	private Hashtable parseProgressInfoLine(String line) {
-		Hashtable table = null;
+	private Hashtable<String, String> parseProgressInfoLine(String line) {
+		Hashtable<String, String> table = null;
 		Matcher m = PROGRESS_INFO_PATTERN.matcher(line);
 		while (m.find()) {
 			if (table == null) {
-				table = new Hashtable();
+				table = new Hashtable<>();
 			}
 			String key = m.group(1);
 			String value = m.group(2);
@@ -824,7 +824,7 @@ public class Encoder {
 				if (step == 4) {
 					line = line.trim();
 					if (line.length() > 0) {
-						Hashtable table = parseProgressInfoLine(line);
+						Hashtable<String, String> table = parseProgressInfoLine(line);
 						if (table == null) {
 							if (listener != null) {
 								listener.message(line);

@@ -25,6 +25,7 @@ public class StripFiles {
 			text += result;
 		}
 		br1.close();
+		br2.close();
 		return text;
 	}
 

@@ -121,6 +121,7 @@ public class WardAE {
 		aCAS.reset();
 	}
 
+	@SuppressWarnings("resource")
 	public static void printAnnotations(CAS aCAS, PrintStream aOut) {
 
 		// Version 3 using select with Stream support
@@ -129,6 +130,7 @@ public class WardAE {
 		// Version 3 using select with extended for
 		for (Annotation fs : aCAS.getAnnotationIndex().select(Annotation.class)) {
 			printFS(fs, aCAS, 0, aOut);
+
 		}
 		//
 		// // version 2 style using iterators

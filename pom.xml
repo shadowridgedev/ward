@@ -50,6 +50,19 @@
 
 	<!-- dpkcore -->
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
+		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-java</artifactId>
+			<version>2020-12-21T21-14-06-a12f84b</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.graphql-java/java-dataloader -->
+		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>java-dataloader</artifactId>
+			<version>2.2.3</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -390,7 +403,7 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>uimaj-core</artifactId>
-			</dependency>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimafit-core -->
 		<!-- https://mvnrepository.com/artifact/org.apache.uima/uimafit-core -->

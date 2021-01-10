@@ -21,7 +21,7 @@ public class GuttenbergHelper {
 	int GuttenbergFiles = 0;
 	int NotGuttenbergFiles = 0;
 	ArrayList<Book> only = null;
-	private ArrayList<String> removetext = new ArrayList<String>();
+	private ArrayList<String> removetext = new ArrayList<>();
 	int count;
 	String GuttenbergPath;
 	String NotGuttenbergPath;
@@ -116,7 +116,7 @@ public class GuttenbergHelper {
 
 	HashMap<String, String> GetBookMetadata(String text) {
 
-		HashMap<String, String> items = new HashMap<String, String>();
+		HashMap<String, String> items = new HashMap<>();
 		int index;
 		String split = System.getProperty("line.separator");
 		String[] lines = text.split(split);

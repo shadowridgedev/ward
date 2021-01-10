@@ -9,7 +9,7 @@ import javax.persistence.EntityManagerFactory;
 public class JpaEntityManager {
 	private EntityManagerFactory emFactoryObj;
 	private final String PERSISTENCE_UNIT_NAME = "JPATest";
-	private final Map<String, String> properties = new HashMap<String, String>();
+	private final Map<String, String> properties = new HashMap<>();
 
 // This Method Is Used To Retrieve The 'EntityManager' Object
 	public EntityManager getEntityManager() {

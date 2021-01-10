@@ -35,7 +35,7 @@ public class ProcessGutenberg {
 	String prop;
 	Properties wardprop = new Properties();
 	ArrayList<String> cuttext;
-	private ArrayList<String> removetext = new ArrayList<String>();
+	private ArrayList<String> removetext = new ArrayList<>();
 
 	ProcessGutenberg(String propertyfilepath) throws IOException {
 		File initialFile = new File(propertyfilepath);

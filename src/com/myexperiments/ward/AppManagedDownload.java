@@ -25,7 +25,7 @@ public class AppManagedDownload {
 		VideoInfo videoinfo;
 		long last;
 
-		Map<VideoFileInfo, SpeedInfo> map = new HashMap<VideoFileInfo, SpeedInfo>();
+		Map<VideoFileInfo, SpeedInfo> map = new HashMap<>();
 
 		public VGetStatus(VideoInfo i) {
 			this.videoinfo = i;

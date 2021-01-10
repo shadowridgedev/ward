@@ -78,7 +78,7 @@ public class SearchResponse {
 		}
 
 		public List<FacetCountsCollection.FacetValue> getFacetField(String field) {
-			List<FacetCountsCollection.FacetValue> facets = new ArrayList<FacetCountsCollection.FacetValue>();
+			List<FacetCountsCollection.FacetValue> facets = new ArrayList<>();
 			if (!facetFields.containsKey(field)) {
 				return facets;
 			}
@@ -105,7 +105,7 @@ public class SearchResponse {
 		}
 
 		public List<FacetCountsCollection.FacetValue> getFacetRange(String field) {
-			List<FacetCountsCollection.FacetValue> facets = new ArrayList<FacetCountsCollection.FacetValue>();
+			List<FacetCountsCollection.FacetValue> facets = new ArrayList<>();
 			if (!facetRanges.containsKey(field)) {
 				return facets;
 			}

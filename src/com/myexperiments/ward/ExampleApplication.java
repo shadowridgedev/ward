@@ -48,19 +48,15 @@ public class ExampleApplication {
 	 * 
 	 * @param args Command-line arguments - see class description
 	 */
-	public ExampleApplication() {
+	public ExampleApplication(File taeDescriptor, File inputDir) {
 		try {
-			File taeDescriptor = null;
-			File inputDir = null;
 
 			// Read and validate command line arguments
 			boolean validArgs = false;
-			if (args.length == 2) {
-				// taeDescriptor = new File(args[0]);
-				// inputDir = new File(args[1]);
 
-				validArgs = taeDescriptor.exists() && !taeDescriptor.isDirectory() && inputDir.isDirectory();
-			}
+			validArgs = taeDescriptor.exists() && !taeDescriptor.isDirectory() && inputDir.isDirectory();
+//			}
+
 			if (!validArgs) {
 				printUsageMessage();
 			} else {
