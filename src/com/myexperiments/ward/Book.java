@@ -52,16 +52,16 @@ public class Book implements Serializable {
 		return UIMAref;
 	}
 
-	public void setUIMAref(String uIMAref) {
-		UIMAref = UIMAref;
+	public void setUIMAref(int uIMAref) {
+		UIMAref = uIMAref;
 	}
 
 	public int getNeo4Jref() {
 		return Neo4Jref;
 	}
 
-	public void setNeo4Jref(String neo4Jref) {
-		Neo4Jref = Neo4Jref;
+	public void setNeo4Jref(int neo4Jref) {
+		Neo4Jref = neo4Jref;
 	}
 
 	private String Fix(String line) {
