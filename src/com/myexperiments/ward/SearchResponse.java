@@ -77,6 +77,7 @@ public class SearchResponse {
 			return facetFields;
 		}
 
+		@SuppressWarnings("unchecked")
 		public List<FacetCountsCollection.FacetValue> getFacetField(String field) {
 			List<FacetCountsCollection.FacetValue> facets = new ArrayList<>();
 			if (!facetFields.containsKey(field)) {

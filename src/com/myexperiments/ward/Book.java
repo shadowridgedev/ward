@@ -37,6 +37,7 @@ public class Book implements Serializable {
 	String Translatedby;
 	boolean Verified = false;
 	boolean ParsedUIMA = false;
+	boolean Fix;
 	int UIMAref;
 	int Neo4Jref;
 
