@@ -34,7 +34,7 @@ public class FindGuttenbergInfo {
 			String path = current.Path.toString();
 			if (!(path.contains("old") || path.contains("readme") || path.contains("-") || path.contains("etext")
 					|| path.contains("cache"))) {
-				current.Text = new String(Files(Paths.get(path)));
+//				current.Text = new String(Files(Paths.get(path)));
 				current.Source = "Index";
 				current.Verified = false;
 				current.parsed = false;

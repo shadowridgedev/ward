@@ -9,8 +9,8 @@
 	<version>1.0.0</version>
 	<properties>
 		<solr.version>6.5.1</solr.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>15</maven.compiler.source>
+		<maven.compiler.target>15</maven.compiler.target>
 		<cleartk.version>2.0.0</cleartk.version>
 	</properties>
 	<distributionManagement>
@@ -55,6 +55,12 @@
 			<groupId>org.neo4j.driver</groupId>
 			<artifactId>neo4j-java-driver</artifactId>
 			<version>4.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.3.3</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
@@ -722,6 +728,16 @@
 			<artifactId>maven-compiler-plugin</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>2.4.2</version>
+			<optional>true</optional>
+			<scope>runtime</scope>
+		</dependency>
+
+
+
 	</dependencies>
 
 
@@ -812,8 +828,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>15</source>
+						<target>15</target>
 					</configuration>
 				</plugin>
 
@@ -847,8 +863,8 @@
 					<configuration>
 						<!-- put your configurations here -->
 						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
+							<source>15</source>
+							<target>15</target>
 						</configuration>
 					</configuration>
 				</plugin>

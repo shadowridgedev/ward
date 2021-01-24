@@ -233,7 +233,7 @@ public class GuttenbergHelper {
 		book.Author = items.get("Author");
 		book.Title = items.get("Title");
 		book.Language = items.get("Language");
-		book.Translatedby = items.get("Translanted by");
+//		book.Translatedby = items.get("Translanted by");
 		book.Date = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(items.get("Date"));
 		book.EtextNumber = items.get("Ebook");
 		return book;
@@ -241,15 +241,15 @@ public class GuttenbergHelper {
 
 	Book RemoveText(Book book) throws IOException {
 
-		String text = book.getText();
+//		String text = book.getText();
 		Iterator<String> itt = cuttext.listIterator();
 		String replaced;
 		while (itt.hasNext()) {
 			replaced = itt.next();
-			text.replace(replaced, "%^%^");
+//			text.replace(replaced, "%^%^");
 
 		}
-		book.setText(text);
+//		book.setText(text);
 		return book;
 	}
 
@@ -278,14 +278,14 @@ public class GuttenbergHelper {
 				Book theBook = new Book();
 				theBook.Path = root.getAbsoluteFile().toString();
 				theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
-				theBook.Text = new String(Files.readAllBytes(Paths.get(theBook.Path)));
-				HashMap<String, String> items = GetBookMetadata(theBook.Text);
-				theBook = addMetadata(theBook, items);
+//				theBook.Text = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+//				HashMap<String, String> items = GetBookMetadata(theBook.Text);
+//				theBook = addMetadata(theBook, items);
 				theBook = RemoveText(theBook);
-				String temp = theBook.Text;
-				theBook.Text = null;
+//				String temp = theBook.Text;
+//				theBook.Text = null;
 				System.out.println(count + " " + theBook.toString());
-				theBook.Text = temp;
+//				theBook.Text = temp;
 				map.put(count, theBook);
 			}
 		}

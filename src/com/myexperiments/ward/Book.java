@@ -27,14 +27,12 @@ public class Book implements Serializable {
 	Date Date;
 	Date PostingDate;
 	Date ReleaseDate;
-	String Text;
 	String Path;
 	String EtextNumber;
 	String Source;
 	String Host;
 	String Ext;
 	String Language;
-	String Translatedby;
 	boolean Verified = false;
 	boolean ParsedUIMA = false;
 	boolean Fix;
@@ -73,11 +71,9 @@ public class Book implements Serializable {
 		String result = Fix(Integer.toString(idBook));
 		result += "Title  " + Fix(Title);
 		result += "Author  " + Fix(Author);
-		result += "Translatedby " + Fix(Translatedby);
 		result += "Date  " + Fix(Date.toString());
 		result += "Posting Date " + Fix(PostingDate.toString());
 		result += "Release Date " + Fix(ReleaseDate.toString());
-		result += "Text  " + Fix(Text);
 		result += "Filename  " + Fix(FileName);
 		result += "Path  " + Fix(Path);
 		result += "EtextNumber  " + Fix(EtextNumber);
@@ -148,16 +144,6 @@ public class Book implements Serializable {
 	/**
 	 * @return the text
 	 */
-	public String getText() {
-		return Text;
-	}
-
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
-		this.Text = text;
-	}
 
 	/**
 	 * @return the filename
@@ -279,14 +265,6 @@ public class Book implements Serializable {
 
 	public void setLanguage(String language) {
 		this.Language = language;
-	}
-
-	public String getTranslatedby() {
-		return Translatedby;
-	}
-
-	public void setTranslatedby(String translatedby) {
-		Translatedby = translatedby;
 	}
 
 	public static long getSerialversionuid() {
