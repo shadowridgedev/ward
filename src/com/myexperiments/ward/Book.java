@@ -81,6 +81,7 @@ public class Book implements Serializable {
 		result += "EtextNumber  " + Fix(EtextNumber);
 		result += "Source  " + Fix(Source);
 		result += "Name  " + Fix(FileName);
+
 		return result;
 	}
 
