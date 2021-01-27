@@ -36,6 +36,7 @@ public class Book implements Serializable {
 	boolean Verified = false;
 	boolean ParsedUIMA = false;
 	boolean Fix;
+	boolean image;
 	long CRC;
 	long Size;
 	int UIMAref;
