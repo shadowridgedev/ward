@@ -156,6 +156,8 @@ public class ScanFiles {
 //				theBook.Text = temp;
 
 //					map.put(count, theBook);
+				theBook = null;
+				System.gc();
 			}
 		}
 		return;
