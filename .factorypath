@@ -1,5 +1,11 @@
 <factorypath>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/neo4j/driver/neo4j-java-driver/1.7.2/neo4j-java-driver-1.7.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context/5.3.3/spring-context-5.3.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aop/5.3.3/spring-aop-5.3.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-beans/5.3.3/spring-beans-5.3.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-core/5.3.3/spring-core-5.3.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-jcl/5.3.3/spring-jcl-5.3.3.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-expression/5.3.3/spring-expression-5.3.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/graphql-java/graphql-java/2020-12-21T21-14-06-a12f84b/graphql-java-2020-12-21T21-14-06-a12f84b.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/antlr/antlr4-runtime/4.8/antlr4-runtime-4.8.jar" enabled="true" runInBatchMode="false"/>
@@ -10,7 +16,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/net/turnbig/spring-data-jdbcx/2.0.5/spring-data-jdbcx-2.0.5.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-jdbc/4.3.7.RELEASE/spring-jdbc-4.3.7.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/data/spring-data-commons/1.13.1.RELEASE/spring-data-commons-1.13.1.RELEASE.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/persistence/persistence-api/1.0.2/persistence-api-1.0.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/github/jsqlparser/jsqlparser/0.9.4/jsqlparser-0.9.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/freemarker/freemarker/2.3.25-incubating/freemarker-2.3.25-incubating.jar" enabled="true" runInBatchMode="false"/>
@@ -282,8 +287,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/uima/uimafit-core/2.4.0/uimafit-core-2.4.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-core/3.2.16.RELEASE/spring-core-3.2.16.RELEASE.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-beans/3.2.16.RELEASE/spring-beans-3.2.16.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/uima/uimaj-as-activemq/2.10.3/uimaj-as-activemq-2.10.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/activemq/activemq-client/5.15.2/activemq-client-5.15.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/activemq/activemq-broker/5.15.2/activemq-broker-5.15.2.jar" enabled="true" runInBatchMode="false"/>
@@ -341,8 +344,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/fusesource/hawtbuf/hawtbuf/1.11/hawtbuf-1.11.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/uima/uimaj-as-core/2.10.3/uimaj-as-core-2.10.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/uima/uimaj-as-jms/2.10.3/uimaj-as-jms-2.10.3.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-aop/4.3.9.RELEASE/spring-aop-4.3.9.RELEASE.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-expression/4.3.9.RELEASE/spring-expression-4.3.9.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-tx/4.3.9.RELEASE/spring-tx-4.3.9.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-jms/4.3.9.RELEASE/spring-jms-4.3.9.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-messaging/4.3.9.RELEASE/spring-messaging-4.3.9.RELEASE.jar" enabled="true" runInBatchMode="false"/>
@@ -766,4 +767,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/codehaus/plexus/plexus-compiler-api/2.8.2/plexus-compiler-api-2.8.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/codehaus/plexus/plexus-compiler-manager/2.8.2/plexus-compiler-manager-2.8.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/codehaus/plexus/plexus-compiler-javac/2.8.2/plexus-compiler-javac-2.8.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-devtools/2.4.2/spring-boot-devtools-2.4.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-autoconfigure/2.4.2/spring-boot-autoconfigure-2.4.2.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

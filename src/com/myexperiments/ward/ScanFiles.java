@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,17 +52,17 @@ public class ScanFiles {
 		Properties prop = new Prop(PropPath).theProp;
 		PropPath = prop.getProperty("GutPath");
 		Textstring = prop.getProperty("TextString");
-		CRC32 calcCRC = new CRC32();
+		CRC64 calcCRC = new CRC64();
 		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
 
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
-		String rootString = "Z:\\";
+		String rootString = "E:\\AVI";
 		File root = new File(rootString);
 //		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
 //		TreeMap<Integer, Book> result;
 
-		searchForFilesExt(root, text, calcCRC);
+		searchForFilesExt(root, video, calcCRC);
 	}
 
 	private static <calcCRC> void searchForFilesExt(File root, String[] video, int i, calcCRC calc) {
@@ -115,7 +117,7 @@ public class ScanFiles {
 			return true;
 	}
 
-	public static void searchForFilesExt(File root, String[] type, CRC32 calc) throws Exception {
+	public static void searchForFilesExt(File root, String[] type, CRC64 calc) throws Exception {
 		// TODO Auto-generated method stub
 		// System.out.println("File " + root.toString());
 
@@ -134,7 +136,7 @@ public class ScanFiles {
 				}
 			}
 		} else if (root.isFile()) {
-
+			long value = (long) Integer.MAX_VALUE;
 			String ext = getExt(root);
 			if (isType(type, ext)) {
 				Book theBook = new Book();
@@ -144,18 +146,23 @@ public class ScanFiles {
 				theBook.FileName = root.getName();
 				theBook.Size = root.length();
 				theBook.Path = root.getPath();
-				theBook.Source = "local";
-				theBook.CRC = calc.GetCRC32(new String(Files.readAllBytes(root.getAbsoluteFile().toPath())));
-//				theBook.Text = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+				theBook.Source = "asrock";
+				Path thePath = root.getAbsoluteFile().toPath();
+				String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+				long datasize = data.getBytes().length;
+				if (datasize != 0)
+					theBook.CRC = calc.fromBytes(data.getBytes()).getValue();
+//				theBook.Text = ;
 //				HashMap<String, String> items = GetBookMetadata(theBook.Text);
 //				theBook = addMetadata(theBook, items);
 //				theBook = RemoveText(theBook);
 //				String temp = theBook.Text;
 //				theBook.Text = null;
-				System.out.println(theBook.Path + " " + theBook.Size + " " + theBook.CRC);
+				System.out.println(theBook.Path + " " + theBook.Size + " " + theBook.Ext);
 //				theBook.Text = temp;
 
 //					map.put(count, theBook);
+				data = null;
 				theBook = null;
 				System.gc();
 			}
@@ -165,7 +172,14 @@ public class ScanFiles {
 
 	static String getExt(File current) {
 		int end = current.toString().lastIndexOf(".");
-		return current.toString().substring(end).replace(".", "");
+		if (end < 0) {
+			return "bad";
+		}
+
+		String currentString = current.toString();
+		String endstring = currentString.substring(end);
+		String result = endstring.replace(".", "");
+		return result;
 	}
 
 	static boolean isType(String[] type, String ext) {

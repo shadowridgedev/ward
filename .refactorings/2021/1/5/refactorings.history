@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.myexperiments.ward.CRC32.java&apos; to &apos;CRC64.java&apos;&#x0D;&#x0A;- Original project: &apos;ward&apos;&#x0D;&#x0A;- Original element: &apos;com.myexperiments.ward.CRC32.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.myexperiments.ward.CRC64.java&apos;" description="Rename compilation unit &apos;CRC32.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.myexperiments.ward{CRC32.java" name="CRC64.java" references="false" stamp="1611841067801" version="1.0"/>
+</session>

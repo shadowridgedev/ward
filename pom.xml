@@ -33,6 +33,30 @@
 		<profile>
 			<repositories>
 				<repository>
+					<id>spring-snapshots</id>
+					<name>Spring Snapshots</name>
+					<url>https://repo.spring.io/snapshot</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>spring-milestones</id>
+					<name>Spring Milestones</name>
+					<url>https://repo.spring.io/milestone</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>spring-plugins</id>
+					<name>Spring Plugins</name>
+					<url>https://repo.spring.io/plugins-release/</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
 					<id>mvnrepository</id>
 					<name>mvnrepository</name>
 					<url>http://www.mvnrepository.com</url>
@@ -62,6 +86,9 @@
 			<artifactId>spring-context</artifactId>
 			<version>5.3.3</version>
 		</dependency>
+
+
+
 
 		<!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java -->
 		<dependency>
