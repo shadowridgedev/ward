@@ -20,6 +20,23 @@ import opennlp.tools.parser.Parse;
 import opennlp.tools.parser.Parser;
 import opennlp.tools.parser.ParserFactory;
 import opennlp.tools.parser.ParserModel;
+import com.xuggle.mediatool.MediaListenerAdapter;
+import com.xuggle.mediatool.event.IAddStreamEvent;
+import com.xuggle.xuggler.IStreamCoder;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class ScanFiles {
 	static ArrayList<String> options;
@@ -58,6 +75,8 @@ public class ScanFiles {
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
 		String rootString = "E:\\AVI";
+//		String rootString = "E:\\big";
+//		String rootString = "Z:\\";
 		File root = new File(rootString);
 //		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
 //		TreeMap<Integer, Book> result;
@@ -136,7 +155,8 @@ public class ScanFiles {
 				}
 			}
 		} else if (root.isFile()) {
-			long value = (long) Integer.MAX_VALUE;
+
+			long value = (long) 1073741832;
 			String ext = getExt(root);
 			if (isType(type, ext)) {
 				Book theBook = new Book();
@@ -148,23 +168,32 @@ public class ScanFiles {
 				theBook.Path = root.getPath();
 				theBook.Source = "asrock";
 				Path thePath = root.getAbsoluteFile().toPath();
-				String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
-				long datasize = data.getBytes().length;
-				if (datasize != 0)
-					theBook.CRC = calc.fromBytes(data.getBytes()).getValue();
+				long heapFreeSize = Runtime.getRuntime().freeMemory() / (1024 * 1024);
+				long heapMaxSize = Runtime.getRuntime().maxMemory() / (1024 * 1024);
+				System.out.println(theBook.Path + " " + theBook.Size / (1024 * 1024) + " " + theBook.Ext + "     "
+						+ heapFreeSize + "  " + heapMaxSize);
+				if (theBook.Size < value) {
+					String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+					long datasize = data.getBytes().length;
+					if (datasize != 0)
+						theBook.CRC = calc.fromBytes(data.getBytes()).getValue();
+					data = null;
+				} else
+					System.out.println("TOO BIG!!!");
+
 //				theBook.Text = ;
 //				HashMap<String, String> items = GetBookMetadata(theBook.Text);
 //				theBook = addMetadata(theBook, items);
 //				theBook = RemoveText(theBook);
 //				String temp = theBook.Text;
 //				theBook.Text = null;
-				System.out.println(theBook.Path + " " + theBook.Size + " " + theBook.Ext);
+//				System.out.println(theBook.Path + " " + theBook.Size / 1024*1024 + " " + theBook.Ext);
 //				theBook.Text = temp;
 
 //					map.put(count, theBook);
-				data = null;
+
 				theBook = null;
-				System.gc();
+//				System.gc();
 			}
 		}
 		return;

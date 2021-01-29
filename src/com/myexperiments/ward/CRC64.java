@@ -68,7 +68,7 @@ public class CRC64 implements Checksum {
 	/**
 	 * Construct new CRC64 instance from byte array.
 	 **/
-	public static CRC64 fromBytes(byte[] b) {
+	public CRC64 fromBytes(byte[] b) {
 		long l = 0;
 		for (int i = 0; i < 4; i++) {
 			l <<= 8;

@@ -20,7 +20,7 @@
 
 		runPipeline(posTagFileReader, createEngine(NERReader.class), snowballStemmer, nerAnnotator);
 	}
-
+The container 'Maven Dependencies' references non existing library 'C:\Users\shado\.m2\repository\xuggle\xuggle-xuggler\5.2\xuggle-xuggler-5.2.jar'
 	public static void classifyTestFile(String modelDirectory, File testPosFile, String language)
 			throws ResourceInitializationException, UIMAException, IOException {
 
