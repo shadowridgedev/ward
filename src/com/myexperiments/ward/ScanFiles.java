@@ -70,6 +70,7 @@ public class ScanFiles {
 		PropPath = prop.getProperty("GutPath");
 		Textstring = prop.getProperty("TextString");
 		CRC64 calcCRC = new CRC64();
+		SelectStatementExample db = new SelectStatementExample();
 		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
 
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
@@ -155,7 +156,7 @@ public class ScanFiles {
 				}
 			}
 		} else if (root.isFile()) {
-
+			HashFile Hasher = new HashFile();
 			long value = (long) 1073741832;
 			String ext = getExt(root);
 			if (isType(type, ext)) {
@@ -170,16 +171,23 @@ public class ScanFiles {
 				Path thePath = root.getAbsoluteFile().toPath();
 				long heapFreeSize = Runtime.getRuntime().freeMemory() / (1024 * 1024);
 				long heapMaxSize = Runtime.getRuntime().maxMemory() / (1024 * 1024);
-				System.out.println(theBook.Path + " " + theBook.Size / (1024 * 1024) + " " + theBook.Ext + "     "
-						+ heapFreeSize + "  " + heapMaxSize);
-				if (theBook.Size < value) {
-					String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
-					long datasize = data.getBytes().length;
-					if (datasize != 0)
-						theBook.CRC = calc.fromBytes(data.getBytes()).getValue();
-					data = null;
-				} else
-					System.out.println("TOO BIG!!!");
+
+				theBook.TooBig = false;
+				if (theBook.Size != 0) {
+					if (theBook.Size > value) {
+						// String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
+						theBook.TooBig = true;
+						System.out.println("TOO BIG!!!");
+					}
+					// data = null;
+
+					theBook.CRC = Hasher.verifyChecksum(theBook.Path);// calc.fromBytes(data.getBytes()).getValue();
+					System.out.println(theBook.Path + " " + theBook.Size / (1024 * 1024) + " " + theBook.Ext + "     "
+							+ heapFreeSize + "  " + heapMaxSize + "   CRC  " + theBook.CRC);
+				}
+
+				theBook = null;
+			}
 
 //				theBook.Text = ;
 //				HashMap<String, String> items = GetBookMetadata(theBook.Text);
@@ -192,11 +200,8 @@ public class ScanFiles {
 
 //					map.put(count, theBook);
 
-				theBook = null;
 //				System.gc();
-			}
 		}
-		return;
 	}
 
 	static String getExt(File current) {

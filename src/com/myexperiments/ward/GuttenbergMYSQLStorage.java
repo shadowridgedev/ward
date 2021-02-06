@@ -23,13 +23,13 @@ public class GuttenbergMYSQLStorage {
 		user = USER;
 		password = PASS;
 	}
+//	 Class.forName("com.mysql.jdbc.Driver");
 
-	// Class.forName("com.mysql.jdbc.Driver");
 	void openConnection() {
 		// Open a connection
 		System.out.println("Connecting to database...");
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/guttenberg", user, password);
+			conn = DriverManager.getConnection(host + ":3306/guttenberg", user, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class GuttenbergMYSQLStorage {
 		String author = book.getAuthor();
 		String title = book.getTitle();
 		Date date = book.getDate();
-		String file = book.getFilename();
+		String file = book.getFileName();
 		/*
 		 * String sql =
 		 * "INSERT  INTO guttenberg ( Author, Title, Text, Date, Path, File) VALUES ( `"

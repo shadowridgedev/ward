@@ -18,7 +18,7 @@
 #     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
 # This output file may be truncated or incomplete.
 #
-#  Out of Memory Error (./open/src/hotspot/os/windows/os_windows.cpp:3472), pid=17708, tid=1952
+#  Out of Memory Error (./open/src/hotspot/os/windows/os_windows.cpp:3472), pid=18712, tid=23268
 #
 # JRE version:  (15.0.1+9) (build )
 # Java VM: Java HotSpot(TM) 64-Bit Server VM (15.0.1+9-18, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
@@ -27,16 +27,16 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:52356 -Xms22G -Xmx22G -XX:+PrintFlagsFinal -XX:+PrintStringTableStatistics -javaagent:C:\sts-4.9.0.RELEASE\configuration\org.eclipse.osgi\252\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=Cp1252 --module-path=C:\Users\shado\git\ward\xuggle-xuggler-noarch-5.4.jar com.myexperiments.ward.ScanFiles
+Command Line: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49791 -Xms22G -Xmx22G -XX:+PrintFlagsFinal -XX:+PrintStringTableStatistics -javaagent:C:\sts-4.9.0.RELEASE\configuration\org.eclipse.osgi\252\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=Cp1252 --module-path=C:\Users\shado\git\ward\xuggle-xuggler-noarch-5.4.jar;C:\Users\shado\git\ward\mariadb-java-client-2.7.2.jar com.myexperiments.ward.ScanFiles
 
 Host: AMD Ryzen 7 2700X Eight-Core Processor         , 16 cores, 31G,  Windows 10 , 64 bit Build 19041 (10.0.19041.662)
-Time: Fri Jan 29 02:23:30 2021 Eastern Standard Time elapsed time: 0.018121 seconds (0d 0h 0m 0s)
+Time: Sat Feb  6 06:54:50 2021 Eastern Standard Time elapsed time: 0.019103 seconds (0d 0h 0m 0s)
 
 ---------------  T H R E A D  ---------------
 
-Current thread (0x000001ffeaa99e80):  JavaThread "Unknown thread" [_thread_in_vm, id=1952, stack(0x0000009722800000,0x0000009722900000)]
+Current thread (0x000001dcfafbb560):  JavaThread "Unknown thread" [_thread_in_vm, id=23268, stack(0x000000d5b7700000,0x000000d5b7800000)]
 
-Stack: [0x0000009722800000,0x0000009722900000]
+Stack: [0x000000d5b7700000,0x000000d5b7800000]
 Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
 V  [jvm.dll+0x62ae9a]
 V  [jvm.dll+0x781389]
@@ -66,22 +66,22 @@ C  [ntdll.dll+0x4d0d1]
 ---------------  P R O C E S S  ---------------
 
 Threads class SMR info:
-_java_thread_list=0x00007ffad8ea4ff0, length=0, elements={
+_java_thread_list=0x00007ffac1214ff0, length=0, elements={
 }
 
 Java Threads: ( => current thread )
 
 Other Threads:
-  0x000001fff35e1ad0 GCTaskThread "GC Thread#0" [stack: 0x0000009722900000,0x0000009722a00000] [id=13908]
-  0x000001ffeaae0000 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000009722a00000,0x0000009722b00000] [id=4736]
-  0x000001ffeaae0bf0 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000009722b00000,0x0000009722c00000] [id=20936]
+  0x000001dcfb981ad0 GCTaskThread "GC Thread#0" [stack: 0x000000d5b7800000,0x000000d5b7900000] [id=6136]
+  0x000001dcfafff7e0 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000d5b7900000,0x000000d5b7a00000] [id=22160]
+  0x000001dcfb000a80 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000d5b7a00000,0x000000d5b7b00000] [id=22576]
 
-[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffad8698047]
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffac0a08047]
 
 VM state: not at safepoint (not fully initialized)
 
 VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
-[0x000001ffeaa952d0] Heap_lock - owner thread: 0x000001ffeaa99e80
+[0x000001dcfafb49f0] Heap_lock - owner thread: 0x000001dcfafbb560
 
 Heap address: 0x0000000280000000, size: 22528 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
 CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
@@ -95,11 +95,11 @@ Heap:
 
 Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
 
-Card table byte_map: [0x000001fff6330000,0x000001fff8f30000] _byte_map_base: 0x000001fff4f30000
+Card table byte_map: [0x000001dc97160000,0x000001dc99d60000] _byte_map_base: 0x000001dc95d60000
 
-Marking Bits (Prev, Next): (CMBitMap*) 0x000001ffeaad3f00, (CMBitMap*) 0x000001ffeaad3f40
- Prev Bits: [0x000001ff8f000000, 0x000001ffa5000000)
- Next Bits: [0x000001ffa5000000, 0x000001ffbb000000)
+Marking Bits (Prev, Next): (CMBitMap*) 0x000001dcfaff3e80, (CMBitMap*) 0x000001dcfaff3ec0
+ Prev Bits: [0x000001dc9c960000, 0x000001dcb2960000)
+ Next Bits: [0x000001dcb2960000, 0x000001dcc8960000)
 
 GC Heap History (0 events):
 No events
@@ -117,50 +117,50 @@ Internal exceptions (0 events):
 No events
 
 Events (1 events):
-Event: 0.011 Loaded shared library C:\Program Files\Java\jdk-15.0.1\bin\java.dll
+Event: 0.012 Loaded shared library C:\Program Files\Java\jdk-15.0.1\bin\java.dll
 
 
 Dynamic libraries:
-0x00007ff629cb0000 - 0x00007ff629cbf000 	C:\Program Files\Java\jdk-15.0.1\bin\javaw.exe
-0x00007ffb35e30000 - 0x00007ffb36026000 	C:\Windows\SYSTEM32\ntdll.dll
-0x00007ffb33fd0000 - 0x00007ffb3408d000 	C:\Windows\System32\KERNEL32.DLL
-0x00007ffb339c0000 - 0x00007ffb33c89000 	C:\Windows\System32\KERNELBASE.dll
-0x00007ffb33c90000 - 0x00007ffb33d90000 	C:\Windows\System32\ucrtbase.dll
-0x00007ffb2b000000 - 0x00007ffb2b019000 	C:\Program Files\Java\jdk-15.0.1\bin\VCRUNTIME140.dll
-0x00007ffb27c50000 - 0x00007ffb27c68000 	C:\Program Files\Java\jdk-15.0.1\bin\jli.dll
-0x00007ffb342a0000 - 0x00007ffb3434c000 	C:\Windows\System32\ADVAPI32.dll
-0x00007ffb346b0000 - 0x00007ffb3474e000 	C:\Windows\System32\msvcrt.dll
-0x00007ffb35cd0000 - 0x00007ffb35d6c000 	C:\Windows\System32\sechost.dll
-0x00007ffb33ea0000 - 0x00007ffb33fcb000 	C:\Windows\System32\RPCRT4.dll
-0x00007ffb340a0000 - 0x00007ffb34240000 	C:\Windows\System32\USER32.dll
-0x00007ffb33830000 - 0x00007ffb33852000 	C:\Windows\System32\win32u.dll
-0x00007ffb345a0000 - 0x00007ffb345ca000 	C:\Windows\System32\GDI32.dll
-0x00007ffb33720000 - 0x00007ffb3382b000 	C:\Windows\System32\gdi32full.dll
-0x00007ffb33d90000 - 0x00007ffb33e2d000 	C:\Windows\System32\msvcp_win.dll
-0x00007ffb12eb0000 - 0x00007ffb1314b000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4\COMCTL32.dll
-0x00007ffb2a470000 - 0x00007ffb2a47a000 	C:\Windows\SYSTEM32\VERSION.dll
-0x00007ffb34680000 - 0x00007ffb346b0000 	C:\Windows\System32\IMM32.DLL
-0x00007ffb2f1b0000 - 0x00007ffb2f1bc000 	C:\Program Files\Java\jdk-15.0.1\bin\vcruntime140_1.dll
-0x00007ffb24f70000 - 0x00007ffb25001000 	C:\Program Files\Java\jdk-15.0.1\bin\msvcp140.dll
-0x00007ffad83e0000 - 0x00007ffad8f3e000 	C:\Program Files\Java\jdk-15.0.1\bin\server\jvm.dll
-0x00007ffb35960000 - 0x00007ffb35968000 	C:\Windows\System32\PSAPI.DLL
-0x00007ffb1a950000 - 0x00007ffb1a959000 	C:\Windows\SYSTEM32\WSOCK32.dll
-0x00007ffb28220000 - 0x00007ffb28247000 	C:\Windows\SYSTEM32\WINMM.dll
-0x00007ffb352f0000 - 0x00007ffb3535b000 	C:\Windows\System32\WS2_32.dll
-0x00007ffb314a0000 - 0x00007ffb314b2000 	C:\Windows\SYSTEM32\kernel.appcore.dll
-0x00007ffb27c40000 - 0x00007ffb27c4a000 	C:\Program Files\Java\jdk-15.0.1\bin\jimage.dll
-0x00007ffb0dff0000 - 0x00007ffb0e1d4000 	C:\Windows\SYSTEM32\DBGHELP.DLL
-0x00007ffb0de80000 - 0x00007ffb0deac000 	C:\Windows\SYSTEM32\dbgcore.DLL
-0x00007ffb33910000 - 0x00007ffb33990000 	C:\Windows\System32\bcryptPrimitives.dll
-0x00007ffb26380000 - 0x00007ffb263b9000 	C:\Program Files\Java\jdk-15.0.1\bin\jdwp.dll
-0x00007ffb27c10000 - 0x00007ffb27c1e000 	C:\Program Files\Java\jdk-15.0.1\bin\instrument.dll
-0x00007ffb25780000 - 0x00007ffb257a5000 	C:\Program Files\Java\jdk-15.0.1\bin\java.dll
+0x00007ff7119d0000 - 0x00007ff7119df000 	C:\Program Files\Java\jdk-15.0.1\bin\javaw.exe
+0x00007ffb350d0000 - 0x00007ffb352c6000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffb34c50000 - 0x00007ffb34d0d000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffb32840000 - 0x00007ffb32b09000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffb32f20000 - 0x00007ffb33020000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffb26640000 - 0x00007ffb26658000 	C:\Program Files\Java\jdk-15.0.1\bin\jli.dll
+0x00007ffb33780000 - 0x00007ffb3382c000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffb34f10000 - 0x00007ffb34fae000 	C:\Windows\System32\msvcrt.dll
+0x00007ffb33130000 - 0x00007ffb331cc000 	C:\Windows\System32\sechost.dll
+0x00007ffb334b0000 - 0x00007ffb335db000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffb26790000 - 0x00007ffb267a9000 	C:\Program Files\Java\jdk-15.0.1\bin\VCRUNTIME140.dll
+0x00007ffb34d70000 - 0x00007ffb34f10000 	C:\Windows\System32\USER32.dll
+0x00007ffb32810000 - 0x00007ffb32832000 	C:\Windows\System32\win32u.dll
+0x00007ffb33740000 - 0x00007ffb3376a000 	C:\Windows\System32\GDI32.dll
+0x00007ffb33020000 - 0x00007ffb3312b000 	C:\Windows\System32\gdi32full.dll
+0x00007ffb32c70000 - 0x00007ffb32d0d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffb11d50000 - 0x00007ffb11feb000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4\COMCTL32.dll
+0x00007ffb2a2b0000 - 0x00007ffb2a2ba000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffb33ea0000 - 0x00007ffb33ed0000 	C:\Windows\System32\IMM32.DLL
+0x00007ffb26a10000 - 0x00007ffb26a1c000 	C:\Program Files\Java\jdk-15.0.1\bin\vcruntime140_1.dll
+0x00007ffb1b470000 - 0x00007ffb1b501000 	C:\Program Files\Java\jdk-15.0.1\bin\msvcp140.dll
+0x00007ffac0750000 - 0x00007ffac12ae000 	C:\Program Files\Java\jdk-15.0.1\bin\server\jvm.dll
+0x00007ffb336d0000 - 0x00007ffb336d8000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffb26ca0000 - 0x00007ffb26cc7000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffaf9650000 - 0x00007ffaf9659000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffb33da0000 - 0x00007ffb33e0b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffb30740000 - 0x00007ffb30752000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffb26880000 - 0x00007ffb2688a000 	C:\Program Files\Java\jdk-15.0.1\bin\jimage.dll
+0x00007ffb133b0000 - 0x00007ffb13594000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffb13380000 - 0x00007ffb133ac000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffb32d40000 - 0x00007ffb32dc0000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffb1cfa0000 - 0x00007ffb1cfd9000 	C:\Program Files\Java\jdk-15.0.1\bin\jdwp.dll
+0x00007ffb26780000 - 0x00007ffb2678e000 	C:\Program Files\Java\jdk-15.0.1\bin\instrument.dll
+0x00007ffb26610000 - 0x00007ffb26635000 	C:\Program Files\Java\jdk-15.0.1\bin\java.dll
 
 dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
 symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-15.0.1\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4;C:\Program Files\Java\jdk-15.0.1\bin\server
 
 VM Arguments:
-jvm_args: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:52356 -Xms22G -Xmx22G -XX:+PrintFlagsFinal -XX:+PrintStringTableStatistics -javaagent:C:\sts-4.9.0.RELEASE\configuration\org.eclipse.osgi\252\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=Cp1252 --module-path=C:\Users\shado\git\ward\xuggle-xuggler-noarch-5.4.jar 
+jvm_args: -XX:+ShowCodeDetailsInExceptionMessages -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:49791 -Xms22G -Xmx22G -XX:+PrintFlagsFinal -XX:+PrintStringTableStatistics -javaagent:C:\sts-4.9.0.RELEASE\configuration\org.eclipse.osgi\252\0\.cp\lib\javaagent-shaded.jar -Dfile.encoding=Cp1252 --module-path=C:\Users\shado\git\ward\xuggle-xuggler-noarch-5.4.jar;C:\Users\shado\git\ward\mariadb-java-client-2.7.2.jar 
 java_command: com.myexperiments.ward.ScanFiles
 java_class_path (initial): C:\Users\shado\git\ward\target\test-classes;C:\Users\shado\git\ward\target\classes;C:\Users\shado\.m2\repository\org\neo4j\driver\neo4j-java-driver\1.7.2\neo4j-java-driver-1.7.2.jar;C:\Users\shado\.m2\repository\org\springframework\spring-context\5.3.3\spring-context-5.3.3.jar;C:\Users\shado\.m2\repository\org\springframework\spring-aop\5.3.3\spring-aop-5.3.3.jar;C:\Users\shado\.m2\repository\org\springframework\spring-beans\5.3.3\spring-beans-5.3.3.jar;C:\Users\shado\.m2\repository\org\springframework\spring-core\5.3.3\spring-core-5.3.3.jar;C:\Users\shado\.m2\repository\org\springframework\spring-jcl\5.3.3\spring-jcl-5.3.3.jar;C:\Users\shado\.m2\repository\org\springframework\spring-expression\5.3.3\spring-expression-5.3.3.jar;C:\Users\shado\.m2\repository\com\graphql-java\graphql-java\2020-12-21T21-14-06-a12f84b\graphql-java-2020-12-21T21-14-06-a12f84b.jar;C:\Users\shado\.m2\repository\org\reactivestreams\reactive-streams\1.0.2\reactive-streams-1.0.2.jar;C:\Users\shado\.m2\repository\org\antlr\antlr4-runtime\4.8\antlr4-runtime-4.8.jar;C:\Users\shado\.m2\repository\com\graphql-java\java-dataloader\2.2.3\java-dataloader-2.2.3.jar;C:\Users\shado\.m2\repository\org\projectlombok\lombok\1.18.10\lombok-1.18.10.jar;C:\Users\shado\.m2\repository\com\xebia\jackson-lombok\1.1\jackson-lombok-1.1.jar;C:\Users\shado\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.6.7.4\jackson-databind-2.6.7.4.jar;C:\Users\shado\.m2\repository\com\h2database\h2\1.4.200\h2-1.4.200.jar;C:\Users\shado\.m2\repository\net\turnbig\spring-data-jdbcx\2.0.5\spring-data-jdbcx-2.0.5.jar;C:\Users\shado\.m2\repository\org\springframework\spring-jdbc\4.3.7.RELEASE\spring-jdbc-4.3.7.RELEASE.jar;C:\Users\shado\.m2\repository\org\springframework\data\spring-data-commons\1.13.1.RELEASE\spring-data-commons-1.13.1.RELEASE.jar;C:\Users\shado\.m2\repository\javax\persistence\persistence-api\1.0.2\persistence-api-1.0.2.jar;C:\Users\shado\.m2\repository\com\github\jsqlparser\
 Launcher Type: SUN_STANDARD
@@ -207,13 +207,13 @@ PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 8 Stepping 2, AuthenticAMD
 
 OS:
  Windows 10 , 64 bit Build 19041 (10.0.19041.662)
-OS uptime: 0 days 1:38 hours
+OS uptime: 2 days 4:29 hours
 HyperV virtualization detected
 
 CPU: total 16 (initial active 16) (16 cores per cpu, 2 threads per core) family 23 model 8 stepping 2 microcode 0x0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, vzeroupper, avx, avx2, aes, clmul, 3dnowpref, lzcnt, sse4a, ht, tsc, tscinvbit, tscinv, bmi1, bmi2, adx, sha, fma, clflush, clflushopt
 
-Memory: 4k page, system-wide physical 32696M (1373M free)
-TotalPageFile size 93696M (AvailPageFile size 17802M)
+Memory: 4k page, system-wide physical 32696M (4217M free)
+TotalPageFile size 93696M (AvailPageFile size 19599M)
 current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
 current process commit charge ("private bytes"): 71M, peak: 22599M
 
