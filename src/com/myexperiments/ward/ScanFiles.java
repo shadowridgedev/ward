@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,15 +49,14 @@ public class ScanFiles {
 	static Boolean isWindows;
 	private static File taeDescriptor;
 	private static File inputDir;
-	TreeMap<Integer, Book> map;
 	int count;
 
 	static public void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
-		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi" };
-		String[] audio = { "mp3", "m4a", "wav", "wma", "aac" };
+		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub" };
+		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md" };
 		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 
 		options = getargs(args);
@@ -70,24 +71,23 @@ public class ScanFiles {
 		PropPath = prop.getProperty("GutPath");
 		Textstring = prop.getProperty("TextString");
 		CRC64 calcCRC = new CRC64();
-		SelectStatementExample db = new SelectStatementExample();
+		SQLInterface db = new SQLInterface();
 		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
 
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
-		String rootString = "E:\\AVI";
+//		String rootString = "E:\\AVI";
 //		String rootString = "E:\\big";
 //		String rootString = "Z:\\";
+//		String rootString = "E:\\pdf";
+		String rootString = "E:\\mp3";
+//		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
 //		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
 //		TreeMap<Integer, Book> result;
+		SearchforFiles searcher = new SearchforFiles();
 
-		searchForFilesExt(root, video, calcCRC);
-	}
-
-	private static <calcCRC> void searchForFilesExt(File root, String[] video, int i, calcCRC calc) {
-		// TODO Auto-generated method stub
-
+		searcher.searchForFilesExt(root, audio, db);
 	}
 
 	Parse[] parse(String sentence) throws IOException {
@@ -103,7 +103,16 @@ public class ScanFiles {
 		return topParses;
 	}
 
-	static public ArrayList<String> getargs(String[] args) {
+	static boolean testOS() {
+		String test = System.getProperty("user.dir");
+
+		if (test.startsWith("/"))
+			return false;
+		else
+			return true;
+	}
+
+	public static ArrayList<String> getargs(String[] args) {
 		final Map<String, List<String>> params = new HashMap<>();
 
 		ArrayList<String> options = new ArrayList<>();
@@ -127,102 +136,4 @@ public class ScanFiles {
 		}
 		return options;
 	}
-
-	static boolean testOS() {
-		String test = System.getProperty("user.dir");
-
-		if (test.startsWith("/"))
-			return false;
-		else
-			return true;
-	}
-
-	public static void searchForFilesExt(File root, String[] type, CRC64 calc) throws Exception {
-		// TODO Auto-generated method stub
-		// System.out.println("File " + root.toString());
-
-//		if (count > string)
-//			return null;
-
-		if (root == null)
-			return; // just for safety || !root.getPath().toString().contains("old"))
-
-		if (root.isDirectory()) {
-			// System.out.println(root.toString());
-
-			for (File file : root.listFiles()) {
-				if (file != null) {
-					searchForFilesExt(file, type, calc);
-				}
-			}
-		} else if (root.isFile()) {
-			HashFile Hasher = new HashFile();
-			long value = (long) 1073741832;
-			String ext = getExt(root);
-			if (isType(type, ext)) {
-				Book theBook = new Book();
-				theBook.Path = root.getAbsoluteFile().toString();
-				theBook.EtextNumber = root.getParent().replaceAll("\\D+", "");
-				theBook.Ext = ext;
-				theBook.FileName = root.getName();
-				theBook.Size = root.length();
-				theBook.Path = root.getPath();
-				theBook.Source = "asrock";
-				Path thePath = root.getAbsoluteFile().toPath();
-				long heapFreeSize = Runtime.getRuntime().freeMemory() / (1024 * 1024);
-				long heapMaxSize = Runtime.getRuntime().maxMemory() / (1024 * 1024);
-
-				theBook.TooBig = false;
-				if (theBook.Size != 0) {
-					if (theBook.Size > value) {
-						// String data = new String(Files.readAllBytes(Paths.get(theBook.Path)));
-						theBook.TooBig = true;
-						System.out.println("TOO BIG!!!");
-					}
-					// data = null;
-
-					theBook.CRC = Hasher.verifyChecksum(theBook.Path);// calc.fromBytes(data.getBytes()).getValue();
-					System.out.println(theBook.Path + " " + theBook.Size / (1024 * 1024) + " " + theBook.Ext + "     "
-							+ heapFreeSize + "  " + heapMaxSize + "   CRC  " + theBook.CRC);
-				}
-
-				theBook = null;
-			}
-
-//				theBook.Text = ;
-//				HashMap<String, String> items = GetBookMetadata(theBook.Text);
-//				theBook = addMetadata(theBook, items);
-//				theBook = RemoveText(theBook);
-//				String temp = theBook.Text;
-//				theBook.Text = null;
-//				System.out.println(theBook.Path + " " + theBook.Size / 1024*1024 + " " + theBook.Ext);
-//				theBook.Text = temp;
-
-//					map.put(count, theBook);
-
-//				System.gc();
-		}
-	}
-
-	static String getExt(File current) {
-		int end = current.toString().lastIndexOf(".");
-		if (end < 0) {
-			return "bad";
-		}
-
-		String currentString = current.toString();
-		String endstring = currentString.substring(end);
-		String result = endstring.replace(".", "");
-		return result;
-	}
-
-	static boolean isType(String[] type, String ext) {
-		for (String example : type) {
-
-			if (ext.compareTo(example) == 0)
-				return true;
-		}
-		return false;
-	}
-
 }

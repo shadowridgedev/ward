@@ -22,8 +22,8 @@ import com.mysql.cj.jdbc.Driver;
 
 // change
 @Entity
-@Table(name = "book")
-public class Book implements Serializable {
+@Table(name = "FileItem")
+public class FileData implements Serializable {
 	/**
 	 * 
 	 */
@@ -33,27 +33,17 @@ public class Book implements Serializable {
 		return serialVersionUID;
 	}
 
-	int idBook;
-
-	String Title;
-
-	String Author;
+	int idItem;
 
 	String FileName;
 
 	Date Date;
 
-	Date PostingDate;
-
-	Date ReleaseDate;
-
 	String Path;
 
-	String EtextNumber;
+	String Host;
 
 	String Source;
-
-	String Host;
 
 	String Ext;
 
@@ -76,28 +66,12 @@ public class Book implements Serializable {
 	boolean image;
 	boolean video;
 
-	public int getIdBook() {
-		return idBook;
+	public int getIdItem() {
+		return idItem;
 	}
 
-	public void setIdBook(int idBook) {
-		this.idBook = idBook;
-	}
-
-	public String getTitle() {
-		return Title;
-	}
-
-	public void setTitle(String title) {
-		Title = title;
-	}
-
-	public String getAuthor() {
-		return Author;
-	}
-
-	public void setAuthor(String author) {
-		Author = author;
+	public void setIdItem(int idItem) {
+		this.idItem = idItem;
 	}
 
 	public String getFileName() {
@@ -116,22 +90,6 @@ public class Book implements Serializable {
 		Date = date;
 	}
 
-	public Date getPostingDate() {
-		return PostingDate;
-	}
-
-	public void setPostingDate(Date postingDate) {
-		PostingDate = postingDate;
-	}
-
-	public Date getReleaseDate() {
-		return ReleaseDate;
-	}
-
-	public void setReleaseDate(Date releaseDate) {
-		ReleaseDate = releaseDate;
-	}
-
 	public String getPath() {
 		return Path;
 	}
@@ -140,12 +98,12 @@ public class Book implements Serializable {
 		Path = path;
 	}
 
-	public String getEtextNumber() {
-		return EtextNumber;
+	public String getHost() {
+		return Host;
 	}
 
-	public void setEtextNumber(String etextNumber) {
-		EtextNumber = etextNumber;
+	public void setHost(String host) {
+		Host = host;
 	}
 
 	public String getSource() {
@@ -154,14 +112,6 @@ public class Book implements Serializable {
 
 	public void setSource(String source) {
 		Source = source;
-	}
-
-	public String getHost() {
-		return Host;
-	}
-
-	public void setHost(String host) {
-		Host = host;
 	}
 
 	public String getExt() {
@@ -287,7 +237,7 @@ public class Book implements Serializable {
 	public String toString() {
 		String result = "";
 		/*
-		 * String result = Fix(Integer.toString(idBook)); result += "Title  " +
+		 * String result = Fix(Integer.toString(idFileItem)); result += "Title  " +
 		 * Fix(Title); result += "Author  " + Fix(Author); result += "Date  " +
 		 * Fix(Date.toString()); result += "Posting Date " +
 		 * Fix(PostingDate.toString()); result += "Release Date " +
@@ -298,8 +248,8 @@ public class Book implements Serializable {
 		return result;
 	}
 
-	public void InsertBook(Book book, Connection conn, String table, String query) {
-		System.out.println("Writimg records into the table...");
+	public void InsertFileData(FileData FileItem, Connection conn, String table) {
+//System.out.println("Writimg records into the table...");
 		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
@@ -307,26 +257,93 @@ public class Book implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String path = book.getPath();
-		String author = book.getAuthor();
-		String title = book.getTitle();
-		Date date = book.getDate();
-		String file = book.getFileName();
-		/*
-		 * String sql =
-		 * "INSERT  INTO guttenberg ( Author, Title, Text, Date, Path, File) VALUES ( `"
-		 * + author +"`,`" +title +"`," + "LOAD_FILE(`" + path +"`),`" + date+"`,`" +
-		 * path +"`,`"+file.getName()+ "` )"; // String sql = "INSERT INTO " + table +
-		 * "Title) VALUES ( 'Unknown')"; // String sql = "INSERT INTO '"table + ( VALUES
-		 * ( LOAD_FILE( '" + path + "'))"; // String sql =
-		 * "INSERT INTO `guttenberg` (  `Path`, `File`) VALUES ( " + "Test," + "twat" +
-		 * ")";
-		 */
+
+		String lExt = FileItem.Ext;
+		String lFileName = FileItem.FileName;
+		long lSize = FileItem.Size;
+		String lPath = FileItem.Path;
+		String lSource = "ASROCK";
+		String lHost = "ASROCK";
+		String lLanguage = "English";
+		boolean lVerified = false;
+
+		boolean lParsedUIMA = false;
+		boolean lTooBig = false;
+		long lUIMAref = 0;
+		long lNeo4Jref = 0;
+		boolean lparsed = false;
+
+		boolean laudio = false;
+		boolean ltext = false;
+		boolean image = false;
+		boolean lvideo = false;
+
+		String lfilename = FileItem.getFileName();
+		String lCRC64 = FileItem.getCRC();
+
+		String sql = "INSERT  INTO " + table + " " + "( Path, Filename,  Source, Host, Ext, Size, CRC64 ) VALUES ( "
+				+ fix(lPath) + fix(lfilename) + fix(lSource) + fix(lHost) + fix(lExt) + lSize + ", "
+				+ fix(lCRC64).substring(0, fix(lCRC64).lastIndexOf(",")) + ")";
+
 		try {
-			stmt.executeUpdate(query);
+			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			try {
+
+				long l = 1000000000;
+
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+				delay(l);
+
+				/*
+				 * delay(l); delay(l); delay(l); delay(l); delay(l); delay(l); delay(l);
+				 * delay(l); delay(l);
+				 */
+				stmt.executeUpdate(sql);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 		}
 
 	}
+
+	String fix(String field) {
+		field = " '" + field + "',";
+		return field;
+
+	}
+
+	void delay(long n) {
+		System.gc();
+		for (long i = 0; i < n; i++)
+			;
+		{
+
+		}
+	}
+
 }
