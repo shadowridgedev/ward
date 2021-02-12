@@ -1,0 +1,57 @@
+This assumes a 5 node cluster - one master aggregator (172.16.1.1), one aggregator (172.16.1.2) and 4 leaves (172.16.1.3-6) - and that you have a download URL from MemSQL.
+
+## On all nodes
+apt-get install g++ mysql-client-core-5.5
+wget ${MEMSQL_DOWNLOAD_URL}
+dpkg -i ${MEMSQL_DOWNLOAD}
+# Check that things are running and you can connect
+mysql -u root -h 127.0.0.1 -P 3306 --prompt="memsql> "
+# Install collectd
+apt-get install libtool
+wget ${MEMSQL_COLLECTD_DOWNLOAD_URL}
+dpkg -i ${MEMSQL_COLLECTD_DOWNLOAD}
+vim /etc/collectd.conf
+# Replace Host
+Host "172.16.1.1"
+# Save and quit
+service collectd start
+
+## On the master aggregator node
+service memsql stop
+vim /var/lib/memsql/memsql.cnf
+# Insert this line above the "MySQL-style configuration options" area
+master-aggregator
+# Save and quit
+service memsql start
+
+## On the aggregator node
+service memsql stop
+vim /var/lib/memsql/memsql.cnf
+# Insert this line above the "MySQL-style configuration options" area
+master-aggregator=172.16.1.1:3306
+# Save and quit
+service memsql start
+# And then on the master-aggregator
+mysql -u root -h 127.0.0.1 -P 3306 --prompt="memsql> "
+show aggregators;
+# You should see the master and the aggregator listed
+
+## And then back on the master-aggregator, add the leaves
+mysql -u root -h 127.0.0.1 -P 3306 --prompt="memsql> "
+add leaf 'root'@'172.16.1.3':3306;
+add leaf 'root'@'172.16.1.4':3306;
+add leaf 'root'@'172.16.1.5':3306;
+add leaf 'root'@'172.16.1.6':3306;
+# Check this with
+show leaves;
+
+## To install MemSQL Ops
+wget ${MEMSQL_OPS_DOWNLOAD_URL}
+dpkg -i ${MEMSQL_OPS_DOWNLOAD}
+vim /var/lib/memsql-ops/memsql_ops.cnf
+# Set all instances of the below to your master
+db_host: 172.16.1.1
+# Save and quit
+service memsql-ops start
+
+One important thing to note is that the logs aren't in /var/log, check /var/lib/memsql/tracelogs or /var/lib/memsql-ops instead.

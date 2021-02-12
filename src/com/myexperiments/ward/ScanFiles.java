@@ -78,9 +78,9 @@ public class ScanFiles {
 		// inputDir);
 //		String rootString = "E:\\AVI";
 //		String rootString = "E:\\big";
-//		String rootString = "Z:\\";
+		String rootString = "Z:\\";
 //		String rootString = "E:\\pdf";
-		String rootString = "E:\\mp3";
+//	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
 //		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
