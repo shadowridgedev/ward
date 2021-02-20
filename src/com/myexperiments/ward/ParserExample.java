@@ -13,7 +13,7 @@ public class ParserExample {
 
 	public static void main(String args[]) throws Exception {
 		// Loading parser model
-		InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
+		InputStream inputStream = new FileInputStream("src/en-parser-chunking.bin");
 		ParserModel model = new ParserModel(inputStream);
 
 		// Creating a parser
