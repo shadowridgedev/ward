@@ -91,7 +91,7 @@ public class ScanFiles {
 	}
 
 	Parse[] parse(String sentence) throws IOException {
-		InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
+		InputStream inputStream = new FileInputStream("en-parserchunking.bin");
 		ParserModel model = new ParserModel(inputStream);
 
 		// Creating a parser
