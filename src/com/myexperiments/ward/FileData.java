@@ -292,35 +292,6 @@ public class FileData implements Serializable {
 
 				long l = 1000000000;
 
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-				delay(l);
-
-				/*
-				 * delay(l); delay(l); delay(l); delay(l); delay(l); delay(l); delay(l);
-				 * delay(l); delay(l);
-				 */
 				stmt.executeUpdate(sql);
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

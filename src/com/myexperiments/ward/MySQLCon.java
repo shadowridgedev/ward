@@ -20,9 +20,10 @@ class MySQLCon {
 
 	}
 
-	public void query(String query) throws SQLException {
+	public ResultSet query(String query) throws SQLException {
 		Statement stmt = con.createStatement();
 		rs = stmt.executeQuery(query);
+		return rs;
 	}
 
 	public void list() throws SQLException {

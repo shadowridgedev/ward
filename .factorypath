@@ -140,11 +140,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openimaj/core-audio/1.3.10/core-audio-1.3.10.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openimaj/core-feature/1.3.10/core-feature-1.3.10.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/openimaj/JTransforms/1.3.10/JTransforms-1.3.10.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/openimaj/machine-learning/1.3.10/machine-learning-1.3.10.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/joda-time/joda-time/2.7/joda-time-2.7.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/openimaj/nearest-neighbour/1.3.10/nearest-neighbour-1.3.10.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/de/bwaldvogel/liblinear-dense/1.92/liblinear-dense-1.92.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/tw/edu/ntu/csie/libsvm/3.1/libsvm-3.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/graphql-java/graphql-java/2020-12-21T21-14-06-a12f84b/graphql-java-2020-12-21T21-14-06-a12f84b.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/antlr/antlr4-runtime/4.8/antlr4-runtime-4.8.jar" enabled="true" runInBatchMode="false"/>
@@ -541,6 +536,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/languagetool/language-uk/2.5/language-uk-2.5.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.maltparser-asl/1.6.2/de.tudarmstadt.ukp.dkpro.core.maltparser-asl-1.6.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/maltparser/maltparser/1.7.2/maltparser-1.7.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/tw/edu/ntu/csie/libsvm/3.1/libsvm-3.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.io.conll-asl/1.6.2/de.tudarmstadt.ukp.dkpro.core.io.conll-asl-1.6.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.io-asl/1.6.2/de.tudarmstadt.ukp.dkpro.core.api.io-asl-1.6.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.io.text-asl/1.9.1/de.tudarmstadt.ukp.dkpro.core.io.text-asl-1.9.1.jar" enabled="true" runInBatchMode="false"/>
@@ -651,6 +647,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/info/ganglia/gmetric4j/gmetric4j/1.0.7/gmetric4j-1.0.7.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/dropwizard/metrics/metrics-ganglia/3.2.2/metrics-ganglia-3.2.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/dropwizard/metrics/metrics-jetty9/3.2.2/metrics-jetty9-3.2.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/joda-time/joda-time/2.7/joda-time-2.7.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/net/hydromatic/eigenbase-properties/1.1.5/eigenbase-properties-1.1.5.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/calcite/calcite-core/1.13.0/calcite-core-1.13.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/calcite/calcite-linq4j/1.13.0/calcite-linq4j-1.13.0.jar" enabled="true" runInBatchMode="false"/>

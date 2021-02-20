@@ -96,7 +96,7 @@ public class SearchforFiles {
 						Files.move(source, source.resolveSibling(name2));
 						Item.FileName = name2;
 					}
-					Item.InsertFileData(Item, db.Queryconnection, "files");
+					Item.InsertFileData(Item, SQLInterface.Queryconnection, "files");
 					Item = null;
 					Hasher = null;
 				}

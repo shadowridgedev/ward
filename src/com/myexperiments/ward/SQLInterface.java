@@ -26,8 +26,7 @@ public class SQLInterface {
 
 		/*
 		 * try { Class.forName("com.mariadb.jdbc.Driver"); } catch
-		 * (ClassNotFoundException e1) { // TODO Auto-generated catch block
-		 * e1.printStackTrace(); }
+		 * (ClassNotFoundException e1) { e1.printStackTrace(); }
 		 */
 		// using try-with-resources to avoid closing resources (boilerplate code)
 
