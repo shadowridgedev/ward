@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,10 +77,12 @@ public class ScanFiles {
 
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
-//		String rootString = "E:\\AVI";
+		String rootString = "E:\\AVI";
 //		String rootString = "E:\\big";
-		String rootString = "Z:\\";
+//		String rootString = "Z:\\";
+//		String source = "Gutenberg";
 //		String rootString = "E:\\pdf";
+		String source = "ASROCK";
 //	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
@@ -87,7 +90,14 @@ public class ScanFiles {
 //		TreeMap<Integer, Book> result;
 		SearchforFiles searcher = new SearchforFiles();
 
-		searcher.searchForFilesExt(root, audio, db);
+		searcher.SearchFiles(root, text, db, source);
+		/*
+		 * ResultSet rs = db.doQuery("ward.files", " Ext = 'txt'"); while (rs.next()) {
+		 * String path = rs.getString(rs.findColumn("Path")); String filename =
+		 * rs.getNString(rs.findColumn("FileName")); String pathstring = path + "\\" +
+		 * filename; Path filepath = Path.of(pathstring); String filetext =
+		 * Files.readString(filepath); }
+		 */
 	}
 
 	Parse[] parse(String sentence) throws IOException {

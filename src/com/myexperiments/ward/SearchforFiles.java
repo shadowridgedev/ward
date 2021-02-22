@@ -9,19 +9,22 @@ import org.apache.commons.io.FileUtils;
 
 public class SearchforFiles {
 
-	public void SearchFiles(File root, String[] type, SQLInterface db) throws Exception {
+	private String rootstring;
 
-		searchForFilesExt(root, type, db);
+	public void SearchFiles(File root, String[] type, SQLInterface db, String source) throws Exception {
+		File startroot = root;
+		rootstring = root.toString();
+		searchForFilesExt(root, type, db, source);
 	}
 
-	public void searchForFilesExt(File root, String[] type, SQLInterface db) throws Exception {
+	public void searchForFilesExt(File root, String[] type, SQLInterface db, String source) throws Exception {
 		// TODO Auto-generated method stub
 		// System.out.println("File " + root.toString());
 		File root1 = root;
 //		if (count > string)
 //			return null;
 
-		if (root1 == null)
+		if (root1 == null || root.getPath().toString().contains("old") || root.getPath().toString().contains("cache"))
 			return; // just for safety || !root.getPath().toString().contains("old"))
 
 		if (root1.isDirectory()) {
@@ -29,7 +32,7 @@ public class SearchforFiles {
 
 			for (File file : root1.listFiles()) {
 				if (file != null) {
-					searchForFilesExt(file, type, db);
+					searchForFilesExt(file, type, db, source);
 				}
 			}
 		} else if (root1.isFile()) {
@@ -42,23 +45,17 @@ public class SearchforFiles {
 
 				String name2 = needsfix(root1.getName());
 				if (!name1.equals(name2)) {
-					Path source = root1.toPath();
-					Files.move(source, source.resolveSibling(name2));
-
+					name1 = name2;
 				}
 				if (!Files.notExists((root1.toPath()))) {
-					if (!name1.equals(name2)) {
-						Path source = root1.toPath();
-						Files.move(source, source.resolveSibling(name2));
-
-					}
 					FileData Item = new FileData();
-					Item.Path = root1.getAbsolutePath();
 
 					Item.Ext = ext;
 					Item.FileName = root1.getName();
+					Item.HostBase = this.rootstring;
+					Item.FileName = Item.FileName.replace(this.rootstring, "");
 					Item.Size = root1.length();
-					Item.Path = root1.getPath();
+					Item.Path = root1.toString().replace(Item.FileName, "");
 					Item.Source = "ASROCK";
 					Item.Host = "ASROCK";
 					Item.Language = "English";
@@ -86,17 +83,13 @@ public class SearchforFiles {
 									+ "     " + Item.CRC);
 							System.out.println("TOO BIG!!!");
 						} else {
-							Item.CRC = Hasher.verifyChecksum(Item.Path);// calc.fromBytes(data.getBytes()).getValue();
+							Item.CRC = Hasher.verifyChecksum(root1.getAbsolutePath());// calc.fromBytes(data.getBytes()).getValue();
 							System.out.println(Item.Path + " " + Item.FileName + " " + Item.Size + " " + Item.Ext
 									+ "     " + Item.CRC);
 						}
 					}
-					if (!name1.equals(name2)) {
-						Path source = root1.toPath();
-						Files.move(source, source.resolveSibling(name2));
-						Item.FileName = name2;
-					}
-					Item.InsertFileData(Item, SQLInterface.Queryconnection, "files");
+
+					Item.InsertFileData(Item, SQLInterface.Queryconnection, "files", source);
 					Item = null;
 					Hasher = null;
 				}
@@ -106,7 +99,7 @@ public class SearchforFiles {
 	}
 
 	String needsfix(String name) {
-		name = name.replace("'", "");
+		name = name.replace("'", "''");
 		return name;
 
 	}

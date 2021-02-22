@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import com.mysql.cj.jdbc.Driver;
+import com.mysql.cj.protocol.Resultset;
 
 // change
 @Entity
@@ -40,8 +41,9 @@ public class FileData implements Serializable {
 	Date Date;
 
 	String Path;
-
+	String AbsolutePath;
 	String Host;
+	String HostBase;
 
 	String Source;
 
@@ -66,12 +68,149 @@ public class FileData implements Serializable {
 	boolean image;
 	boolean video;
 
-	public int getIdItem() {
-		return idItem;
+	public String toString() {
+		String result = "";
+		/*
+		 * String result = Fix(Integer.toString(idFileItem)); result += "Title  " +
+		 * Fix(Title); result += "Author  " + Fix(Author); result += "Date  " +
+		 * Fix(Date.toString()); result += "Posting Date " +
+		 * Fix(PostingDate.toString()); result += "Release Date " +
+		 * Fix(ReleaseDate.toString()); result += "Filename  " + Fix(FileName); result
+		 * += "Path  " + Fix(Path); result += "EtextNumber  " + Fix(EtextNumber); result
+		 * += "Source  " + Fix(Source); result += "Name  " + Fix(FileName);
+		 */
+		return result;
 	}
 
-	public void setIdItem(int idItem) {
-		this.idItem = idItem;
+	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) {
+//System.out.println("Writimg records into the table...");
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String lExt = FileItem.Ext;
+		String lFileName = FileItem.FileName;
+		long lSize = FileItem.Size;
+		String lPath = FileItem.Path;
+		String lAbsolutePath = FileItem.AbsolutePath;
+		String lSource = source;
+		String lHost = "ASROCK";
+		String lHostBase = FileItem.HostBase;
+		String lLanguage = "English";
+		boolean lVerified = false;
+
+		boolean lParsedUIMA = false;
+		boolean lTooBig = TooBig;
+		long lUIMAref = UIMAref;
+		long lNeo4Jref = Neo4Jref;
+		boolean lparsed = parsed;
+
+		boolean laudio = audio;
+		boolean ltext = text;
+		boolean image = text;
+		boolean lvideo = video;
+
+		String lfilename = FileItem.getFileName();
+		String lCRC64 = FileItem.getCRC();
+
+		String sql = "INSERT  INTO " + table + " "
+				+ "( Path, Filename,  Source, Host, HostBase, AbsolutePath, Ext, Size, CRC64 ) VALUES (" + fix(lPath)
+				+ fix(lfilename) + fix(lSource) + fix(lHost) + fix(lHostBase) + fix(lAbsolutePath) + fix(lExt) + lSize
+				+ "," + fix(lCRC64);
+//		System.out.println(sql);
+		sql = sql.substring(0, sql.length() - 2);
+//		System.out.println(sql);
+		sql = sql + ");";
+//		System.out.println(sql);
+		try {
+			stmt.executeUpdate(sql);
+		} catch
+
+		(SQLException e) {
+			try {
+
+				long l = 1000000000;
+
+				stmt.executeUpdate(sql);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public ResultSet GetFileData(String sql, Connection conn, String table) {
+
+		Statement stmt = null;
+		ResultSet r = null;
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * String lExt = FileItem.Ext; String lFileName = FileItem.FileName; long lSize
+		 * = FileItem.Size; String lPath = FileItem.Path; String lSource = "ASROCK";
+		 * String lHost = "ASROCK"; String lLanguage = "English"; boolean lVerified =
+		 * false;
+		 * 
+		 * boolean lParsedUIMA = false; boolean lTooBig = TooBig; long lUIMAref =
+		 * UIMAref; long lNeo4Jref = Neo4Jref; boolean lparsed = parsed;
+		 * 
+		 * boolean laudio = audio; boolean ltext = text; boolean image = text; boolean
+		 * lvideo = video;
+		 * 
+		 * String lfilename = FileItem.getFileName(); String lCRC64 = FileItem.getCRC();
+		 * 
+		 * String sql = "INSERT  INTO " + table + " " +
+		 * "( Path, Filename,  Source, Host, Ext, Size, CRC64 ) VALUES ( " + fix(lPath)
+		 * + fix(lfilename) + fix(lSource) + fix(lHost) + fix(lExt) + lSize + ", " +
+		 * fix(lCRC64).substring(0, fix(lCRC64).lastIndexOf(",")) + ")";
+		 */
+
+		try {
+			r = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			try {
+
+				long l = 1000000000;
+
+				stmt.executeQuery(sql);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		}
+		return r;
+
+	}
+
+	String fix(String field) {
+		if (field != null && !field.isEmpty()) {
+			field = field.replace("\\", "/");
+			field.replace("'", "\\'");
+		}
+		field = "\'" + field + "\', ";
+		return field;
+
+	}
+
+	void delay(long n) {
+		System.gc();
+		for (long i = 0; i < n; i++)
+			;
+	}
+
+	public int getIdItem() {
+		return idItem;
 	}
 
 	public String getFileName() {
@@ -104,6 +243,14 @@ public class FileData implements Serializable {
 
 	public void setHost(String host) {
 		Host = host;
+	}
+
+	public String getHostBase() {
+		return HostBase;
+	}
+
+	public void setHostBase(String hostBase) {
+		HostBase = hostBase;
 	}
 
 	public String getSource() {
@@ -234,87 +381,7 @@ public class FileData implements Serializable {
 		this.video = video;
 	}
 
-	public String toString() {
-		String result = "";
-		/*
-		 * String result = Fix(Integer.toString(idFileItem)); result += "Title  " +
-		 * Fix(Title); result += "Author  " + Fix(Author); result += "Date  " +
-		 * Fix(Date.toString()); result += "Posting Date " +
-		 * Fix(PostingDate.toString()); result += "Release Date " +
-		 * Fix(ReleaseDate.toString()); result += "Filename  " + Fix(FileName); result
-		 * += "Path  " + Fix(Path); result += "EtextNumber  " + Fix(EtextNumber); result
-		 * += "Source  " + Fix(Source); result += "Name  " + Fix(FileName);
-		 */
-		return result;
+	public void setIdItem(int idItem) {
+		this.idItem = idItem;
 	}
-
-	public void InsertFileData(FileData FileItem, Connection conn, String table) {
-//System.out.println("Writimg records into the table...");
-		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		String lExt = FileItem.Ext;
-		String lFileName = FileItem.FileName;
-		long lSize = FileItem.Size;
-		String lPath = FileItem.Path;
-		String lSource = "ASROCK";
-		String lHost = "ASROCK";
-		String lLanguage = "English";
-		boolean lVerified = false;
-
-		boolean lParsedUIMA = false;
-		boolean lTooBig = false;
-		long lUIMAref = 0;
-		long lNeo4Jref = 0;
-		boolean lparsed = false;
-
-		boolean laudio = false;
-		boolean ltext = false;
-		boolean image = false;
-		boolean lvideo = false;
-
-		String lfilename = FileItem.getFileName();
-		String lCRC64 = FileItem.getCRC();
-
-		String sql = "INSERT  INTO " + table + " " + "( Path, Filename,  Source, Host, Ext, Size, CRC64 ) VALUES ( "
-				+ fix(lPath) + fix(lfilename) + fix(lSource) + fix(lHost) + fix(lExt) + lSize + ", "
-				+ fix(lCRC64).substring(0, fix(lCRC64).lastIndexOf(",")) + ")";
-
-		try {
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			try {
-
-				long l = 1000000000;
-
-				stmt.executeUpdate(sql);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
-		}
-
-	}
-
-	String fix(String field) {
-		field = " '" + field + "',";
-		return field;
-
-	}
-
-	void delay(long n) {
-		System.gc();
-		for (long i = 0; i < n; i++)
-			;
-		{
-
-		}
-	}
-
 }

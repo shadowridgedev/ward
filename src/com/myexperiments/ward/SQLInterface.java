@@ -39,24 +39,29 @@ public class SQLInterface {
 		}
 	}
 
-	ResultSet doQuery(String QUERY) {
+	ResultSet doQuery(String Table, String Select) {
 
-		// Step 2:Create a statement using connection object
+		String QUERY = "Select * from " + Table + " where " + Select + ";";
+		// Step 2:Create a statement using connection object\
 		try {
 			Statement stmt = Queryconnection.createStatement();
 
 			// Step 3: Execute the query or update query
 			ResultSet rs = stmt.executeQuery(QUERY);
-
+			int currentcol;
+			int count = 0;
 			// Step 4: Process the ResultSet object.
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String country = rs.getString("country");
-				String password = rs.getString("password");
-				System.out.println(id + "," + name + "," + email + "," + country + "," + password);
-			}
+			/*
+			 * while (rs.next()) {
+			 * 
+			 * currentcol = rs.findColumn("id"); String Id = rs.getString(currentcol);
+			 * currentcol = rs.findColumn("Filename"); String FileName =
+			 * rs.getString(currentcol); currentcol = rs.findColumn("Size"); String Size =
+			 * rs.getString(currentcol); // currentcol = rs.findColumn("country"); // String
+			 * country = rs.getString(currentcol);
+			 * 
+			 * System.out.println(count++ + "  " + Id + ", " + FileName + ", " + Size); }
+			 */
 			return rs;
 
 		} catch (SQLException e) {
