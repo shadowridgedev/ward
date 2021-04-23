@@ -39,34 +39,27 @@ public class FileData implements Serializable {
 	String FileName;
 
 	Date Date;
-
 	String Path;
 	String AbsolutePath;
 	String Host;
 	String HostBase;
-
 	String Source;
-
 	String Ext;
-
 	String Language;
-
-	boolean Verified = false;
-
-	boolean ParsedUIMA = false;
-	boolean TooBig = false;
-
-	boolean Fix;
-
 	String CRC;
 	long Size;
 	int UIMAref;
 	int Neo4Jref;
+
+	boolean audio = false;
+	boolean text = false;
+	boolean image = false;
+	boolean video = false;
+	boolean Verified = false;
+	boolean ParsedUIMA = false;
+	boolean TooBig = false;
+	boolean Fix = false;
 	boolean parsed = false;
-	boolean audio;
-	boolean text;
-	boolean image;
-	boolean video;
 
 	public String toString() {
 		String result = "";

@@ -1,7 +1,10 @@
 https://jankotek.gitbooks.io/mapdb/content/quick-start/
 
 
-
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>UIMAPprojects</groupId>
+	<artifactId>UIMAPprojects</artifactId>
+	<version>1.0.0</version>
 
 
 		<dependencies>
