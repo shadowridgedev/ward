@@ -74,7 +74,6 @@ public class ScanFiles {
 		CRC64 calcCRC = new CRC64();
 		SQLInterface db = new SQLInterface();
 		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
-
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
 		String rootString = "E:\\AVI";

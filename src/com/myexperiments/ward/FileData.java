@@ -84,7 +84,7 @@ public class FileData implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		Long RecordID;
 		String lExt = FileItem.Ext;
 		String lFileName = FileItem.FileName;
 		long lSize = FileItem.Size;
