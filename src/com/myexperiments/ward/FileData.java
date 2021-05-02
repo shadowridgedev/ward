@@ -59,7 +59,9 @@ public class FileData implements Serializable {
 	boolean ParsedUIMA = false;
 	boolean TooBig = false;
 	boolean Fix = false;
-	boolean parsed = false;
+	boolean Parsed = false;
+
+	private boolean parsed;
 
 	public String toString() {
 		String result = "";
@@ -90,7 +92,7 @@ public class FileData implements Serializable {
 		long lSize = FileItem.Size;
 		String lPath = FileItem.Path;
 		String lAbsolutePath = FileItem.AbsolutePath;
-		String lSource = source;
+		String lSource = Source;
 		String lHost = "ASROCK";
 		String lHostBase = FileItem.HostBase;
 		String lLanguage = "English";
@@ -100,7 +102,7 @@ public class FileData implements Serializable {
 		boolean lTooBig = TooBig;
 		long lUIMAref = UIMAref;
 		long lNeo4Jref = Neo4Jref;
-		boolean lparsed = parsed;
+		boolean lparsed = Parsed;
 
 		boolean laudio = audio;
 		boolean ltext = text;
@@ -335,11 +337,11 @@ public class FileData implements Serializable {
 	}
 
 	public boolean isParsed() {
-		return parsed;
+		return Parsed;
 	}
 
 	public void setParsed(boolean parsed) {
-		this.parsed = parsed;
+		this.Parsed = parsed;
 	}
 
 	public boolean isAudio() {

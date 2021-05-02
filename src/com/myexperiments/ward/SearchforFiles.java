@@ -65,7 +65,7 @@ public class SearchforFiles {
 					Item.TooBig = false;
 					Item.UIMAref = 0;
 					Item.Neo4Jref = 0;
-					Item.parsed = false;
+					Item.Parsed = false;
 					Item.audio = false;
 					Item.text = false;
 					Item.image = false;
