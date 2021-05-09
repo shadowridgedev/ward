@@ -76,11 +76,11 @@ public class ScanFiles {
 		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
 		// ExampleApplication example = new ExampleApplication( taeDescriptor,
 		// inputDir);
-		String rootString = "E:\\AVI";
+		String rootString = "Z:\\gut";
 //		String rootString = "E:\\big";
 //		String rootString = "Z:\\";
 //		String source = "Gutenberg";
-//		String rootString = "E:\\pdf";
+//		String rootString = "D:\\pdf";
 		String source = "ASROCK";
 //	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";

@@ -48,8 +48,8 @@ public class FileData implements Serializable {
 	String Language;
 	String CRC;
 	long Size;
-	int UIMAref;
-	int Neo4Jref;
+	long UIMAref;
+	long Neo4Jref;
 
 	boolean audio = false;
 	boolean text = false;
@@ -83,7 +83,6 @@ public class FileData implements Serializable {
 		try {
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Long RecordID;
@@ -95,15 +94,14 @@ public class FileData implements Serializable {
 		String lSource = Source;
 		String lHost = "ASROCK";
 		String lHostBase = FileItem.HostBase;
+		String FileText;
 		String lLanguage = "English";
 		boolean lVerified = false;
-
 		boolean lParsedUIMA = false;
 		boolean lTooBig = TooBig;
 		long lUIMAref = UIMAref;
 		long lNeo4Jref = Neo4Jref;
 		boolean lparsed = Parsed;
-
 		boolean laudio = audio;
 		boolean ltext = text;
 		boolean image = text;
@@ -113,9 +111,9 @@ public class FileData implements Serializable {
 		String lCRC64 = FileItem.getCRC();
 
 		String sql = "INSERT  INTO " + table + " "
-				+ "( Path, Filename,  Source, Host, HostBase, AbsolutePath, Ext, Size, CRC64 ) VALUES (" + fix(lPath)
-				+ fix(lfilename) + fix(lSource) + fix(lHost) + fix(lHostBase) + fix(lAbsolutePath) + fix(lExt) + lSize
-				+ "," + fix(lCRC64);
+				+ "( Path, Filename,  Source, Host, HostBase, AbsolutePath, Ext, Size, CRC64 ) VALUES ("
+				+ fixPath(lPath) + fixPath(lfilename) + fixPath(lSource) + lHost + fixPath(lHostBase)
+				+ fixPath(lAbsolutePath) + fixPath(lExt) + lSize + "," + fixPath(lCRC64);
 //		System.out.println(sql);
 		sql = sql.substring(0, sql.length() - 2);
 //		System.out.println(sql);
@@ -132,7 +130,7 @@ public class FileData implements Serializable {
 
 				stmt.executeUpdate(sql);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+
 				e1.printStackTrace();
 			}
 
@@ -147,7 +145,7 @@ public class FileData implements Serializable {
 		try {
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		/*
@@ -179,7 +177,7 @@ public class FileData implements Serializable {
 
 				stmt.executeQuery(sql);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+
 				e1.printStackTrace();
 			}
 
@@ -188,7 +186,7 @@ public class FileData implements Serializable {
 
 	}
 
-	String fix(String field) {
+	String fixPath(String field) {
 		if (field != null && !field.isEmpty()) {
 			field = field.replace("\\", "/");
 			field.replace("'", "\\'");
@@ -206,6 +204,10 @@ public class FileData implements Serializable {
 
 	public int getIdItem() {
 		return idItem;
+	}
+
+	public void setIdItem(int idItem) {
+		this.idItem = idItem;
 	}
 
 	public String getFileName() {
@@ -230,6 +232,14 @@ public class FileData implements Serializable {
 
 	public void setPath(String path) {
 		Path = path;
+	}
+
+	public String getAbsolutePath() {
+		return AbsolutePath;
+	}
+
+	public void setAbsolutePath(String absolutePath) {
+		AbsolutePath = absolutePath;
 	}
 
 	public String getHost() {
@@ -272,38 +282,6 @@ public class FileData implements Serializable {
 		Language = language;
 	}
 
-	public boolean isVerified() {
-		return Verified;
-	}
-
-	public void setVerified(boolean verified) {
-		Verified = verified;
-	}
-
-	public boolean isParsedUIMA() {
-		return ParsedUIMA;
-	}
-
-	public void setParsedUIMA(boolean parsedUIMA) {
-		ParsedUIMA = parsedUIMA;
-	}
-
-	public boolean isTooBig() {
-		return TooBig;
-	}
-
-	public void setTooBig(boolean tooBig) {
-		TooBig = tooBig;
-	}
-
-	public boolean isFix() {
-		return Fix;
-	}
-
-	public void setFix(boolean fix) {
-		Fix = fix;
-	}
-
 	public String getCRC() {
 		return CRC;
 	}
@@ -320,7 +298,7 @@ public class FileData implements Serializable {
 		Size = size;
 	}
 
-	public int getUIMAref() {
+	public long getUIMAref() {
 		return UIMAref;
 	}
 
@@ -328,20 +306,12 @@ public class FileData implements Serializable {
 		UIMAref = uIMAref;
 	}
 
-	public int getNeo4Jref() {
+	public long getNeo4Jref() {
 		return Neo4Jref;
 	}
 
 	public void setNeo4Jref(int neo4Jref) {
 		Neo4Jref = neo4Jref;
-	}
-
-	public boolean isParsed() {
-		return Parsed;
-	}
-
-	public void setParsed(boolean parsed) {
-		this.Parsed = parsed;
 	}
 
 	public boolean isAudio() {
@@ -376,7 +346,36 @@ public class FileData implements Serializable {
 		this.video = video;
 	}
 
-	public void setIdItem(int idItem) {
-		this.idItem = idItem;
+	public boolean isVerified() {
+		return Verified;
 	}
+
+	public void setVerified(boolean verified) {
+		Verified = verified;
+	}
+
+	public boolean isParsedUIMA() {
+		return ParsedUIMA;
+	}
+
+	public void setParsedUIMA(boolean parsedUIMA) {
+		ParsedUIMA = parsedUIMA;
+	}
+
+	public boolean isTooBig() {
+		return TooBig;
+	}
+
+	public void setTooBig(boolean tooBig) {
+		TooBig = tooBig;
+	}
+
+	public boolean isFix() {
+		return Fix;
+	}
+
+	public void setFix(boolean fix) {
+		Fix = fix;
+	}
+
 }
