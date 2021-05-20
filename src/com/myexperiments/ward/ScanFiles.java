@@ -56,7 +56,7 @@ public class ScanFiles {
 		// TODO Auto-generated method stub
 
 		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
-		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub" };
+		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
 		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md" };
 		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 

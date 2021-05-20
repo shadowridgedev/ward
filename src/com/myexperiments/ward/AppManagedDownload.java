@@ -185,8 +185,6 @@ public class AppManagedDownload {
 			}
 
 			v.download(user, stop, notify);
-		} catch (DownloadInterruptedError e) {
-			throw e;
 		} catch (RuntimeException e) {
 			throw e;
 		} catch (Exception e) {

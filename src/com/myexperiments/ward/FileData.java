@@ -103,6 +103,8 @@ public class FileData implements Serializable {
 		long lNeo4Jref = Neo4Jref;
 		boolean lparsed = Parsed;
 		boolean laudio = audio;
+		boolean lgooddata = true;
+		boolean lduplicate = false;
 		boolean ltext = text;
 		boolean image = text;
 		boolean lvideo = video;
