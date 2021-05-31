@@ -35,9 +35,7 @@ public class FileData implements Serializable {
 	}
 
 	int idItem;
-
 	String FileName;
-
 	Date Date;
 	String Path;
 	String AbsolutePath;
@@ -61,19 +59,9 @@ public class FileData implements Serializable {
 	boolean Fix = false;
 	boolean Parsed = false;
 
-	private boolean parsed;
-
 	public String toString() {
 		String result = "";
-		/*
-		 * String result = Fix(Integer.toString(idFileItem)); result += "Title  " +
-		 * Fix(Title); result += "Author  " + Fix(Author); result += "Date  " +
-		 * Fix(Date.toString()); result += "Posting Date " +
-		 * Fix(PostingDate.toString()); result += "Release Date " +
-		 * Fix(ReleaseDate.toString()); result += "Filename  " + Fix(FileName); result
-		 * += "Path  " + Fix(Path); result += "EtextNumber  " + Fix(EtextNumber); result
-		 * += "Source  " + Fix(Source); result += "Name  " + Fix(FileName);
-		 */
+
 		return result;
 	}
 
@@ -85,37 +73,11 @@ public class FileData implements Serializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		Long RecordID;
-		String lExt = FileItem.Ext;
-		String lFileName = FileItem.FileName;
-		long lSize = FileItem.Size;
-		String lPath = FileItem.Path;
-		String lAbsolutePath = FileItem.AbsolutePath;
-		String lSource = Source;
-		String lHost = "ASROCK";
-		String lHostBase = FileItem.HostBase;
-		String FileText;
-		String lLanguage = "English";
-		boolean lVerified = false;
-		boolean lParsedUIMA = false;
-		boolean lTooBig = TooBig;
-		long lUIMAref = UIMAref;
-		long lNeo4Jref = Neo4Jref;
-		boolean lparsed = Parsed;
-		boolean laudio = audio;
-		boolean lgooddata = true;
-		boolean lduplicate = false;
-		boolean ltext = text;
-		boolean image = text;
-		boolean lvideo = video;
-
-		String lfilename = FileItem.getFileName();
-		String lCRC64 = FileItem.getCRC();
 
 		String sql = "INSERT  INTO " + table + " "
-				+ "( Path, Filename,  Source, Host, HostBase, AbsolutePath, Ext, Size, CRC64 ) VALUES ("
-				+ fixPath(lPath) + fixPath(lfilename) + fixPath(lSource) + lHost + fixPath(lHostBase)
-				+ fixPath(lAbsolutePath) + fixPath(lExt) + lSize + "," + fixPath(lCRC64);
+				+ "( id,Item,FileName,Date,Path,AbsolutePath,Host,HostBase,Ext,Language,CRC,Size,UIMAref,Neo4Jref,audio,text,image,video,Verified,ParsedUIMA,TooBig,Fix,Parsed, ) VALUES ("
+				+ fixPath(Path) + fixPath(FileName) + fixPath(Source) + Host + fixPath(HostBase) + fixPath(AbsolutePath)
+				+ fixPath(Ext) + Size + "," + fixPath(CRC);
 //		System.out.println(sql);
 		sql = sql.substring(0, sql.length() - 2);
 //		System.out.println(sql);
@@ -150,25 +112,6 @@ public class FileData implements Serializable {
 
 			e.printStackTrace();
 		}
-		/*
-		 * String lExt = FileItem.Ext; String lFileName = FileItem.FileName; long lSize
-		 * = FileItem.Size; String lPath = FileItem.Path; String lSource = "ASROCK";
-		 * String lHost = "ASROCK"; String lLanguage = "English"; boolean lVerified =
-		 * false;
-		 * 
-		 * boolean lParsedUIMA = false; boolean lTooBig = TooBig; long lUIMAref =
-		 * UIMAref; long lNeo4Jref = Neo4Jref; boolean lparsed = parsed;
-		 * 
-		 * boolean laudio = audio; boolean ltext = text; boolean image = text; boolean
-		 * lvideo = video;
-		 * 
-		 * String lfilename = FileItem.getFileName(); String lCRC64 = FileItem.getCRC();
-		 * 
-		 * String sql = "INSERT  INTO " + table + " " +
-		 * "( Path, Filename,  Source, Host, Ext, Size, CRC64 ) VALUES ( " + fix(lPath)
-		 * + fix(lfilename) + fix(lSource) + fix(lHost) + fix(lExt) + lSize + ", " +
-		 * fix(lCRC64).substring(0, fix(lCRC64).lastIndexOf(",")) + ")";
-		 */
 
 		try {
 			r = stmt.executeQuery(sql);
