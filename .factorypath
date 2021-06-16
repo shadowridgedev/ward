@@ -152,7 +152,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/freemarker/freemarker/2.3.25-incubating/freemarker-2.3.25-incubating.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/commons/commons-collections4/4.0/commons-collections4-4.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/ch/qos/logback/logback-classic/1.1.11/logback-classic-1.1.11.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot/1.5.2.RELEASE/spring-boot-1.5.2.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot/2.5.0/spring-boot-2.5.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/mybatis/mybatis/3.5.3/mybatis-3.5.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/eclipse/persistence/eclipselink/2.7.4/eclipselink-2.7.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/eclipse/persistence/jakarta.persistence/2.2.2/jakarta.persistence-2.2.2.jar" enabled="true" runInBatchMode="false"/>

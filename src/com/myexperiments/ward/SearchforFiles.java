@@ -21,6 +21,7 @@ public class SearchforFiles {
 		// TODO Auto-generated method stub
 		// System.out.println("File " + root.toString());
 		File root1 = root;
+		int i;
 //		if (count > string)
 //			return null;
 
@@ -31,7 +32,10 @@ public class SearchforFiles {
 			// System.out.println(root.toString());
 
 			for (File file : root1.listFiles()) {
+				if (file.isDirectory() && file.listFiles() == null)
+					i = 1;
 				if (file != null) {
+
 					searchForFilesExt(file, type, db, source);
 				}
 			}

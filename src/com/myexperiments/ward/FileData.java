@@ -25,9 +25,7 @@ import com.mysql.cj.protocol.Resultset;
 @Entity
 @Table(name = "FileItem")
 public class FileData implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -5068990239464021287L;
 
 	public static long getSerialversionuid() {
@@ -48,7 +46,6 @@ public class FileData implements Serializable {
 	long Size;
 	long UIMAref;
 	long Neo4Jref;
-
 	boolean audio = false;
 	boolean text = false;
 	boolean image = false;
@@ -58,9 +55,10 @@ public class FileData implements Serializable {
 	boolean TooBig = false;
 	boolean Fix = false;
 	boolean Parsed = false;
+	boolean Duplicate = false;
 
 	public String toString() {
-		String result = "";
+		String result = " not done ";
 
 		return result;
 	}
