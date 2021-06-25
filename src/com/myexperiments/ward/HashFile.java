@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashFile {
 
-	public String verifyChecksum(String file) throws NoSuchAlgorithmException, IOException {
+	public String ReturnChecksum(String file) throws NoSuchAlgorithmException, IOException {
 		MessageDigest sha1 = MessageDigest.getInstance("SHA1");
 		FileInputStream fis = new FileInputStream(file);
 
@@ -16,7 +16,7 @@ public class HashFile {
 		while ((read = fis.read(data)) != -1) {
 			sha1.update(data, 0, read);
 		}
-		;
+
 		byte[] hashBytes = sha1.digest();
 
 		StringBuffer sb = new StringBuffer();

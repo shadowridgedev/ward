@@ -22,40 +22,44 @@ import com.mysql.cj.jdbc.Driver;
 import com.mysql.cj.protocol.Resultset;
 
 // change
+/**
+ * @author shado
+ *
+ */
 @Entity
 @Table(name = "FileItem")
 public class FileData implements Serializable {
 
 	private static final long serialVersionUID = -5068990239464021287L;
+	public static String FieldString = "( RecordID,Ext,FileName,Size,Path,AbsolutePath, Source, Host,Language,CRC,UIMAref,Neo4Jref,Audio,GoodData,Duplicate,Text,Image,Video,Verified,ParsedUIMA,TooBig,Fix,Parsed)";
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	int idItem;
+	long RecordID;
+	String Ext;
 	String FileName;
-	Date Date;
+	long Size;
 	String Path;
 	String AbsolutePath;
-	String Host;
-	String HostBase;
 	String Source;
-	String Ext;
+	String Host;
 	String Language;
 	String CRC;
-	long Size;
 	long UIMAref;
 	long Neo4Jref;
-	boolean audio = false;
-	boolean text = false;
-	boolean image = false;
-	boolean video = false;
+	boolean Audio = false;
+	boolean GoodData;
+	boolean Duplicate = false;
+	boolean Text = false;
+	boolean Image = false;
+	boolean Video = false;
 	boolean Verified = false;
 	boolean ParsedUIMA = false;
 	boolean TooBig = false;
 	boolean Fix = false;
 	boolean Parsed = false;
-	boolean Duplicate = false;
 
 	public String toString() {
 		String result = " not done ";
@@ -64,7 +68,8 @@ public class FileData implements Serializable {
 	}
 
 	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) {
-//System.out.println("Writimg records into the table...");
+//System.out.println("Writing records into the table...");
+
 		Statement stmt = null;
 		try {
 			stmt = conn.createStatement();
@@ -72,11 +77,12 @@ public class FileData implements Serializable {
 			e.printStackTrace();
 		}
 
-		String sql = "INSERT  INTO " + table + " "
-				+ "( id,Item,FileName,Date,Path,AbsolutePath,Host,HostBase,Ext,Language,CRC,Size,UIMAref,Neo4Jref,audio,text,image,video,Verified,ParsedUIMA,TooBig,Fix,Parsed, ) VALUES ("
-				+ fixPath(Path) + fixPath(FileName) + fixPath(Source) + Host + fixPath(HostBase) + fixPath(AbsolutePath)
-				+ fixPath(Ext) + Size + "," + fixPath(CRC);
-//		System.out.println(sql);
+		String sql = "INSERT  INTO " + table + " " + FieldString + " " + "VALUES  (  " + RecordID + "," + Ext + ","
+				+ FileName + "," + Size + "," + Path + "," + AbsolutePath + "," + Source + "," + Host + "," + Language
+				+ "," + CRC + "," + UIMAref + "," + Neo4Jref + "," + Audio + "," + GoodData + "," + Duplicate + ","
+				+ Text + "," + Image + "," + Video + "," + Verified + "," + ParsedUIMA + "," + TooBig + "," + Fix + ","
+				+ Parsed + ")";
+		System.out.println(sql);
 		sql = sql.substring(0, sql.length() - 2);
 //		System.out.println(sql);
 		sql = sql + ");";
@@ -145,12 +151,28 @@ public class FileData implements Serializable {
 			;
 	}
 
-	public int getIdItem() {
-		return idItem;
+	public static String getFieldString() {
+		return FieldString;
 	}
 
-	public void setIdItem(int idItem) {
-		this.idItem = idItem;
+	public static void setFieldString(String fieldString) {
+		FieldString = fieldString;
+	}
+
+	public long getRecordID() {
+		return RecordID;
+	}
+
+	public void setRecordID(long recordID) {
+		RecordID = recordID;
+	}
+
+	public String getExt() {
+		return Ext;
+	}
+
+	public void setExt(String ext) {
+		Ext = ext;
 	}
 
 	public String getFileName() {
@@ -161,12 +183,12 @@ public class FileData implements Serializable {
 		FileName = fileName;
 	}
 
-	public Date getDate() {
-		return Date;
+	public long getSize() {
+		return Size;
 	}
 
-	public void setDate(Date date) {
-		Date = date;
+	public void setSize(long size) {
+		Size = size;
 	}
 
 	public String getPath() {
@@ -185,22 +207,6 @@ public class FileData implements Serializable {
 		AbsolutePath = absolutePath;
 	}
 
-	public String getHost() {
-		return Host;
-	}
-
-	public void setHost(String host) {
-		Host = host;
-	}
-
-	public String getHostBase() {
-		return HostBase;
-	}
-
-	public void setHostBase(String hostBase) {
-		HostBase = hostBase;
-	}
-
 	public String getSource() {
 		return Source;
 	}
@@ -209,12 +215,12 @@ public class FileData implements Serializable {
 		Source = source;
 	}
 
-	public String getExt() {
-		return Ext;
+	public String getHost() {
+		return Host;
 	}
 
-	public void setExt(String ext) {
-		Ext = ext;
+	public void setHost(String host) {
+		Host = host;
 	}
 
 	public String getLanguage() {
@@ -233,19 +239,11 @@ public class FileData implements Serializable {
 		CRC = cRC;
 	}
 
-	public long getSize() {
-		return Size;
-	}
-
-	public void setSize(long size) {
-		Size = size;
-	}
-
 	public long getUIMAref() {
 		return UIMAref;
 	}
 
-	public void setUIMAref(int uIMAref) {
+	public void setUIMAref(long uIMAref) {
 		UIMAref = uIMAref;
 	}
 
@@ -253,40 +251,56 @@ public class FileData implements Serializable {
 		return Neo4Jref;
 	}
 
-	public void setNeo4Jref(int neo4Jref) {
+	public void setNeo4Jref(long neo4Jref) {
 		Neo4Jref = neo4Jref;
 	}
 
 	public boolean isAudio() {
-		return audio;
+		return Audio;
 	}
 
-	public void setAudio(boolean audio) {
-		this.audio = audio;
+	public void setAudio(boolean Audio) {
+		this.Audio = Audio;
+	}
+
+	public boolean isGoodData() {
+		return GoodData;
+	}
+
+	public void setGoodData(boolean goodData) {
+		GoodData = goodData;
+	}
+
+	public boolean isDuplicate() {
+		return Duplicate;
+	}
+
+	public void setDuplicate(boolean duplicate) {
+		Duplicate = duplicate;
 	}
 
 	public boolean isText() {
-		return text;
+		return Text;
 	}
 
 	public void setText(boolean text) {
-		this.text = text;
+		Text = text;
 	}
 
 	public boolean isImage() {
-		return image;
+		return Image;
 	}
 
 	public void setImage(boolean image) {
-		this.image = image;
+		Image = image;
 	}
 
 	public boolean isVideo() {
-		return video;
+		return Video;
 	}
 
 	public void setVideo(boolean video) {
-		this.video = video;
+		Video = video;
 	}
 
 	public boolean isVerified() {
@@ -319,6 +333,14 @@ public class FileData implements Serializable {
 
 	public void setFix(boolean fix) {
 		Fix = fix;
+	}
+
+	public boolean isParsed() {
+		return Parsed;
+	}
+
+	public void setParsed(boolean parsed) {
+		Parsed = parsed;
 	}
 
 }

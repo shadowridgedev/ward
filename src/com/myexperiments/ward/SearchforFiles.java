@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 public class SearchforFiles {
 
 	private String rootstring;
+	public HashFile hash = new HashFile();
 
 	public void SearchFiles(File root, String[] type, SQLInterface db, String source) throws Exception {
 		File startroot = root;
@@ -56,7 +57,6 @@ public class SearchforFiles {
 
 					Item.Ext = ext;
 					Item.FileName = root1.getName();
-					Item.HostBase = this.rootstring;
 					Item.FileName = Item.FileName.replace(this.rootstring, "");
 					Item.Size = root1.length();
 					Item.Path = root1.toString().replace(Item.FileName, "");
@@ -64,21 +64,20 @@ public class SearchforFiles {
 					Item.Host = "ASROCK";
 					Item.Language = "English";
 					Item.Verified = false;
-
+					Item.CRC = null;
 					Item.ParsedUIMA = false;
 					Item.TooBig = false;
 					Item.UIMAref = 0;
 					Item.Neo4Jref = 0;
 					Item.Parsed = false;
-					Item.audio = false;
-					Item.text = false;
-					Item.image = false;
-					Item.video = false;
+					Item.Audio = false;
+					Item.Ext = "";
+					Item.Image = false;
+					Item.Video = false;
 
 //				long heapFreeSize = Runtime.getRuntime().freeMemory() / (1024 * 1024);
 //				long heapMaxSize = Runtime.getRuntime().maxMemory() / (1024 * 1024);
 
-					Item.TooBig = false;
 					if (Item.Size != 0) {
 						if (Item.Size > Integer.MAX_VALUE - 1) {
 							// String data = new String(Files.readAllBytes(Paths.get(FileData.Path)));
@@ -87,7 +86,7 @@ public class SearchforFiles {
 									+ "     " + Item.CRC);
 							System.out.println("TOO BIG!!!");
 						} else {
-							Item.CRC = Hasher.verifyChecksum(root1.getAbsolutePath());// calc.fromBytes(data.getBytes()).getValue();
+							Item.CRC = Hasher.ReturnChecksum(root1.getAbsolutePath());// calc.fromBytes(data.getBytes()).getValue();
 							System.out.println(Item.Path + " " + Item.FileName + " " + Item.Size + " " + Item.Ext
 									+ "     " + Item.CRC);
 						}

@@ -73,23 +73,23 @@ public class ScanFiles {
 		Textstring = prop.getProperty("TextString");
 		CRC64 calcCRC = new CRC64();
 		SQLInterface db = new SQLInterface();
-		// InputStream inputStream = new FileInputStream(".../en-parserchunking.bin");
-		// ExampleApplication example = new ExampleApplication( taeDescriptor,
-		// inputDir);
-		String rootString = "Z:\\gut";
+
+		String rootString = "D:\\AVI";
 //		String rootString = "E:\\big";
 //		String rootString = "Z:\\";
 //		String source = "Gutenberg";
 //		String rootString = "D:\\pdf";
-		String source = "ASROCK";
+
 //	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
 //		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
 //		TreeMap<Integer, Book> result;
+
+		String source = "ASROCK";
 		SearchforFiles searcher = new SearchforFiles();
 
-		searcher.SearchFiles(root, text, db, source);
+		searcher.SearchFiles(root, video, db, source);
 		/*
 		 * ResultSet rs = db.doQuery("ward.files", " Ext = 'txt'"); while (rs.next()) {
 		 * String path = rs.getString(rs.findColumn("Path")); String filename =
