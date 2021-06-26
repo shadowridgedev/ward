@@ -77,11 +77,11 @@ public class FileData implements Serializable {
 			e.printStackTrace();
 		}
 
-		String sql = "INSERT  INTO " + table + " " + FieldString + " " + "VALUES  (  " + RecordID + "," + Ext + ","
-				+ FileName + "," + Size + "," + Path + "," + AbsolutePath + "," + Source + "," + Host + "," + Language
-				+ "," + CRC + "," + UIMAref + "," + Neo4Jref + "," + Audio + "," + GoodData + "," + Duplicate + ","
-				+ Text + "," + Image + "," + Video + "," + Verified + "," + ParsedUIMA + "," + TooBig + "," + Fix + ","
-				+ Parsed + ")";
+		String sql = "INSERT  INTO " + table + " " + FieldString + " " + "VALUES  (  '" + RecordID + "','" + Ext + "','"
+				+ FileName + "','" + Size + "','" + Path + "','" + AbsolutePath + "','" + Source + "','" + Host + "','"
+				+ Language + "','" + CRC + "','" + UIMAref + "','" + Neo4Jref + "','" + Audio + "','" + GoodData + "','"
+				+ Duplicate + "','" + Text + "','" + Image + "','" + Video + "','" + Verified + "','" + ParsedUIMA
+				+ "','" + TooBig + "','" + Fix + "','" + Parsed + "')";
 		System.out.println(sql);
 		sql = sql.substring(0, sql.length() - 2);
 //		System.out.println(sql);
