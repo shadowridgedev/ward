@@ -77,7 +77,7 @@ public class FileData implements Serializable {
 			e.printStackTrace();
 		}
 
-		String sql = "INSERT  INTO " + table + " " + FieldString + " " + "VALUES  (  '" + RecordID + "','" + Ext + "','"
+		String sql = "INSERT  INTO " + table + " " + FieldString + " VALUES = ( '" + RecordID + "','" + Ext + "','"
 				+ FileName + "','" + Size + "','" + Path + "','" + AbsolutePath + "','" + Source + "','" + Host + "','"
 				+ Language + "','" + CRC + "','" + UIMAref + "','" + Neo4Jref + "','" + Audio + "','" + GoodData + "','"
 				+ Duplicate + "','" + Text + "','" + Image + "','" + Video + "','" + Verified + "','" + ParsedUIMA

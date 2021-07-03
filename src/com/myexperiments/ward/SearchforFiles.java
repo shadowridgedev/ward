@@ -55,7 +55,7 @@ public class SearchforFiles {
 				if (!Files.notExists((root1.toPath()))) {
 					FileData Item = new FileData();
 
-					Item.Ext = ext;
+					Item.Ext = getExt(root1);
 					Item.FileName = root1.getName();
 					Item.FileName = Item.FileName.replace(this.rootstring, "");
 					Item.Size = root1.length();
