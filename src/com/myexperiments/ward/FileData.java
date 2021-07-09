@@ -26,16 +26,12 @@ import com.mysql.cj.protocol.Resultset;
  * @author shado
  *
  */
+
 @Entity
-@Table(name = "FileItem")
+@Table(name = "filedata")
 public class FileData implements Serializable {
 
 	private static final long serialVersionUID = -5068990239464021287L;
-	public static String FieldString = "( RecordID,Ext,FileName,Size,Path,AbsolutePath, Source, Host,Language,CRC,UIMAref,Neo4Jref,Audio,GoodData,Duplicate,Text,Image,Video,Verified,ParsedUIMA,TooBig,Fix,Parsed)";
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	long RecordID;
 	String Ext;
@@ -50,7 +46,7 @@ public class FileData implements Serializable {
 	long UIMAref;
 	long Neo4Jref;
 	boolean Audio = false;
-	boolean GoodData;
+	boolean GoodData = false;
 	boolean Duplicate = false;
 	boolean Text = false;
 	boolean Image = false;
@@ -61,55 +57,58 @@ public class FileData implements Serializable {
 	boolean Fix = false;
 	boolean Parsed = false;
 
-	public String toString() {
-		String result = " not done ";
-
-		return result;
-	}
-
-	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) {
-//System.out.println("Writing records into the table...");
-
+	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) throws SQLException {
+		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
+		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
+		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md", "m4b" };
+		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 		Statement stmt = null;
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		String sql = "INSERT  INTO " + table + " " + FieldString + " VALUES = ( '" + RecordID + "','" + Ext + "','"
-				+ FileName + "','" + Size + "','" + Path + "','" + AbsolutePath + "','" + Source + "','" + Host + "','"
-				+ Language + "','" + CRC + "','" + UIMAref + "','" + Neo4Jref + "','" + Audio + "','" + GoodData + "','"
-				+ Duplicate + "','" + Text + "','" + Image + "','" + Video + "','" + Verified + "','" + ParsedUIMA
-				+ "','" + TooBig + "','" + Fix + "','" + Parsed + "')";
+		/*
+		 * try { stmt = conn.createStatement(); } catch (SQLException e) {
+		 * e.printStackTrace(); }
+		 */
+//" " + FieldString +
+		FileItem.Path = fixPath(FileItem.Path);
+		FileItem.AbsolutePath = fixPath(FileItem.AbsolutePath);
+		String FieldString = "( RecordID,Ext,FileName,Size,Path,AbsolutePath, Source, Host,Language,CRC,UIMAref,Neo4Jref,Audio,GoodData,Duplicate,Text,Image,Video,Verified,ParsedUIMA,TooBig,Fix,Parsed)";
+		String sql = "INSERT  INTO " + table + "  " + FieldString + " VALUES  ( '0','" + Ext + "','" + FileName + "','"
+				+ Size + "','" + Path + "','" + AbsolutePath + "','" + Source + "','" + Host + "','" + Language + "','"
+				+ CRC + "','" + UIMAref + "','" + Neo4Jref + "'," + Audio + "," + GoodData + "," + Duplicate + ","
+				+ Text + "," + Image + "," + Video + "," + Verified + "," + ParsedUIMA + "," + TooBig + "," + Fix + ","
+				+ Parsed + ");";
 		System.out.println(sql);
 		sql = sql.substring(0, sql.length() - 2);
 //		System.out.println(sql);
 		sql = sql + ");";
-//		System.out.println(sql);
-		try {
-			stmt.executeUpdate(sql);
-		} catch
-
-		(SQLException e) {
-			try {
-
-				long l = 1000000000;
-
-				stmt.executeUpdate(sql);
-			} catch (SQLException e1) {
-
-				e1.printStackTrace();
-			}
-
-		}
-
+		System.out.println(sql);
+		int rs = GetFileData(sql, conn, table);
+		/*
+		 * try { stmt.executeUpdate(sql); } catch
+		 * 
+		 * (SQLException e) { try {
+		 * 
+		 * stmt.executeUpdate(sql); } catch (SQLException e1) {
+		 * 
+		 * e1.printStackTrace(); }
+		 * 
+		 * }
+		 * 
+		 * try(Connection con = getConnection(url, username, password,
+		 * "org.postgresql.Driver"); Statement stmt = con.createStatement(); ResultSet
+		 * rs = stmt.executeQuery(sql); ) {
+		 * 
+		 * // Statements } catch (SQLException e1) {
+		 * 
+		 * e1.printStackTrace(); }
+		 * 
+		 * finally { rs.close con.close }
+		 */
 	}
 
-	public ResultSet GetFileData(String sql, Connection conn, String table) {
+	public int GetFileData(String sql, Connection conn, String table) throws SQLException {
 
 		Statement stmt = null;
-		ResultSet r = null;
+		int r = 0;
 		try {
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
@@ -118,29 +117,26 @@ public class FileData implements Serializable {
 		}
 
 		try {
-			r = stmt.executeQuery(sql);
+			r = stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			try {
+				stmt.executeUpdate(sql);
 
-				long l = 1000000000;
-
-				stmt.executeQuery(sql);
 			} catch (SQLException e1) {
-
-				e1.printStackTrace();
+				System.err.println("Got an exception!");
+				System.err.println(e.getMessage());
 			}
-
+		} finally {
+			stmt.close();
 		}
 		return r;
-
 	}
 
 	String fixPath(String field) {
 		if (field != null && !field.isEmpty()) {
 			field = field.replace("\\", "/");
-			field.replace("'", "\\'");
 		}
-		field = "\'" + field + "\', ";
+
 		return field;
 
 	}
@@ -149,14 +145,6 @@ public class FileData implements Serializable {
 		System.gc();
 		for (long i = 0; i < n; i++)
 			;
-	}
-
-	public static String getFieldString() {
-		return FieldString;
-	}
-
-	public static void setFieldString(String fieldString) {
-		FieldString = fieldString;
 	}
 
 	public long getRecordID() {

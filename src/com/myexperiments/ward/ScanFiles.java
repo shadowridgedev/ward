@@ -57,7 +57,7 @@ public class ScanFiles {
 
 		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
 		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
-		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md" };
+		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md", "m4b" };
 		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 
 		options = getargs(args);
@@ -73,13 +73,14 @@ public class ScanFiles {
 		Textstring = prop.getProperty("TextString");
 		CRC64 calcCRC = new CRC64();
 		SQLInterface db = new SQLInterface();
-
-		String rootString = "D:\\AVI";
+//		String rootString = "D:\\music";
+		String rootString = "D:\\Dr Who";
+//		String rootString = "D:\\AVI";
 //		String rootString = "E:\\big";
 //		String rootString = "Z:\\";
 //		String source = "Gutenberg";
 //		String rootString = "D:\\pdf";
-
+//		String rootString = "D:\\pdftest";
 //	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
@@ -89,7 +90,8 @@ public class ScanFiles {
 		String source = "ASROCK";
 		SearchforFiles searcher = new SearchforFiles();
 
-		searcher.SearchFiles(root, video, db, source);
+		searcher.SearchFiles(root, audio, db, source);
+
 		/*
 		 * ResultSet rs = db.doQuery("ward.files", " Ext = 'txt'"); while (rs.next()) {
 		 * String path = rs.getString(rs.findColumn("Path")); String filename =

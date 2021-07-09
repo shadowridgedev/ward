@@ -438,7 +438,7 @@
 		<dependency>
 			<groupId>org.apache.uima</groupId>
 			<artifactId>aggregate-uimaj</artifactId>
-			<version>3.0.1</version>
+			<version>3.2.0</version>
 			<type>pom</type>
 		</dependency>
 
@@ -864,48 +864,7 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<!-- Required to resolve aspectj-enhanced class features -->
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.0</version>
-					<configuration>
-						<outxml>true</outxml>
-						<aspectLibraries>
-							<aspectLibrary>
-								<groupId>org.springframework</groupId>
-								<artifactId>spring-aspects</artifactId>
-							</aspectLibrary>
-							<aspectLibrary>
-								<groupId>org.springframework.data</groupId>
-								<artifactId>spring-data-neo4j</artifactId>
-							</aspectLibrary>
-						</aspectLibraries>
-						<source>1.6</source>
-						<target>1.6</target>
-					</configuration>
-					<executions>
-						<!-- ERROR HERE IN ECLIPSE SEE BELOW FOR FULL MESSAGE -->
-						<execution>
-							<goals>
-								<goal>compile</goal>
-								<goal>test-compile</goal>
-							</goals>
-						</execution>
-					</executions>
-					<dependencies>
-						<dependency>
-							<groupId>org.aspectj</groupId>
-							<artifactId>aspectjrt</artifactId>
-							<version>${aspectj.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.aspectj</groupId>
-							<artifactId>aspectjtools</artifactId>
-							<version>${aspectj.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
+
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>

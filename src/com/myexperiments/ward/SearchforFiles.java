@@ -16,6 +16,7 @@ public class SearchforFiles {
 		File startroot = root;
 		rootstring = root.toString();
 		searchForFilesExt(root, type, db, source);
+		startroot = null;
 	}
 
 	public void searchForFilesExt(File root, String[] type, SQLInterface db, String source) throws Exception {
@@ -60,6 +61,7 @@ public class SearchforFiles {
 					Item.FileName = Item.FileName.replace(this.rootstring, "");
 					Item.Size = root1.length();
 					Item.Path = root1.toString().replace(Item.FileName, "");
+					Item.AbsolutePath = root1.toString();
 					Item.Source = "ASROCK";
 					Item.Host = "ASROCK";
 					Item.Language = "English";
@@ -71,7 +73,6 @@ public class SearchforFiles {
 					Item.Neo4Jref = 0;
 					Item.Parsed = false;
 					Item.Audio = false;
-					Item.Ext = "";
 					Item.Image = false;
 					Item.Video = false;
 
@@ -92,7 +93,7 @@ public class SearchforFiles {
 						}
 					}
 
-					Item.InsertFileData(Item, SQLInterface.Queryconnection, "files", source);
+					Item.InsertFileData(Item, SQLInterface.Queryconnection, "filedata", source);
 					Item = null;
 					Hasher = null;
 				}

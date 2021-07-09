@@ -38,6 +38,9 @@ public class SQLInterface {
 
 		}
 	}
+	void closeconnection() {
+		
+	}
 
 	ResultSet doQuery(String Table, String Select) {
 
