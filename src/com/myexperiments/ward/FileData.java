@@ -58,16 +58,13 @@ public class FileData implements Serializable {
 	boolean Parsed = false;
 
 	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) throws SQLException {
+
 		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
 		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
 		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md", "m4b" };
 		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 		Statement stmt = null;
-		/*
-		 * try { stmt = conn.createStatement(); } catch (SQLException e) {
-		 * e.printStackTrace(); }
-		 */
-//" " + FieldString +
+
 		FileItem.Path = fixPath(FileItem.Path);
 		FileItem.AbsolutePath = fixPath(FileItem.AbsolutePath);
 		String FieldString = "( RecordID,Ext,FileName,Size,Path,AbsolutePath, Source, Host,Language,CRC,UIMAref,Neo4Jref,Audio,GoodData,Duplicate,Text,Image,Video,Verified,ParsedUIMA,TooBig,Fix,Parsed)";
@@ -82,27 +79,7 @@ public class FileData implements Serializable {
 		sql = sql + ");";
 		System.out.println(sql);
 		int rs = GetFileData(sql, conn, table);
-		/*
-		 * try { stmt.executeUpdate(sql); } catch
-		 * 
-		 * (SQLException e) { try {
-		 * 
-		 * stmt.executeUpdate(sql); } catch (SQLException e1) {
-		 * 
-		 * e1.printStackTrace(); }
-		 * 
-		 * }
-		 * 
-		 * try(Connection con = getConnection(url, username, password,
-		 * "org.postgresql.Driver"); Statement stmt = con.createStatement(); ResultSet
-		 * rs = stmt.executeQuery(sql); ) {
-		 * 
-		 * // Statements } catch (SQLException e1) {
-		 * 
-		 * e1.printStackTrace(); }
-		 * 
-		 * finally { rs.close con.close }
-		 */
+
 	}
 
 	public int GetFileData(String sql, Connection conn, String table) throws SQLException {
