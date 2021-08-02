@@ -86,21 +86,11 @@ public class ScanFiles {
 //	String rootString = "E:\\mp3";
 //		String rootString = "D:\\onedrive";
 		File root = new File(rootString);
-//		TreeMap<Integer, Book> map = new TreeMap<Integer, Book>();
-//		TreeMap<Integer, Book> result;
 
 		String source = "ASROCK";
 		SearchforFiles searcher = new SearchforFiles();
 
 		searcher.SearchFiles(root, audio, db, source);
-
-		/*
-		 * ResultSet rs = db.doQuery("ward.files", " Ext = 'txt'"); while (rs.next()) {
-		 * String path = rs.getString(rs.findColumn("Path")); String filename =
-		 * rs.getNString(rs.findColumn("FileName")); String pathstring = path + "\\" +
-		 * filename; Path filepath = Path.of(pathstring); String filetext =
-		 * Files.readString(filepath); }
-		 */
 	}
 
 	Parse[] parse(String sentence) throws IOException {
