@@ -59,11 +59,7 @@ public class FileData implements Serializable {
 
 	public void InsertFileData(FileData FileItem, Connection conn, String table, String source) throws SQLException {
 
-		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
-		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
-		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md", "m4b" };
-		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
-		Statement stmt = null;
+		Statement stmt = conn.createStatement();
 
 		FileItem.Path = fixPath(FileItem.Path);
 		FileItem.AbsolutePath = fixPath(FileItem.AbsolutePath);
@@ -79,12 +75,11 @@ public class FileData implements Serializable {
 		sql = sql + ");";
 		System.out.println(sql);
 		int rs = GetFileData(sql, conn, table);
-
 	}
 
 	public int GetFileData(String sql, Connection conn, String table) throws SQLException {
 
-		Statement stmt = null;
+		Statement stmt = conn.createStatement();
 		int r = 0;
 		try {
 			stmt = conn.createStatement();

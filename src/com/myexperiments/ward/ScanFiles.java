@@ -55,10 +55,13 @@ public class ScanFiles {
 	static public void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		String[] video = { "flac", "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv" };
+		String[] video = { "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv", "divx", "ogv" };
 		String[] text = { "txt", "pdf", "tff", "doc", "docx", "rtf", "mobi", "epub", "txt.utf8", "log" };
-		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "md", "m4b" };
+		String[] audio = { "mp3", "m4a", "wav", "wma", "aac", "flac", "md", "m4b" };
 		String[] image = { "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
+		String[] all = { "mpeg", "mp4", "oog", "mov", "webm", "avi", "mkv", "divx", "ogv", "txt", "pdf", "tff", "doc",
+				"docx", "rtf", "mobi", "epub", "txt.utf8", "log", "mp3", "m4a", "wav", "wma", "aac", "flac", "md",
+				"m4b", "jpeg", "jiff", "exif", "tiff", "gif", "bmp", "png", "ppm", "pmb", "pnm", "webp" };
 
 		options = getargs(args);
 		String PropPath = System.getProperty("user.dir") + "/properties";
@@ -71,7 +74,6 @@ public class ScanFiles {
 		Properties prop = new Prop(PropPath).theProp;
 		PropPath = prop.getProperty("GutPath");
 		Textstring = prop.getProperty("TextString");
-		CRC64 calcCRC = new CRC64();
 		SQLInterface db = new SQLInterface();
 //		String rootString = "D:\\music";
 		String rootString = "D:\\Dr Who";

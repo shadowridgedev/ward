@@ -9,8 +9,8 @@
 	<version>1.0.0</version>
 	<properties>
 		<solr.version>6.5.1</solr.version>
-		<maven.compiler.source>15</maven.compiler.source>
-		<maven.compiler.target>15</maven.compiler.target>
+		<maven.compiler.source>16</maven.compiler.source>
+		<maven.compiler.target>16</maven.compiler.target>
 		<cleartk.version>2.0.0</cleartk.version>
 	</properties>
 	<distributionManagement>
@@ -904,8 +904,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>15</source>
-						<target>15</target>
+						<source>16</source>
+						<target>16</target>
 					</configuration>
 				</plugin>
 
