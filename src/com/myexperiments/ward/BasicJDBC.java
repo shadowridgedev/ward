@@ -15,13 +15,11 @@ public class BasicJDBC {
 			throws ClassNotFoundException, IllegalAccessException, InstantiationException {
 
 		try {
-
 			this.table = table;
 			this.username = username;
 			this.password = password;
 			this.url = url;
 			this.fields = fields;
-
 //			Class<?> obj = 
 			Class.forName("com.mysql.jdbc.Driver"); // .newInstance();
 //			String obj = null;
@@ -30,14 +28,7 @@ public class BasicJDBC {
 			try {
 
 				conn = DriverManager.getConnection(url, "username", "password");
-			}
-
-			/*
-			 * catch (ClassNotFoundException ex) { System.out.println(ex.getMessage()); }
-			 * catch (IllegalAccessException ex) { System.out.println(ex.getMessage()); }
-			 * catch (InstantiationException ex) { System.out.println(ex.getMessage()); }
-			 */
-			catch (SQLException ex) {
+			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
 			}
 		} finally {
@@ -47,7 +38,6 @@ public class BasicJDBC {
 
 	private void doTests() {
 		doSelectTest(data);
-
 		doInsertTest(data);
 		doSelectTest(data);
 		doUpdateTest(data);
